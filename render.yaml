@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: dinesh-portfolio
+    runtime: node
+    repo: https://github.com/boxerdinesh88-png/latest
+    branch: master
+    buildCommand: npm install && npm run build && cd backend && npm install
+    startCommand: node backend/server.js
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: PORT
+        value: "10000"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: dinesh-portfolio-db
+          property: connectionString
+
+databases:
+  - name: dinesh-portfolio-db
+    plan: free
+    region: oregon

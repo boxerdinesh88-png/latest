@@ -295,6 +295,7 @@
     {
       "id": "ac-repair-service",
       "category": "WordPress",
+      "image": "/project%20image/img_1.png",
       "title": "AC Repair Service",
       "subtitle": "Appliance Repair Website",
       "description": "Custom 4-card service-process section with hover effects, scoped CSS, and blue brand theme. Step-by-step service flow UI and how-it-works sections.",

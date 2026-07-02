@@ -2,12 +2,13 @@
   "profile": {
     "name": "Dinesh Kumar",
     "shortName": "Dinesh",
-    "tagline": "Full-Stack Engineer & Creative Developer building high-performance web applications",
-    "role": "Full Stack Python Developer",
-    "specialization": "Python · Django · React JS · REST APIs · MySQL · GSAP",
-    "location": "Delhi, India",
+    "tagline": "Full Stack Developer & WordPress & Elementor Expert",
+    "role": "Full Stack Developer | WordPress & Elementor Expert | Python & Django",
+    "specialization": "Python · Django · React JS · WordPress · Elementor · REST APIs · MySQL",
+    "location": "Jhoripur, North East Delhi, India",
     "yearsOfExperience": "1+",
-    "bio": "Full Stack Developer with 1+ year of hands-on experience at ProAce International, building and maintaining web applications for international clients. Proficient in Python, Django, React JS, JavaScript, and MySQL. Skilled in developing RESTful APIs, responsive UI, and database management. A quick learner with strong problem-solving ability and a passion for writing clean, efficient code.",
+    "resumeUrl": "/Dinesh_Kumar.pdf",
+    "bio": "Results-driven Full Stack Developer with 1+ year of hands-on experience building scalable web applications for international clients. Proficient in Python, Django, React JS, JavaScript, MySQL, WordPress, and Elementor. Skilled in developing responsive UIs, designing RESTful APIs, managing databases, and delivering custom WordPress/Elementor solutions. Leverages AI tools (ChatGPT & Claude) to enhance development efficiency and problem-solving.",
     "avatarUrl": "/avatar.jpeg",
     "social": {
       "github": "https://github.com/boxerdinesh88-png/boxerdinesh88-png",
@@ -41,6 +42,15 @@
       ]
     },
     {
+      "category": "CMS & Page Builders",
+      "skills": [
+        { "name": "WordPress", "level": "Advanced" },
+        { "name": "Elementor", "level": "Advanced" },
+        { "name": "Custom Widgets", "level": "Advanced" },
+        { "name": "Theme Customization", "level": "Advanced" }
+      ]
+    },
+    {
       "category": "Databases",
       "skills": [
         { "name": "MySQL", "level": "Advanced" },
@@ -52,160 +62,42 @@
       "skills": [
         { "name": "Git & GitHub", "level": "Expert" },
         { "name": "PythonAnywhere", "level": "Advanced" },
-        { "name": "Figma", "level": "Intermediate" }
+        { "name": "Figma", "level": "Intermediate" },
+        { "name": "AI Integration", "level": "Advanced" }
       ]
     }
   ],
   "experience": [
     {
-      "company": "ProAce International Inc.",
+      "company": "Creative Squadz",
       "role": "Full Stack Developer",
-      "period": "2026 — Present",
-      "location": "Delhi NCR (Remote)",
-      "summary": "Developing full-stack web applications for international clients using Python, Django, and React JS. Focused on scalable APIs, performance optimization, and responsive design.",
+      "period": "May 2026 — Present",
+      "location": "Delhi NCR",
+      "summary": "Building and maintaining full-stack web applications and WordPress/Elementor websites for clients. Delivering high-performance, responsive digital solutions.",
       "highlights": [
-        "Developed full-stack web applications for international clients using Python, Django, and React JS.",
-        "Built responsive front-end interfaces with HTML5, CSS3, and JavaScript ensuring cross-browser compatibility.",
-        "Designed RESTful backend APIs using Django for seamless client-server communication.",
-        "Managed MySQL databases; fixed bugs and optimised overall website performance.",
-        "Delivered live business web application: shiningservicesindia.com.",
-        "Developed Event Directory (eventdirectory.pythonanywhere.com) with OTP and Google OAuth login integrations."
+        "Building and maintaining full-stack web applications and WordPress/Elementor websites for clients.",
+        "Delivered live project: happyhomeic.com",
+        "Developing responsive cross-platform solutions with modern frontend and backend technologies."
+      ]
+    },
+    {
+      "company": "ProAce International Inc.",
+      "role": "Full Stack Developer (Freelance)",
+      "period": "Jan 2025 — Apr 2025",
+      "location": "New York (Remote)",
+      "summary": "Developed and maintained full-stack web applications using Python, Django, and React JS for international clients. Built custom WordPress websites with Elementor, including theme customization and plugin integration.",
+      "highlights": [
+        "Developed and maintained full-stack web applications using Python, Django, and React JS for international clients.",
+        "Built custom WordPress websites with Elementor, including theme customization, custom HTML/CSS widgets, and plugin integration.",
+        "Designed responsive front-end interfaces with HTML5, CSS3, and JavaScript ensuring cross-browser compatibility.",
+        "Architected and consumed RESTful APIs with Django for seamless client-server communication.",
+        "Managed and optimized MySQL databases; identified and resolved performance bottlenecks.",
+        "Delivered 6+ live client websites across real estate, industrial, and service sectors.",
+        "Integrated AI tools (ChatGPT & Claude AI) into development workflow, improving delivery speed and code quality."
       ]
     }
   ],
   "projects": [
-    {
-      "id": "event-directory",
-      "category": "Django",
-      "image": "/project%20image/screencapture-eventdirectory-pythonanywhere-auth-login-2026-06-27-10_38_18.png",
-      "title": "Event Directory",
-      "subtitle": "Django Event Management App with OTP & OAuth",
-      "description": "A secure and scalable event management directory platform. Features robust multi-role user dashboards, real-time registration tracking, dynamic filtering, and a powerful admin control system.",
-      "stack": ["Django", "Python", "MySQL", "REST API", "Bootstrap 5", "Google OAuth"],
-      "role": "Lead Developer",
-      "year": "2026",
-      "link": "https://eventdirectory.pythonanywhere.com/auth/login/",
-      "highlights": [
-        "Implemented secure user authentication featuring custom OTP verification and Google OAuth",
-        "Designed and optimized structured MySQL relational database schemas for high integrity",
-        "Deployed application seamlessly on PythonAnywhere with robust error-logging setup"
-      ],
-      "highlight": true
-    },
-    {
-      "id": "shining-services",
-      "category": "Full Stack",
-      "image": "/project%20image/screencapture-boxerdinesh88-png-github-io-Shi-ning-services-2026-06-27-10_43_48.png",
-      "title": "Shining Services India",
-      "subtitle": "Full-Stack Business Platform & Booking Web App",
-      "description": "A high-performance full-stack business platform built to showcase services and streamline customer consultations. Integrates dynamic content management, secure contact pipelines, and database logs.",
-      "stack": ["Python", "Django", "MySQL", "HTML5", "CSS3", "JavaScript"],
-      "role": "Full-Stack Developer",
-      "year": "2025",
-      "link": "https://boxerdinesh88-png.github.io/Shi-ning-services/",
-      "highlights": [
-        "Engineered a dynamic Django-backed server side rendering system for high-SEO discoverability",
-        "Created interactive secure contact forms connected directly to admin notifications and MySQL database",
-        "Optimized media delivery and page caching strategies, cutting page loads by 40%"
-      ],
-      "highlight": true
-    },
-    {
-      "id": "makeup-forever",
-      "image": "/project%20image/screencapture-boxerdinesh88-png-github-io-makeupforever-2026-06-27-10_38_51.png",
-      "title": "Makeup Forever Salon & Academy",
-      "subtitle": "Luxury Booking Portal & Brand Showcase",
-      "description": "An ultra-premium corporate platform tailored for a premier salon and beauty academy. Displays academy course curricula, service menus, and location directions using high-end luxury styling.",
-      "stack": ["HTML5", "CSS3", "JavaScript", "Bootstrap 5", "Google Maps API"],
-      "role": "Frontend Developer",
-      "year": "2025",
-      "link": "https://boxerdinesh88-png.github.io/makeupforever/",
-      "highlights": [
-        "Designed a refined brand identity with custom luxurious layouts and fluid responsive components",
-        "Integrated Google Maps API for smooth navigation and address tracking",
-        "Achieved cross-browser responsive perfection and near-perfect SEO audit scoring"
-      ]
-    },
-    {
-      "id": "smart-parking",
-      "image": "/project%20image/screencapture-boxerdinesh88-png-github-io-parking-web-2026-06-27-10_39_24.png",
-      "title": "Smart Parking System",
-      "subtitle": "Interactive Slot Tracking & Booking Web App",
-      "description": "An IoT-inspired interactive parking booking and slot management platform. Provides a responsive user dashboard for visualizing occupied/vacant spots, booking schedules, and check-out logs.",
-      "stack": ["HTML5", "CSS3", "JavaScript", "Responsive Design", "UI/UX"],
-      "role": "Frontend Developer",
-      "year": "2025",
-      "link": "https://boxerdinesh88-png.github.io/parking-web/",
-      "highlights": [
-        "Built a visual map interface displaying slot states using pure client-side state manipulation",
-        "Designed a frictionless touch-responsive slot selection workflow",
-        "Coded robust input validation for reservation timers and custom parking filters"
-      ]
-    },
-    {
-      "id": "car-showcase",
-      "image": "/project%20image/img_2.png",
-      "title": "Car Showcase Website",
-      "subtitle": "Premium Product Landing Page",
-      "description": "A high-impact promotional landing page built for high-end automotive brands. Features slick dark mode styling, product-zoom interactions, and animated vehicle detail breakdowns.",
-      "stack": ["HTML5", "CSS3", "JavaScript", "Animations", "Luxury UI"],
-      "role": "Frontend Developer",
-      "year": "2025",
-      "link": "https://boxerdinesh88-png.github.io/car-website/",
-      "highlights": [
-        "Crafted high-fidelity custom css animations and transitions showcasing vehicle specs",
-        "Integrated modern web typography and contrast schemes for a dramatic visual impact",
-        "Optimized layout responsiveness specifically for touch devices and retina screens"
-      ]
-    },
-    {
-      "id": "maxent-food",
-      "image": "/project%20image/screencapture-boxerdinesh88-png-github-io-mexentfood-2026-06-27-10_37_37.png",
-      "title": "Maxent Food",
-      "subtitle": "Restaurant Menu Discovery Platform",
-      "description": "A food tech menu discovery and online ordering presentation platform. Enables restaurant customers to browse menus, filter items by diet type, manage checkout baskets, and explore chef specials.",
-      "stack": ["HTML5", "CSS3", "JavaScript", "Food Tech", "Responsive Design"],
-      "role": "Frontend Developer",
-      "year": "2025",
-      "link": "https://boxerdinesh88-png.github.io/mexentfood/",
-      "highlights": [
-        "Designed and developed a highly interactive menu catalog with zero-lag search filtering",
-        "Engineered lightweight client-side shopping cart storage and checkout checkout state flows",
-        "Created visually rich card layouts utilizing CSS grid and modern responsive guidelines"
-      ]
-    },
-    {
-      "id": "gym-website",
-      "image": "/project%20image/screencapture-boxerdinesh88-png-github-io-gym-2026-06-27-10_37_56.png",
-      "title": "Gym & Fitness Studio",
-      "subtitle": "Fitness Portal & Membership Landing Page",
-      "description": "A high-energy membership conversion page designed to increase gym sign-ups. Features trainer bios, schedule planners, membership calculators, and interactive user flows.",
-      "stack": ["HTML5", "CSS3", "JavaScript", "Scroll Animation", "Landing Page"],
-      "role": "Frontend Developer",
-      "year": "2025",
-      "link": "https://boxerdinesh88-png.github.io/gym/",
-      "highlights": [
-        "Created scroll-triggered reveals showcasing studio spaces, classes, and amenities",
-        "Designed clear call-to-action pathways resulting in optimized membership lead generation",
-        "Integrated functional schedules using responsive interactive tab navigation"
-      ]
-    },
-    {
-      "id": "developer-portfolio",
-      "image": "/project%20image/screencapture-boxerdinesh88-png-github-io-portfolio-2026-06-27-10_40_07.png",
-      "title": "Developer Portfolio",
-      "subtitle": "GSAP Animated Creative Portfolio",
-      "description": "An immersive creative developer portfolio utilizing advanced animation libraries to deliver a unique storytelling experience. Showcases customized cursor effects and dynamic canvas structures.",
-      "stack": ["HTML5", "CSS3", "JavaScript", "GSAP", "Scroll Scrub", "Custom Cursor"],
-      "role": "Creative Engineer",
-      "year": "2025",
-      "link": "https://boxerdinesh88-png.github.io/portfolio-/",
-      "highlights": [
-        "Integrated GSAP scroll trigger sequences for smooth scroll-driven screen reveals",
-        "Created an custom responsive dual-circle cursor tracking system",
-        "Coded customized marquee animation modules running smoothly at 60 FPS"
-      ]
-    },
     {
       "id": "karigarr-jewels",
       "category": "Full Stack",
@@ -216,7 +108,7 @@
       "stack": ["Django", "Python", "React JS", "REST API", "MySQL", "PythonAnywhere"],
       "role": "Full-Stack Developer",
       "year": "2026",
-      "link": "https://gtlrc.com",
+      "link": "https://karigarrjewels.pythonanywhere.com",
       "highlights": [
         "Built secure certificate generation and gemstone records management system",
         "Developed admin dashboard with Django REST Framework + React JS",
@@ -310,6 +202,42 @@
       ]
     },
     {
+      "id": "event-directory",
+      "category": "Django",
+      "image": "/project%20image/screencapture-eventdirectory-pythonanywhere-auth-login-2026-06-27-10_38_18.png",
+      "title": "Event Directory",
+      "subtitle": "Django Event Management App with OTP & OAuth",
+      "description": "A secure and scalable event management directory platform. Features robust multi-role user dashboards, real-time registration tracking, dynamic filtering, and a powerful admin control system.",
+      "stack": ["Django", "Python", "MySQL", "REST API", "Bootstrap 5", "Google OAuth"],
+      "role": "Lead Developer",
+      "year": "2026",
+      "link": "https://eventdirectory.pythonanywhere.com/auth/login/",
+      "highlights": [
+        "Implemented secure user authentication featuring custom OTP verification and Google OAuth",
+        "Designed and optimized structured MySQL relational database schemas for high integrity",
+        "Deployed application seamlessly on PythonAnywhere with robust error-logging setup"
+      ],
+      "highlight": true
+    },
+    {
+      "id": "shining-services",
+      "category": "Full Stack",
+      "image": "/project%20image/screencapture-boxerdinesh88-png-github-io-Shi-ning-services-2026-06-27-10_43_48.png",
+      "title": "Shining Services India",
+      "subtitle": "Full-Stack Business Platform & Booking Web App",
+      "description": "A high-performance full-stack business platform built to showcase services and streamline customer consultations. Integrates dynamic content management, secure contact pipelines, and database logs.",
+      "stack": ["Python", "Django", "MySQL", "HTML5", "CSS3", "JavaScript"],
+      "role": "Full-Stack Developer",
+      "year": "2025",
+      "link": "https://boxerdinesh88-png.github.io/Shi-ning-services/",
+      "highlights": [
+        "Engineered a dynamic Django-backed server side rendering system for high-SEO discoverability",
+        "Created interactive secure contact forms connected directly to admin notifications and MySQL database",
+        "Optimized media delivery and page caching strategies, cutting page loads by 40%"
+      ],
+      "highlight": true
+    },
+    {
       "id": "home-groom-pets",
       "category": "WordPress",
       "image": "/project%20image/screencapture-homegroompets-in-2026-06-27-10_40_34.png",
@@ -325,9 +253,111 @@
         "Designed custom service listings and booking inquiry layouts",
         "Implemented responsive design with conversion-focused CTAs"
       ]
+    },
+    {
+      "id": "makeup-forever",
+      "image": "/project%20image/screencapture-boxerdinesh88-png-github-io-makeupforever-2026-06-27-10_38_51.png",
+      "title": "Makeup Forever Salon & Academy",
+      "subtitle": "Luxury Booking Portal & Brand Showcase",
+      "description": "An ultra-premium corporate platform tailored for a premier salon and beauty academy. Displays academy course curricula, service menus, and location directions using high-end luxury styling.",
+      "stack": ["HTML5", "CSS3", "JavaScript", "Bootstrap 5", "Google Maps API"],
+      "role": "Frontend Developer",
+      "year": "2025",
+      "link": "https://boxerdinesh88-png.github.io/makeupforever/",
+      "highlights": [
+        "Designed a refined brand identity with custom luxurious layouts and fluid responsive components",
+        "Integrated Google Maps API for smooth navigation and address tracking",
+        "Achieved cross-browser responsive perfection and near-perfect SEO audit scoring"
+      ]
+    },
+    {
+      "id": "gym-website",
+      "image": "/project%20image/screencapture-boxerdinesh88-png-github-io-gym-2026-06-27-10_37_56.png",
+      "title": "Gym & Fitness Studio",
+      "subtitle": "Fitness Portal & Membership Landing Page",
+      "description": "A high-energy membership conversion page designed to increase gym sign-ups. Features trainer bios, schedule planners, membership calculators, and interactive user flows.",
+      "stack": ["HTML5", "CSS3", "JavaScript", "Scroll Animation", "Landing Page"],
+      "role": "Frontend Developer",
+      "year": "2025",
+      "link": "https://boxerdinesh88-png.github.io/gym/",
+      "highlights": [
+        "Created scroll-triggered reveals showcasing studio spaces, classes, and amenities",
+        "Designed clear call-to-action pathways resulting in optimized membership lead generation",
+        "Integrated functional schedules using responsive interactive tab navigation"
+      ]
+    },
+    {
+      "id": "developer-portfolio",
+      "image": "/project%20image/screencapture-boxerdinesh88-png-github-io-portfolio-2026-06-27-10_40_07.png",
+      "title": "Developer Portfolio",
+      "subtitle": "GSAP Animated Creative Portfolio",
+      "description": "An immersive creative developer portfolio utilizing advanced animation libraries to deliver a unique storytelling experience. Showcases customized cursor effects and dynamic canvas structures.",
+      "stack": ["HTML5", "CSS3", "JavaScript", "GSAP", "Scroll Scrub", "Custom Cursor"],
+      "role": "Creative Engineer",
+      "year": "2025",
+      "link": "https://boxerdinesh88-png.github.io/portfolio-/",
+      "highlights": [
+        "Integrated GSAP scroll trigger sequences for smooth scroll-driven screen reveals",
+        "Created an custom responsive dual-circle cursor tracking system",
+        "Coded customized marquee animation modules running smoothly at 60 FPS"
+      ]
+    },
+    {
+      "id": "smart-parking",
+      "image": "/project%20image/screencapture-boxerdinesh88-png-github-io-parking-web-2026-06-27-10_39_24.png",
+      "title": "Smart Parking System",
+      "subtitle": "Interactive Slot Tracking & Booking Web App",
+      "description": "An IoT-inspired interactive parking booking and slot management platform. Provides a responsive user dashboard for visualizing occupied/vacant spots, booking schedules, and check-out logs.",
+      "stack": ["HTML5", "CSS3", "JavaScript", "Responsive Design", "UI/UX"],
+      "role": "Frontend Developer",
+      "year": "2025",
+      "link": "https://boxerdinesh88-png.github.io/parking-web/",
+      "highlights": [
+        "Built a visual map interface displaying slot states using pure client-side state manipulation",
+        "Designed a frictionless touch-responsive slot selection workflow",
+        "Coded robust input validation for reservation timers and custom parking filters"
+      ]
+    },
+    {
+      "id": "car-showcase",
+      "image": "/project%20image/img_2.png",
+      "title": "Car Showcase Website",
+      "subtitle": "Premium Product Landing Page",
+      "description": "A high-impact promotional landing page built for high-end automotive brands. Features slick dark mode styling, product-zoom interactions, and animated vehicle detail breakdowns.",
+      "stack": ["HTML5", "CSS3", "JavaScript", "Animations", "Luxury UI"],
+      "role": "Frontend Developer",
+      "year": "2025",
+      "link": "https://boxerdinesh88-png.github.io/car-website/",
+      "highlights": [
+        "Crafted high-fidelity custom css animations and transitions showcasing vehicle specs",
+        "Integrated modern web typography and contrast schemes for a dramatic visual impact",
+        "Optimized layout responsiveness specifically for touch devices and retina screens"
+      ]
+    },
+    {
+      "id": "maxent-food",
+      "image": "/project%20image/screencapture-boxerdinesh88-png-github-io-mexentfood-2026-06-27-10_37_37.png",
+      "title": "Maxent Food",
+      "subtitle": "Restaurant Menu Discovery Platform",
+      "description": "A food tech menu discovery and online ordering presentation platform. Enables restaurant customers to browse menus, filter items by diet type, manage checkout baskets, and explore chef specials.",
+      "stack": ["HTML5", "CSS3", "JavaScript", "Food Tech", "Responsive Design"],
+      "role": "Frontend Developer",
+      "year": "2025",
+      "link": "https://boxerdinesh88-png.github.io/mexentfood/",
+      "highlights": [
+        "Designed and developed a highly interactive menu catalog with zero-lag search filtering",
+        "Engineered lightweight client-side shopping cart storage and checkout checkout state flows",
+        "Created visually rich card layouts utilizing CSS grid and modern responsive guidelines"
+      ]
     }
   ],
   "education": [
+    {
+      "institution": "School of Open Learning, Delhi University",
+      "degree": "BA (2nd Year)",
+      "field": "Arts",
+      "period": "2025 — Present"
+    },
     {
       "institution": "DUCAT Institute, Noida-63",
       "degree": "Full Stack Python Development",
@@ -373,26 +403,27 @@
     {
       "id": "full-stack",
       "title": "Full Stack Development",
-      "description": "Building modern, end-to-end web applications with React.js on the frontend and Django/Python on the backend.",
-      "icon": "Code"
+      "description": "Building modern, end-to-end web applications with React.js on the frontend and Django/Python on the backend."
+    },
+    {
+      "id": "wordpress",
+      "title": "WordPress & Elementor",
+      "description": "Custom WordPress websites with Elementor, including theme customization, custom widgets, and plugin integration for any industry."
     },
     {
       "id": "backend-api",
       "title": "Backend API Development",
-      "description": "Designing high-performance, secure RESTful APIs using Django REST Framework with strict token-based authentication.",
-      "icon": "Server"
+      "description": "Designing high-performance, secure RESTful APIs using Django REST Framework with strict token-based authentication."
     },
     {
       "id": "responsive-design",
       "title": "Responsive Web Design",
-      "description": "Crafting premium, fluid user interfaces that deliver consistent pixel-perfect layout renderings across all form factors.",
-      "icon": "Laptop"
+      "description": "Crafting premium, fluid user interfaces that deliver consistent pixel-perfect layout renderings across all form factors."
     },
     {
-      "id": "auth-systems",
-      "title": "Authentication Systems",
-      "description": "Implementing absolute military-grade security with JWT, custom OTP, multi-factor logins, and Google OAuth.",
-      "icon": "Shield"
+      "id": "ai-integration",
+      "title": "AI-Enhanced Development",
+      "description": "Leveraging ChatGPT and Claude AI to accelerate development workflows, improve code quality, and solve complex problems efficiently."
     }
   ],
   "whyHireMe": [
@@ -401,12 +432,12 @@
       "description": "Strict adherence to PEP 8 standards, modular component design, and well-documented API structures for future developers."
     },
     {
-      "title": "Analytical Problem Solving",
-      "description": "Strong logical foundation from high-performance Django architectures, complex SQL database schema design, and algorithm optimization."
+      "title": "WordPress Customization",
+      "description": "Expert in custom Elementor widgets, theme customization, scoped CSS, and plugin integration for unique business requirements."
     },
     {
-      "title": "Secure-First Backend",
-      "description": "Always protecting API gateways with JWT authentication, custom OTP validation pipelines, password hashing, and CORS policies."
+      "title": "AI-Powered Productivity",
+      "description": "Leveraging ChatGPT and Claude AI to accelerate development, automate repetitive tasks, and deliver higher quality code faster."
     },
     {
       "title": "Scalable Infrastructure",

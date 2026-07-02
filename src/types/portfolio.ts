@@ -18,6 +18,7 @@ export interface Profile {
   yearsOfExperience: string
   bio: string
   avatarUrl?: string
+  resumeUrl?: string
   social: Social
 }
 

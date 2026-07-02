@@ -6,7 +6,7 @@
     "role": "Full Stack Developer | WordPress & Elementor Expert | Python & Django",
     "specialization": "Python · Django · React JS · WordPress · Elementor · REST APIs · MySQL",
     "location": "Jhoripur, North East Delhi, India",
-    "yearsOfExperience": "1+",
+    "yearsOfExperience": "2+",
     "resumeUrl": "/Dinesh_Kumar.pdf",
     "bio": "Results-driven Full Stack Developer with 1+ year of hands-on experience building scalable web applications for international clients. Proficient in Python, Django, React JS, JavaScript, MySQL, WordPress, and Elementor. Skilled in developing responsive UIs, designing RESTful APIs, managing databases, and delivering custom WordPress/Elementor solutions. Leverages AI tools (ChatGPT & Claude) to enhance development efficiency and problem-solving.",
     "avatarUrl": "/avatar.jpeg",
@@ -24,46 +24,106 @@
     {
       "category": "Frontend",
       "skills": [
-        { "name": "React.js", "level": "Advanced" },
-        { "name": "JavaScript", "level": "Advanced" },
-        { "name": "HTML5 / CSS3", "level": "Expert" },
-        { "name": "Responsive Design", "level": "Advanced" },
-        { "name": "GSAP Animations", "level": "Advanced" },
-        { "name": "Bootstrap 5 & Tailwind CSS", "level": "Advanced" }
+        {
+          "name": "React.js",
+          "level": "Advanced"
+        },
+        {
+          "name": "JavaScript",
+          "level": "Advanced"
+        },
+        {
+          "name": "HTML5 / CSS3",
+          "level": "Expert"
+        },
+        {
+          "name": "Responsive Design",
+          "level": "Advanced"
+        },
+        {
+          "name": "GSAP Animations",
+          "level": "Advanced"
+        },
+        {
+          "name": "Bootstrap 5 & Tailwind CSS",
+          "level": "Advanced"
+        }
       ]
     },
     {
       "category": "Backend",
       "skills": [
-        { "name": "Python", "level": "Expert" },
-        { "name": "Django", "level": "Advanced" },
-        { "name": "REST APIs", "level": "Advanced" },
-        { "name": "Node.js", "level": "Intermediate" }
+        {
+          "name": "Python",
+          "level": "Expert"
+        },
+        {
+          "name": "Django",
+          "level": "Advanced"
+        },
+        {
+          "name": "REST APIs",
+          "level": "Advanced"
+        },
+        {
+          "name": "Node.js",
+          "level": "Intermediate"
+        }
       ]
     },
     {
       "category": "CMS & Page Builders",
       "skills": [
-        { "name": "WordPress", "level": "Advanced" },
-        { "name": "Elementor", "level": "Advanced" },
-        { "name": "Custom Widgets", "level": "Advanced" },
-        { "name": "Theme Customization", "level": "Advanced" }
+        {
+          "name": "WordPress",
+          "level": "Advanced"
+        },
+        {
+          "name": "Elementor",
+          "level": "Advanced"
+        },
+        {
+          "name": "Custom Widgets",
+          "level": "Advanced"
+        },
+        {
+          "name": "Theme Customization",
+          "level": "Advanced"
+        }
       ]
     },
     {
       "category": "Databases",
       "skills": [
-        { "name": "MySQL", "level": "Advanced" },
-        { "name": "Database Design", "level": "Advanced" }
+        {
+          "name": "MySQL",
+          "level": "Advanced"
+        },
+        {
+          "name": "Database Design",
+          "level": "Advanced"
+        }
       ]
     },
     {
       "category": "Tools & DevOps",
       "skills": [
-        { "name": "Git & GitHub", "level": "Expert" },
-        { "name": "PythonAnywhere", "level": "Advanced" },
-        { "name": "Figma", "level": "Intermediate" },
-        { "name": "AI Integration", "level": "Advanced" }
+        {
+          "name": "Git & GitHub",
+          "level": "Expert"
+        },
+        {
+          "name": "PythonAnywhere",
+          "level": "Advanced"
+        },
+        {
+          "name": "Figma",
+          "level": "Intermediate"
+        },
+        {
+          "name": "AI Integration",
+          "level": "Advanced"
+        }
       ]
     }
   ],
@@ -105,7 +165,14 @@
       "title": "Karigarr Jewels",
       "subtitle": "Gemological Certification System",
       "description": "Full-stack gemological certification management system with secure certificate generation, gemstone records management, and admin dashboard. Built with Django REST Framework + React JS, deployed on PythonAnywhere.",
-      "stack": ["Django", "Python", "React JS", "REST API", "MySQL", "PythonAnywhere"],
+      "stack": [
+        "Django",
+        "Python",
+        "React JS",
+        "REST API",
+        "MySQL",
+        "PythonAnywhere"
+      ],
       "role": "Full-Stack Developer",
       "year": "2026",
       "link": "https://karigarrjewels.pythonanywhere.com",
@@ -123,7 +190,13 @@
       "title": "Spartakus Insurance",
       "subtitle": "Insurance Services Website",
       "description": "Professional insurance services website with trust-driven design. Custom Elementor layouts for service listings, quote request forms, and conversion-focused CTAs with optimized page speed.",
-      "stack": ["WordPress", "Elementor", "PHP", "CSS3", "Responsive Design"],
+      "stack": [
+        "WordPress",
+        "Elementor",
+        "PHP",
+        "CSS3",
+        "Responsive Design"
+      ],
       "role": "WordPress Developer",
       "year": "2026",
       "link": "https://spartakusinsurance.com",
@@ -140,7 +213,13 @@
       "title": "Happy Home IC",
       "subtitle": "Interior & Construction Landing Page",
       "description": "Conversion-optimized landing page with responsive layout and modern UI. Clean section-based architecture with service highlights, portfolio showcase, and contact form integration.",
-      "stack": ["WordPress", "Elementor", "PHP", "CSS3", "Responsive Design"],
+      "stack": [
+        "WordPress",
+        "Elementor",
+        "PHP",
+        "CSS3",
+        "Responsive Design"
+      ],
       "role": "WordPress Developer",
       "year": "2026",
       "link": "https://happyhomeic.com",
@@ -157,7 +236,13 @@
       "title": "Silver Sandstone Hospitality",
       "subtitle": "Luxury Travel & Hospitality",
       "description": "Premium hospitality website featuring destination grid UI with hover effects, animated transitions, responsive breakpoints, and luxury aesthetic with scoped CSS for Elementor compatibility.",
-      "stack": ["WordPress", "Elementor", "PHP", "CSS3", "JavaScript"],
+      "stack": [
+        "WordPress",
+        "Elementor",
+        "PHP",
+        "CSS3",
+        "JavaScript"
+      ],
       "role": "WordPress Developer",
       "year": "2026",
       "link": "https://silversandstonehospitality.com",
@@ -174,7 +259,13 @@
       "title": "Navsandhya Tapes",
       "subtitle": "Industrial Tape Manufacturer",
       "description": "Custom product category filtering, ISO 9001:2015 certification section, and animated brand logos marquee. Gold/cream palette with scoped CSS for Elementor HTML widget compatibility.",
-      "stack": ["WordPress", "Elementor", "PHP", "CSS3", "JavaScript"],
+      "stack": [
+        "WordPress",
+        "Elementor",
+        "PHP",
+        "CSS3",
+        "JavaScript"
+      ],
       "role": "WordPress Developer",
       "year": "2026",
       "link": "https://navsandhyatapes.giriinternational.in",
@@ -191,7 +282,13 @@
       "title": "AC Repair Service",
       "subtitle": "Appliance Repair Website",
       "description": "Custom 4-card service-process section with hover effects, scoped CSS, and blue brand theme. Step-by-step service flow UI and how-it-works sections.",
-      "stack": ["WordPress", "Elementor", "PHP", "CSS3", "JavaScript"],
+      "stack": [
+        "WordPress",
+        "Elementor",
+        "PHP",
+        "CSS3",
+        "JavaScript"
+      ],
       "role": "WordPress Developer",
       "year": "2026",
       "link": "https://acservice.giriinternational.in",
@@ -208,7 +305,14 @@
       "title": "Event Directory",
       "subtitle": "Django Event Management App with OTP & OAuth",
       "description": "A secure and scalable event management directory platform. Features robust multi-role user dashboards, real-time registration tracking, dynamic filtering, and a powerful admin control system.",
-      "stack": ["Django", "Python", "MySQL", "REST API", "Bootstrap 5", "Google OAuth"],
+      "stack": [
+        "Django",
+        "Python",
+        "MySQL",
+        "REST API",
+        "Bootstrap 5",
+        "Google OAuth"
+      ],
       "role": "Lead Developer",
       "year": "2026",
       "link": "https://eventdirectory.pythonanywhere.com/auth/login/",
@@ -226,7 +330,14 @@
       "title": "Shining Services India",
       "subtitle": "Full-Stack Business Platform & Booking Web App",
       "description": "A high-performance full-stack business platform built to showcase services and streamline customer consultations. Integrates dynamic content management, secure contact pipelines, and database logs.",
-      "stack": ["Python", "Django", "MySQL", "HTML5", "CSS3", "JavaScript"],
+      "stack": [
+        "Python",
+        "Django",
+        "MySQL",
+        "HTML5",
+        "CSS3",
+        "JavaScript"
+      ],
       "role": "Full-Stack Developer",
       "year": "2025",
       "link": "https://boxerdinesh88-png.github.io/Shi-ning-services/",
@@ -244,7 +355,13 @@
       "title": "Home Groom Pets",
       "subtitle": "Pet Grooming Services Website",
       "description": "A professional pet grooming services website with trust-driven design. Custom layouts for service listings, booking inquiries, and conversion-focused CTAs with responsive design.",
-      "stack": ["WordPress", "Elementor", "PHP", "CSS3", "JavaScript"],
+      "stack": [
+        "WordPress",
+        "Elementor",
+        "PHP",
+        "CSS3",
+        "JavaScript"
+      ],
       "role": "WordPress Developer",
       "year": "2026",
       "link": "https://homegroompets.in",
@@ -260,7 +377,13 @@
       "title": "Makeup Forever Salon & Academy",
       "subtitle": "Luxury Booking Portal & Brand Showcase",
       "description": "An ultra-premium corporate platform tailored for a premier salon and beauty academy. Displays academy course curricula, service menus, and location directions using high-end luxury styling.",
-      "stack": ["HTML5", "CSS3", "JavaScript", "Bootstrap 5", "Google Maps API"],
+      "stack": [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "Bootstrap 5",
+        "Google Maps API"
+      ],
       "role": "Frontend Developer",
       "year": "2025",
       "link": "https://boxerdinesh88-png.github.io/makeupforever/",
@@ -276,7 +399,13 @@
       "title": "Gym & Fitness Studio",
       "subtitle": "Fitness Portal & Membership Landing Page",
       "description": "A high-energy membership conversion page designed to increase gym sign-ups. Features trainer bios, schedule planners, membership calculators, and interactive user flows.",
-      "stack": ["HTML5", "CSS3", "JavaScript", "Scroll Animation", "Landing Page"],
+      "stack": [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "Scroll Animation",
+        "Landing Page"
+      ],
       "role": "Frontend Developer",
       "year": "2025",
       "link": "https://boxerdinesh88-png.github.io/gym/",
@@ -292,7 +421,14 @@
       "title": "Developer Portfolio",
       "subtitle": "GSAP Animated Creative Portfolio",
       "description": "An immersive creative developer portfolio utilizing advanced animation libraries to deliver a unique storytelling experience. Showcases customized cursor effects and dynamic canvas structures.",
-      "stack": ["HTML5", "CSS3", "JavaScript", "GSAP", "Scroll Scrub", "Custom Cursor"],
+      "stack": [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "GSAP",
+        "Scroll Scrub",
+        "Custom Cursor"
+      ],
       "role": "Creative Engineer",
       "year": "2025",
       "link": "https://boxerdinesh88-png.github.io/portfolio-/",
@@ -308,7 +444,13 @@
       "title": "Smart Parking System",
       "subtitle": "Interactive Slot Tracking & Booking Web App",
       "description": "An IoT-inspired interactive parking booking and slot management platform. Provides a responsive user dashboard for visualizing occupied/vacant spots, booking schedules, and check-out logs.",
-      "stack": ["HTML5", "CSS3", "JavaScript", "Responsive Design", "UI/UX"],
+      "stack": [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "Responsive Design",
+        "UI/UX"
+      ],
       "role": "Frontend Developer",
       "year": "2025",
       "link": "https://boxerdinesh88-png.github.io/parking-web/",
@@ -324,7 +466,13 @@
       "title": "Car Showcase Website",
       "subtitle": "Premium Product Landing Page",
       "description": "A high-impact promotional landing page built for high-end automotive brands. Features slick dark mode styling, product-zoom interactions, and animated vehicle detail breakdowns.",
-      "stack": ["HTML5", "CSS3", "JavaScript", "Animations", "Luxury UI"],
+      "stack": [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "Animations",
+        "Luxury UI"
+      ],
       "role": "Frontend Developer",
       "year": "2025",
       "link": "https://boxerdinesh88-png.github.io/car-website/",
@@ -340,7 +488,13 @@
       "title": "Maxent Food",
       "subtitle": "Restaurant Menu Discovery Platform",
       "description": "A food tech menu discovery and online ordering presentation platform. Enables restaurant customers to browse menus, filter items by diet type, manage checkout baskets, and explore chef specials.",
-      "stack": ["HTML5", "CSS3", "JavaScript", "Food Tech", "Responsive Design"],
+      "stack": [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "Food Tech",
+        "Responsive Design"
+      ],
       "role": "Frontend Developer",
       "year": "2025",
       "link": "https://boxerdinesh88-png.github.io/mexentfood/",

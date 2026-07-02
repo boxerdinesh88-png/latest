@@ -6,10 +6,10 @@ import ScrollReveal from '../animations/ScrollReveal'
 import SplitText from '../animations/SplitText'
 
 const counterData = [
-  { value: 1, suffix: '+', label: 'Years Experience' },
-  { value: 14, suffix: '+', label: 'Projects Delivered' },
-  { value: 8, suffix: '+', label: 'Technologies' },
-  { value: 10, suffix: '+', label: 'Happy Clients' },
+  { value: 2, suffix: '+', label: 'Years Experience' },
+  { value: 15, suffix: '+', label: 'Projects Delivered' },
+  { value: 20, suffix: '+', label: 'Technologies' },
+  { value: 12, suffix: '+', label: 'Happy Clients' },
 ]
 
 function AnimatedCounter({ value, suffix, label }: { value: number; suffix: string; label: string }) {

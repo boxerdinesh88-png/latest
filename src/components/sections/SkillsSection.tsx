@@ -7,19 +7,24 @@ import { TechIconMarquee, TechIconGrid } from '../ui/TechIcon'
 
 const techIcons = [
   { name: 'React', color: '#61DAFB' },
-  { name: 'Python', color: '#3776AB' },
-  { name: 'Django', color: '#092E20' },
   { name: 'JavaScript', color: '#F7DF1E' },
-  { name: 'TypeScript', color: '#3178C6' },
+  { name: 'HTML5', color: '#E34F26' },
+  { name: 'CSS3', color: '#1572B6' },
   { name: 'Tailwind', color: '#06B6D4' },
-  { name: 'Node.js', color: '#339933' },
-  { name: 'MySQL', color: '#4479A1' },
-  { name: 'Git', color: '#F05032' },
+  { name: 'Bootstrap', color: '#7952B3' },
   { name: 'GSAP', color: '#88CE02' },
   { name: 'Framer', color: '#0055FF' },
-  { name: 'Figma', color: '#F24E1E' },
+  { name: 'TypeScript', color: '#3178C6' },
+  { name: 'Python', color: '#3776AB' },
+  { name: 'Django', color: '#092E20' },
+  { name: 'Node.js', color: '#339933' },
   { name: 'WordPress', color: '#21759B' },
   { name: 'Elementor', color: '#92003B' },
+  { name: 'MySQL', color: '#4479A1' },
+  { name: 'Git', color: '#F05032' },
+  { name: 'GitHub', color: '#181717' },
+  { name: 'PythonAnywhere', color: '#2D6BB4' },
+  { name: 'Figma', color: '#F24E1E' },
 ]
 
 function SkillBar({ name, level, delay }: { name: string; level: string; delay: number }) {

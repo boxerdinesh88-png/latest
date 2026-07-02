@@ -26,8 +26,8 @@ export default function CertificationsSection() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {certifications.length === 0 ? (
             <div className="col-span-full glass rounded-2xl p-12 text-center">
-              <Award size={40} className="text-white/20 mx-auto mb-4" />
-              <p className="text-white/40">Certifications coming soon.</p>
+              <Award size={40} className="text-foreground/20 mx-auto mb-4" />
+              <p className="text-foreground/40">Certifications coming soon.</p>
             </div>
           ) : (
             certifications.map((cert, i) => (
@@ -40,15 +40,15 @@ export default function CertificationsSection() {
                 >
                   {/* Shine overlay */}
                   <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="absolute -inset-full top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/[0.03] to-transparent group-hover:translate-x-full transition-transform duration-700" />
+                  <div className="absolute -inset-full top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-foreground/[0.03] to-transparent group-hover:translate-x-full transition-transform duration-700" />
 
                   <div className="relative z-10">
                     <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
                       <Award size={24} className="text-accent" />
                     </div>
-                    <h3 className="text-lg font-semibold text-white mb-2">{cert.name}</h3>
-                    <p className="text-white/40 text-sm mb-3">{cert.issuer}</p>
-                    <div className="flex items-center gap-2 text-white/30 text-xs">
+                    <h3 className="text-lg font-semibold text-foreground mb-2">{cert.name}</h3>
+                    <p className="text-foreground/40 text-sm mb-3">{cert.issuer}</p>
+                    <div className="flex items-center gap-2 text-foreground/30 text-xs">
                       <Calendar size={12} /> {cert.date}
                     </div>
                   </div>
@@ -69,7 +69,7 @@ export default function CertificationsSection() {
             exit={{ opacity: 0 }}
             onClick={() => setSelectedCert(null)}
           >
-            <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
+            <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
             <motion.div
               className="relative glass rounded-2xl p-8 max-w-lg w-full"
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -79,18 +79,18 @@ export default function CertificationsSection() {
             >
               <button
                 onClick={() => setSelectedCert(null)}
-                className="absolute top-4 right-4 w-8 h-8 rounded-full glass flex items-center justify-center text-white/60 hover:text-white"
+                className="absolute top-4 right-4 w-8 h-8 rounded-full glass flex items-center justify-center text-foreground/60 hover:text-foreground"
               >
                 <X size={16} />
               </button>
               <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-5">
                 <Award size={28} className="text-accent" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">
+              <h3 className="text-xl font-bold text-foreground mb-2">
                 {certifications[selectedCert].name}
               </h3>
-              <p className="text-white/50 mb-4">{certifications[selectedCert].issuer}</p>
-              <div className="flex items-center gap-2 text-white/30 text-sm mb-6">
+              <p className="text-foreground/50 mb-4">{certifications[selectedCert].issuer}</p>
+              <div className="flex items-center gap-2 text-foreground/30 text-sm mb-6">
                 <Calendar size={14} /> {certifications[selectedCert].date}
               </div>
               {certifications[selectedCert].link && (

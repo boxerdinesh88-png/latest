@@ -41,7 +41,7 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
-        scrolled ? 'glass border-b border-white/[0.05]' : ''
+        scrolled ? 'glass border-b border-foreground/[0.05]' : ''
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -50,7 +50,7 @@ export default function Navbar() {
             onClick={() => scrollTo('#hero')}
             className="text-xl font-bold gradient-text"
           >
-            DK<span className="text-white/30">.</span>
+            DK<span className="text-foreground/30">.</span>
           </button>
 
           <div className="hidden md:flex items-center gap-1">
@@ -59,9 +59,9 @@ export default function Navbar() {
                 key={item.href}
                 onClick={() => scrollTo(item.href)}
                 className={`px-4 py-2 text-sm rounded-full transition-all duration-300 ${
-                  active === item.href.slice(1)
-                    ? 'text-white bg-white/10'
-                    : 'text-white/50 hover:text-white hover:bg-white/5'
+                    active === item.href.slice(1)
+                    ? 'text-foreground bg-foreground/10'
+                    : 'text-foreground/50 hover:text-foreground hover:bg-foreground/5'
                 }`}
               >
                 {item.label}
@@ -77,7 +77,7 @@ export default function Navbar() {
 
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-white/80 hover:text-white"
+            className="md:hidden p-2 text-foreground/80 hover:text-foreground"
             aria-label="Menu"
           >
             {isOpen ? <X size={22} /> : <Menu size={22} />}
@@ -88,7 +88,7 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="md:hidden glass border-t border-white/[0.05]"
+            className="md:hidden glass border-t border-foreground/[0.05]"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
@@ -101,8 +101,8 @@ export default function Navbar() {
                   onClick={() => scrollTo(item.href)}
                   className={`block w-full text-left px-4 py-3 rounded-xl text-sm transition-all ${
                     active === item.href.slice(1)
-                      ? 'text-white bg-white/10'
-                      : 'text-white/50 hover:text-white hover:bg-white/5'
+                      ? 'text-foreground bg-foreground/10'
+                      : 'text-foreground/50 hover:text-foreground hover:bg-foreground/5'
                   }`}
                 >
                   {item.label}

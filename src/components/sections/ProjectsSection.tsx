@@ -83,13 +83,13 @@ function ProjectCard({
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-purple-500/10 to-pink-500/10">
-            <CategoryIcon size={48} className="text-white/20" />
+            <CategoryIcon size={48} className="text-foreground/20" />
           </div>
         )}
 
         {/* Project Number */}
         <div className="absolute top-4 left-4 z-20">
-          <span className="text-4xl md:text-5xl font-bold text-white/5">
+          <span className="text-4xl md:text-5xl font-bold text-foreground/5">
             {String(index + 1).padStart(2, '0')}
           </span>
         </div>
@@ -97,7 +97,7 @@ function ProjectCard({
         {/* Category Badge */}
         {project.category && (
           <div className="absolute top-4 right-4 z-20">
-            <span className="px-3 py-1 rounded-full glass text-xs text-white/60">
+            <span className="px-3 py-1 rounded-full glass text-xs text-foreground/60">
               {project.category}
             </span>
           </div>
@@ -106,16 +106,16 @@ function ProjectCard({
 
       {/* Content */}
       <div className="relative p-6 md:p-8">
-        <h3 className="text-xl md:text-2xl font-bold mb-1 text-white">{project.title}</h3>
-        <p className="text-white/40 text-sm mb-4">{project.subtitle}</p>
-        <p className="text-white/50 text-sm leading-relaxed mb-6 line-clamp-2">{project.description}</p>
+        <h3 className="text-xl md:text-2xl font-bold mb-1 text-foreground">{project.title}</h3>
+        <p className="text-foreground/40 text-sm mb-4">{project.subtitle}</p>
+        <p className="text-foreground/50 text-sm leading-relaxed mb-6 line-clamp-2">{project.description}</p>
 
         {/* Tech Stack */}
         <div className="flex flex-wrap gap-2 mb-6">
           {project.stack.map((tech: string, i: number) => (
             <motion.span
               key={tech}
-              className="px-3 py-1 rounded-full bg-white/[0.04] text-white/40 text-xs border border-white/[0.06]"
+              className="px-3 py-1 rounded-full bg-foreground/[0.04] text-foreground/40 text-xs border border-foreground/[0.06]"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ delay: 0.3 + i * 0.03, duration: 0.3 }}
@@ -133,7 +133,7 @@ function ProjectCard({
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-sm text-white/50 hover:text-accent transition-colors"
+                className="flex items-center gap-1.5 text-sm text-foreground/50 hover:text-accent transition-colors"
               >
                 <ExternalLink size={14} /> Live
               </a>
@@ -143,13 +143,13 @@ function ProjectCard({
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-sm text-white/50 hover:text-accent transition-colors"
+                className="flex items-center gap-1.5 text-sm text-foreground/50 hover:text-accent transition-colors"
               >
                 <Github size={14} /> Code
               </a>
             )}
           </div>
-          <div className="flex items-center gap-1 text-white/30 text-xs">
+          <div className="flex items-center gap-1 text-foreground/30 text-xs">
             <Star size={12} className="fill-accent/30 text-accent/30" />
             {project.role}
           </div>
@@ -197,10 +197,10 @@ export default function ProjectsSection() {
           >
             <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
               <div>
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
+                <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
                   {projects[activeIndex].title}
                 </h3>
-                <p className="text-white/40">{projects[activeIndex].subtitle}</p>
+                <p className="text-foreground/40">{projects[activeIndex].subtitle}</p>
               </div>
               <div className="flex gap-3">
                 <MagneticButton>
@@ -221,7 +221,7 @@ export default function ProjectsSection() {
                       href={projects[activeIndex].github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-5 py-2.5 rounded-full glass glass-hover text-white/80 text-sm flex items-center gap-2 transition-all"
+                      className="px-5 py-2.5 rounded-full glass glass-hover text-foreground/80 text-sm flex items-center gap-2 transition-all"
                     >
                       <Github size={14} /> GitHub
                     </a>
@@ -229,20 +229,20 @@ export default function ProjectsSection() {
                 )}
               </div>
             </div>
-            <p className="text-white/50 leading-relaxed mb-6">{projects[activeIndex].description}</p>
+            <p className="text-foreground/50 leading-relaxed mb-6">{projects[activeIndex].description}</p>
 
             {/* Highlights */}
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {projects[activeIndex].highlights?.map((h: string, i: number) => (
                 <motion.div
                   key={i}
-                  className="flex items-start gap-2 p-3 rounded-xl bg-white/[0.02]"
+                  className="flex items-start gap-2 p-3 rounded-xl bg-foreground/[0.02]"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.05, duration: 0.3 }}
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />
-                  <span className="text-white/40 text-sm">{h}</span>
+                  <span className="text-foreground/40 text-sm">{h}</span>
                 </motion.div>
               ))}
             </div>
@@ -272,14 +272,14 @@ export default function ProjectsSection() {
           <div className="flex justify-center gap-3 mt-8">
             <button
               onClick={() => scroll('left')}
-              className="w-12 h-12 rounded-full glass glass-hover flex items-center justify-center text-white/60 hover:text-white transition-all"
+              className="w-12 h-12 rounded-full glass glass-hover flex items-center justify-center text-foreground/60 hover:text-foreground transition-all"
               aria-label="Scroll left"
             >
               <ChevronLeft size={20} />
             </button>
             <button
               onClick={() => scroll('right')}
-              className="w-12 h-12 rounded-full glass glass-hover flex items-center justify-center text-white/60 hover:text-white transition-all"
+              className="w-12 h-12 rounded-full glass glass-hover flex items-center justify-center text-foreground/60 hover:text-foreground transition-all"
               aria-label="Scroll right"
             >
               <ChevronRight size={20} />

@@ -32,8 +32,8 @@ export default function RippleButton({ children, className = '', variant = 'prim
 
   const variantStyles = {
     primary: 'bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:shadow-lg hover:shadow-purple-500/25',
-    secondary: 'glass glass-hover text-white',
-    ghost: 'text-white/80 hover:text-white hover:bg-white/5',
+    secondary: 'glass glass-hover text-foreground',
+    ghost: 'text-foreground/80 hover:text-foreground hover:bg-foreground/5',
   }
 
   return (
@@ -47,7 +47,7 @@ export default function RippleButton({ children, className = '', variant = 'prim
       {ripples.map((ripple) => (
         <span
           key={ripple.id}
-          className="absolute pointer-events-none rounded-full bg-white/30 animate-ripple"
+          className="absolute pointer-events-none rounded-full bg-foreground/30 animate-ripple"
           style={{
             left: ripple.x - 10,
             top: ripple.y - 10,

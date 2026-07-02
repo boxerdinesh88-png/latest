@@ -37,7 +37,7 @@ export default function Loader({ isLoading }: Props) {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="text-5xl font-bold gradient-text mb-4">DK</div>
-            <div className="w-32 h-0.5 bg-white/10 rounded-full overflow-hidden">
+            <div className="w-32 h-0.5 bg-foreground/10 rounded-full overflow-hidden">
               <motion.div
                 className="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"
                 initial={{ width: '0%' }}
@@ -45,7 +45,7 @@ export default function Loader({ isLoading }: Props) {
                 transition={{ duration: 0.3 }}
               />
             </div>
-            <p className="text-white/40 text-sm mt-3 font-mono text-center">
+            <p className="text-foreground/40 text-sm mt-3 font-mono text-center">
               {Math.min(Math.round(progress), 100)}%
             </p>
           </motion.div>

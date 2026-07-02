@@ -5,27 +5,45 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --color-primary: #FAFAFA;
+    --color-secondary: #F3F4F6;
+    --color-surface: #FFFFFF;
+    --color-border: #E5E7EB;
+    --color-foreground: #111827;
+    --color-muted: #6B7280;
+  }
+
+  .dark {
+    --color-primary: #0A0A0F;
+    --color-secondary: #12121A;
+    --color-surface: #1A1A2E;
+    --color-border: #2A2A3E;
+    --color-foreground: #FFFFFF;
+    --color-muted: #9CA3AF;
+  }
+
   * {
     @apply border-border;
   }
-  
+
   body {
-    @apply bg-primary text-white antialiased;
+    @apply bg-primary text-foreground antialiased;
     overflow-x: hidden;
   }
 
   ::selection {
-    @apply bg-accent/30 text-white;
+    @apply bg-accent/30 text-foreground;
   }
 }
 
 @layer components {
   .glass {
-    @apply backdrop-blur-xl bg-white/[0.02] border border-white/[0.05] shadow-xl;
+    @apply backdrop-blur-xl bg-white/60 dark:bg-white/[0.02] border border-gray-200/50 dark:border-white/[0.05] shadow-xl;
   }
 
   .glass-hover {
-    @apply hover:bg-white/[0.05] hover:border-accent/30 transition-all duration-500;
+    @apply hover:bg-white/80 dark:hover:bg-white/[0.05] hover:border-accent/30 transition-all duration-500;
   }
 
   .gradient-text {
@@ -54,7 +72,11 @@
   }
 
   .section-subtitle {
-    @apply text-lg md:text-xl text-white/60 max-w-2xl;
+    @apply text-lg md:text-xl text-muted max-w-2xl;
+  }
+
+  .card {
+    @apply bg-surface border border-border rounded-2xl shadow-sm hover:shadow-md transition-all duration-300;
   }
 }
 
@@ -63,6 +85,10 @@
 }
 
 ::-webkit-scrollbar-track {
+  background: #F3F4F6;
+}
+
+.dark ::-webkit-scrollbar-track {
   background: #0A0A0F;
 }
 

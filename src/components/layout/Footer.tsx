@@ -12,14 +12,14 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="relative border-t border-white/[0.05] py-12">
+    <footer className="relative border-t border-foreground/[0.05] py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="text-center md:text-left">
             <span className="text-xl font-bold gradient-text">
-              DK<span className="text-white/30">.</span>
+              DK<span className="text-foreground/30">.</span>
             </span>
-            <p className="text-white/30 text-sm mt-1">
+            <p className="text-foreground/30 text-sm mt-1">
               Full Stack Python Developer
             </p>
           </div>
@@ -32,7 +32,7 @@ export default function Footer() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full glass glass-hover flex items-center justify-center text-white/50 hover:text-white transition-all duration-300"
+                  className="w-10 h-10 rounded-full glass glass-hover flex items-center justify-center text-foreground/50 hover:text-foreground transition-all duration-300"
                   aria-label={label}
                 >
                   <Icon size={18} />
@@ -41,7 +41,7 @@ export default function Footer() {
             )}
           </div>
 
-          <p className="text-white/20 text-sm flex items-center gap-1">
+          <p className="text-foreground/20 text-sm flex items-center gap-1">
             © {new Date().getFullYear()} Made with <Heart size={12} className="text-red-400" /> by Dinesh Kumar
           </p>
         </div>

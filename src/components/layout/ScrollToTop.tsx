@@ -19,7 +19,7 @@ export default function ScrollToTop() {
     <AnimatePresence>
       {visible && (
         <motion.button
-          className="fixed bottom-8 right-8 z-50 w-12 h-12 rounded-full glass glass-hover flex items-center justify-center text-white/80 hover:text-white"
+          className="fixed bottom-8 right-8 z-50 w-12 h-12 rounded-full glass glass-hover flex items-center justify-center text-foreground/80 hover:text-foreground"
           initial={{ opacity: 0, scale: 0.5, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.5, y: 20 }}

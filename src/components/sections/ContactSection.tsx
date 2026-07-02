@@ -54,7 +54,7 @@ export default function ContactSection() {
           <ScrollReveal direction="right" className="lg:col-span-2">
             <div className="glass rounded-2xl p-8 h-fit">
               <h3 className="text-xl font-semibold mb-2">Get in touch</h3>
-              <p className="text-white/40 text-sm mb-8 leading-relaxed">
+              <p className="text-foreground/40 text-sm mb-8 leading-relaxed">
                 I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
               </p>
 
@@ -72,8 +72,8 @@ export default function ContactSection() {
                           <Icon size={18} className="text-accent" />
                         </div>
                         <div>
-                          <p className="text-white/30 text-xs">{label}</p>
-                          <p className="text-white/70 text-sm group-hover:text-white transition-colors">{value}</p>
+                          <p className="text-foreground/30 text-xs">{label}</p>
+                          <p className="text-foreground/70 text-sm group-hover:text-foreground transition-colors">{value}</p>
                         </div>
                       </a>
                     ) : (
@@ -82,8 +82,8 @@ export default function ContactSection() {
                           <Icon size={18} className="text-accent" />
                         </div>
                         <div>
-                          <p className="text-white/30 text-xs">{label}</p>
-                          <p className="text-white/70 text-sm">{value}</p>
+                          <p className="text-foreground/30 text-xs">{label}</p>
+                          <p className="text-foreground/70 text-sm">{value}</p>
                         </div>
                       </div>
                     )}
@@ -100,7 +100,7 @@ export default function ContactSection() {
                         href={href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-11 h-11 rounded-full glass glass-hover flex items-center justify-center text-white/50 hover:text-accent transition-all"
+                        className="w-11 h-11 rounded-full glass glass-hover flex items-center justify-center text-foreground/50 hover:text-accent transition-all"
                         aria-label={label}
                       >
                         <Icon size={18} />
@@ -123,8 +123,8 @@ export default function ContactSection() {
                   <div className="w-20 h-20 rounded-full bg-green-500/10 flex items-center justify-center mb-6">
                     <CheckCircle size={40} className="text-green-400" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-2">Message Sent!</h3>
-                  <p className="text-white/40 text-center">
+                  <h3 className="text-2xl font-bold text-foreground mb-2">Message Sent!</h3>
+                  <p className="text-foreground/40 text-center">
                     Thank you! I'll get back to you as soon as possible.
                   </p>
                 </motion.div>
@@ -139,12 +139,12 @@ export default function ContactSection() {
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         onFocus={() => setFocused('name')}
                         onBlur={() => setFocused(null)}
-                        className="w-full bg-transparent border border-white/[0.08] rounded-xl px-4 pt-6 pb-2 text-white text-sm focus:outline-none focus:border-accent/50 transition-colors peer"
+                        className="w-full bg-transparent border border-foreground/[0.08] rounded-xl px-4 pt-6 pb-2 text-foreground text-sm focus:outline-none focus:border-accent/50 transition-colors peer"
                         required
                       />
                       <label
                         htmlFor="name"
-                        className={`absolute left-4 transition-all duration-200 text-white/30 ${
+                        className={`absolute left-4 transition-all duration-200 text-foreground/30 ${
                           focused === 'name' || formData.name
                             ? 'top-2 text-xs text-accent'
                             : 'top-4 text-sm'
@@ -161,12 +161,12 @@ export default function ContactSection() {
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         onFocus={() => setFocused('email')}
                         onBlur={() => setFocused(null)}
-                        className="w-full bg-transparent border border-white/[0.08] rounded-xl px-4 pt-6 pb-2 text-white text-sm focus:outline-none focus:border-accent/50 transition-colors peer"
+                        className="w-full bg-transparent border border-foreground/[0.08] rounded-xl px-4 pt-6 pb-2 text-foreground text-sm focus:outline-none focus:border-accent/50 transition-colors peer"
                         required
                       />
                       <label
                         htmlFor="email"
-                        className={`absolute left-4 transition-all duration-200 text-white/30 ${
+                        className={`absolute left-4 transition-all duration-200 text-foreground/30 ${
                           focused === 'email' || formData.email
                             ? 'top-2 text-xs text-accent'
                             : 'top-4 text-sm'
@@ -184,12 +184,12 @@ export default function ContactSection() {
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       onFocus={() => setFocused('message')}
                       onBlur={() => setFocused(null)}
-                      className="w-full bg-transparent border border-white/[0.08] rounded-xl px-4 pt-6 pb-2 text-white text-sm focus:outline-none focus:border-accent/50 transition-colors resize-none peer"
+                      className="w-full bg-transparent border border-foreground/[0.08] rounded-xl px-4 pt-6 pb-2 text-foreground text-sm focus:outline-none focus:border-accent/50 transition-colors resize-none peer"
                       required
                     />
                     <label
                       htmlFor="message"
-                      className={`absolute left-4 transition-all duration-200 text-white/30 ${
+                      className={`absolute left-4 transition-all duration-200 text-foreground/30 ${
                         focused === 'message' || formData.message
                           ? 'top-2 text-xs text-accent'
                           : 'top-4 text-sm'

@@ -43,13 +43,13 @@ function TimelineItem({
       >
         <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
           <div>
-            <h3 className="text-lg md:text-xl font-semibold text-white">{item.role}</h3>
+            <h3 className="text-lg md:text-xl font-semibold text-foreground">{item.role}</h3>
             <div className="flex items-center gap-2 text-accent text-sm mt-1">
               <Briefcase size={14} />
               {item.company}
             </div>
           </div>
-          <div className="flex flex-wrap gap-3 text-white/40 text-xs">
+          <div className="flex flex-wrap gap-3 text-foreground/40 text-xs">
             <span className="flex items-center gap-1">
               <Calendar size={12} /> {item.period}
             </span>
@@ -59,13 +59,13 @@ function TimelineItem({
           </div>
         </div>
 
-        <p className="text-white/50 text-sm leading-relaxed mb-4">{item.summary}</p>
+        <p className="text-foreground/50 text-sm leading-relaxed mb-4">{item.summary}</p>
 
         <div className="grid sm:grid-cols-2 gap-2">
           {item.highlights.map((h, i) => (
             <motion.div
               key={i}
-              className="flex items-start gap-2 text-white/40 text-sm"
+              className="flex items-start gap-2 text-foreground/40 text-sm"
               initial={{ opacity: 0, y: 10 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.4 + i * 0.05, duration: 0.3 }}
@@ -100,8 +100,8 @@ export default function ExperienceSection() {
         <div className="max-w-3xl mx-auto">
           {experience.length === 0 ? (
             <div className="glass rounded-2xl p-12 text-center">
-              <Briefcase size={40} className="text-white/20 mx-auto mb-4" />
-              <p className="text-white/40">Experience details coming soon.</p>
+              <Briefcase size={40} className="text-foreground/20 mx-auto mb-4" />
+              <p className="text-foreground/40">Experience details coming soon.</p>
             </div>
           ) : (
             experience.map((item, i) => (

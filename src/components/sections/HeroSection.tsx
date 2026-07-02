@@ -42,7 +42,7 @@ export default function HeroSection() {
         <div className="flex flex-col items-center text-center">
           {/* Badge */}
           <motion.div
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-sm text-white/60 mb-8"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-sm text-foreground/60 mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
@@ -65,7 +65,7 @@ export default function HeroSection() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.6 }}
           >
-            <span className="text-xl md:text-2xl lg:text-3xl text-white/60 font-light">
+            <span className="text-xl md:text-2xl lg:text-3xl text-foreground/60 font-light">
               {profile.tagline.split(' ').slice(0, 2).join(' ')}{' '}
               <span className="gradient-text font-medium relative">
                 <motion.span
@@ -83,7 +83,7 @@ export default function HeroSection() {
 
           {/* Description */}
           <motion.p
-            className="text-base md:text-lg text-white/40 max-w-2xl mb-10 leading-relaxed"
+            className="text-base md:text-lg text-foreground/40 max-w-2xl mb-10 leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.6 }}
@@ -112,7 +112,7 @@ export default function HeroSection() {
             <MagneticButton>
               <button
                 onClick={() => scrollTo('#contact')}
-                className="text-base px-8 py-4 rounded-full glass glass-hover text-white/80 hover:text-white transition-all duration-300"
+                className="text-base px-8 py-4 rounded-full glass glass-hover text-foreground/80 hover:text-foreground transition-all duration-300"
               >
                 <span className="flex items-center gap-2">
                   <Mail size={16} /> Get in Touch
@@ -130,7 +130,7 @@ export default function HeroSection() {
           >
             <motion.button
               onClick={() => scrollTo('#about')}
-              className="flex flex-col items-center gap-2 text-white/30 hover:text-white/60 transition-colors"
+              className="flex flex-col items-center gap-2 text-foreground/30 hover:text-foreground/60 transition-colors"
               animate={{ y: [0, 6, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
             >

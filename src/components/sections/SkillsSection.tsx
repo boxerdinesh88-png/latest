@@ -3,6 +3,7 @@ import { motion, useInView } from 'framer-motion'
 import { usePortfolio } from '../../lib/usePortfolio'
 import ScrollReveal from '../animations/ScrollReveal'
 import SplitText from '../animations/SplitText'
+import { TechIconMarquee, TechIconGrid } from '../ui/TechIcon'
 
 const techIcons = [
   { name: 'React', color: '#61DAFB' },
@@ -17,6 +18,8 @@ const techIcons = [
   { name: 'GSAP', color: '#88CE02' },
   { name: 'Framer', color: '#0055FF' },
   { name: 'Figma', color: '#F24E1E' },
+  { name: 'WordPress', color: '#21759B' },
+  { name: 'Elementor', color: '#92003B' },
 ]
 
 function SkillBar({ name, level, delay }: { name: string; level: string; delay: number }) {
@@ -28,10 +31,10 @@ function SkillBar({ name, level, delay }: { name: string; level: string; delay: 
   return (
     <div ref={ref} className="mb-5">
       <div className="flex justify-between text-sm mb-1.5">
-        <span className="text-white/80">{name}</span>
-        <span className="text-white/40">{level}</span>
+        <span className="text-foreground/80">{name}</span>
+        <span className="text-foreground/40">{level}</span>
       </div>
-      <div className="h-1.5 rounded-full bg-white/[0.06] overflow-hidden">
+      <div className="h-1.5 rounded-full bg-foreground/[0.06] overflow-hidden">
         <motion.div
           className="h-full rounded-full bg-gradient-to-r from-purple-500 to-pink-500"
           initial={{ width: '0%' }}
@@ -83,7 +86,7 @@ export default function SkillsSection() {
         {/* Tech Icons Marquee */}
         <ScrollReveal>
           <div className="glass rounded-2xl p-8 overflow-hidden">
-            <h3 className="text-sm font-mono tracking-widest text-white/30 mb-8 text-center uppercase">
+            <h3 className="text-sm font-mono tracking-widest text-foreground/30 mb-8 text-center uppercase">
               Technologies I work with
             </h3>
             <div className="relative flex overflow-hidden">
@@ -93,16 +96,7 @@ export default function SkillsSection() {
                 transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
               >
                 {marqueeItems.map((tech, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center gap-3 px-5 py-3 rounded-xl glass whitespace-nowrap"
-                  >
-                    <span
-                      className="w-2.5 h-2.5 rounded-full"
-                      style={{ backgroundColor: tech.color }}
-                    />
-                    <span className="text-white/70 text-sm font-medium">{tech.name}</span>
-                  </div>
+                  <TechIconMarquee key={i} name={tech.name} color={tech.color} />
                 ))}
               </motion.div>
             </div>
@@ -113,19 +107,7 @@ export default function SkillsSection() {
         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4 mt-12">
           {techIcons.map((tech, i) => (
             <ScrollReveal key={tech.name} delay={i * 0.03}>
-              <motion.div
-                className="glass rounded-2xl p-6 flex flex-col items-center gap-3 glass-hover cursor-default group"
-                whileHover={{ scale: 1.05, y: -4 }}
-                transition={{ type: 'spring', stiffness: 300 }}
-              >
-                <span
-                  className="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold"
-                  style={{ backgroundColor: `${tech.color}15`, color: tech.color }}
-                >
-                  {tech.name.slice(0, 2).toUpperCase()}
-                </span>
-                <span className="text-white/60 text-xs text-center">{tech.name}</span>
-              </motion.div>
+              <TechIconGrid name={tech.name} color={tech.color} />
             </ScrollReveal>
           ))}
         </div>

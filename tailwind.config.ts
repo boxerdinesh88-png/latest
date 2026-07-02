@@ -9,13 +9,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: '#0A0A0F',
-        secondary: '#12121A',
+        primary: 'var(--color-primary)',
+        secondary: 'var(--color-secondary)',
         accent: '#8B5CF6',
         'accent-light': '#A78BFA',
         'accent-dark': '#7C3AED',
-        surface: '#1A1A2E',
-        border: '#2A2A3E',
+        surface: 'var(--color-surface)',
+        border: 'var(--color-border)',
+        foreground: 'var(--color-foreground)',
+        muted: 'var(--color-muted)',
       },
       fontFamily: {
         display: ['Inter', 'system-ui'],

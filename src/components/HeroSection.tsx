@@ -5,10 +5,10 @@ import { usePortfolio } from '../hooks/usePortfolio'
 import ParticleLines from './ParticleLines'
 
 const roles = [
-  'Full Stack Python Developer',
-  'Django REST API Specialist',
-  'React & UI/UX Engineer',
-  'Cloud & Database Architect',
+  'Full Stack Developer',
+  'WordPress & Elementor Expert',
+  'Python & Django Specialist',
+  'React JS Developer',
 ]
 
 function GlowingOrb({ color, size, x, y, delay, duration, index }: { color: string; size: string; x: string; y: string; delay: number; duration: number; index: number }) {
@@ -255,7 +255,7 @@ export default function HeroSection() {
                 <ExternalLink size={15} />
               </span>
             </a>
-            <a href="/Dinesh_Kumar.pdf" download="Dinesh_Kumar_Resume.pdf" className="group relative w-full sm:w-auto px-6 sm:px-9 py-3 sm:py-4 rounded-full border border-cyan-400/20 hover:border-cyan-400/50 text-cyan-300 hover:text-white font-semibold text-xs sm:text-sm tracking-wide transition-all duration-300 backdrop-blur-xl bg-white/[0.02] flex items-center justify-center gap-2 overflow-hidden">
+            <a href="/DINESH-RESUME.pdf?v=2" download="Dinesh_Kumar_Resume.pdf" className="group relative w-full sm:w-auto px-6 sm:px-9 py-3 sm:py-4 rounded-full border border-cyan-400/20 hover:border-cyan-400/50 text-cyan-300 hover:text-white font-semibold text-xs sm:text-sm tracking-wide transition-all duration-300 backdrop-blur-xl bg-white/[0.02] flex items-center justify-center gap-2 overflow-hidden">
               <span className="relative z-10 flex items-center gap-2">
                 <Download size={15} />
                 Resume
@@ -269,8 +269,9 @@ export default function HeroSection() {
               { label: 'Python', color: 'border-yellow-500/20 text-yellow-400/60' },
               { label: 'Django', color: 'border-[#50B066]/20 text-[#50B066]/60' },
               { label: 'React', color: 'border-cyan-500/20 text-cyan-400/60' },
+              { label: 'WordPress', color: 'border-blue-500/20 text-blue-400/60' },
+              { label: 'Elementor', color: 'border-pink-500/20 text-pink-400/60' },
               { label: 'MySQL', color: 'border-orange-500/20 text-orange-400/60' },
-              { label: 'AWS', color: 'border-amber-500/20 text-amber-400/60' },
             ].map((tech) => (
               <span key={tech.label} className={`px-2 sm:px-3 py-0.5 sm:py-1 text-[8px] sm:text-[10px] font-mono tracking-[0.15em] uppercase rounded-full bg-white/[0.03] border ${tech.color}`}>
                 {tech.label}

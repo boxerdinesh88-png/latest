@@ -2,12 +2,12 @@
   "profile": {
     "name": "Dinesh Kumar",
     "shortName": "Dinesh",
-    "tagline": "Full-Stack Engineer & Creative Developer building high-performance web applications",
-    "role": "Full Stack Python Developer",
-    "specialization": "Python · Django · React JS · REST APIs · MySQL · GSAP",
-    "location": "Delhi, India",
-    "yearsOfExperience": "1+",
-    "bio": "Full Stack Developer with 1+ year of hands-on experience at ProAce International, building and maintaining web applications for international clients. Proficient in Python, Django, React JS, JavaScript, and MySQL. Skilled in developing RESTful APIs, responsive UI, and database management. A quick learner with strong problem-solving ability and a passion for writing clean, efficient code.",
+    "tagline": "Full Stack Developer | WordPress & Elementor Expert | Python & Django",
+    "role": "Full Stack Developer",
+    "specialization": "Python · Django · React JS · WordPress · Elementor · REST APIs · MySQL",
+    "location": "Jhoripur, North East Delhi",
+    "yearsOfExperience": "2+",
+    "bio": "Results-driven Full Stack Developer with 2+ years of hands-on experience building scalable web applications for international clients. Proficient in Python, Django, React JS, JavaScript, MySQL, WordPress, and Elementor. Skilled in developing responsive UIs, designing RESTful APIs, managing databases, and delivering custom WordPress/Elementor solutions. Leverages AI tools (ChatGPT & Claude) to enhance development efficiency and problem-solving.",
     "avatarUrl": "/avatar.jpeg",
     "social": {
       "github": "https://github.com/boxerdinesh88-png/boxerdinesh88-png",
@@ -21,55 +21,66 @@
   },
   "skills": [
     {
-      "category": "Frontend",
-      "skills": [
-        { "name": "React.js", "level": "Advanced" },
-        { "name": "JavaScript", "level": "Advanced" },
-        { "name": "HTML5 / CSS3", "level": "Expert" },
-        { "name": "Responsive Design", "level": "Advanced" },
-        { "name": "GSAP Animations", "level": "Advanced" },
-        { "name": "Bootstrap 5 & Tailwind CSS", "level": "Advanced" }
-      ]
-    },
-    {
-      "category": "Backend",
+      "category": "Languages & Frameworks",
       "skills": [
         { "name": "Python", "level": "Expert" },
         { "name": "Django", "level": "Advanced" },
-        { "name": "REST APIs", "level": "Advanced" },
-        { "name": "Node.js", "level": "Intermediate" }
+        { "name": "React JS", "level": "Advanced" },
+        { "name": "JavaScript", "level": "Advanced" },
+        { "name": "HTML5 / CSS3", "level": "Expert" }
       ]
     },
     {
-      "category": "Databases",
+      "category": "CMS & Page Builders",
+      "skills": [
+        { "name": "WordPress", "level": "Expert" },
+        { "name": "Elementor", "level": "Expert" },
+        { "name": "Custom Widgets", "level": "Advanced" },
+        { "name": "Theme & Plugin Customization", "level": "Advanced" }
+      ]
+    },
+    {
+      "category": "Databases & APIs",
       "skills": [
         { "name": "MySQL", "level": "Advanced" },
-        { "name": "Database Design", "level": "Advanced" }
+        { "name": "RESTful APIs", "level": "Advanced" }
       ]
     },
     {
-      "category": "Tools & DevOps",
+      "category": "Tools & Productivity",
       "skills": [
-        { "name": "Git & GitHub", "level": "Expert" },
-        { "name": "PythonAnywhere", "level": "Advanced" },
-        { "name": "Figma", "level": "Intermediate" }
+        { "name": "Git / GitHub", "level": "Expert" },
+        { "name": "AI Integration (ChatGPT, Claude AI)", "level": "Advanced" },
+        { "name": "Prompt Engineering", "level": "Advanced" }
       ]
     }
   ],
   "experience": [
     {
-      "company": "ProAce International Inc.",
+      "company": "Creative Squadz",
       "role": "Full Stack Developer",
-      "period": "2026 — Present",
-      "location": "Delhi NCR (Remote)",
-      "summary": "Developing full-stack web applications for international clients using Python, Django, and React JS. Focused on scalable APIs, performance optimization, and responsive design.",
+      "period": "May 2026 — Present",
+      "location": "Delhi NCR",
+      "summary": "Building and maintaining full-stack web applications and WordPress/Elementor websites for clients.",
+      "highlights": [
+        "Building and maintaining full-stack web applications and WordPress/Elementor websites for clients.",
+        "Delivered live project: happyhomeic.com"
+      ]
+    },
+    {
+      "company": "ProAce International",
+      "role": "Full Stack Developer (Freelance)",
+      "period": "Jan 2025 — Apr 2025",
+      "location": "New York (Remote)",
+      "summary": "Developed and maintained full-stack web applications using Python, Django, and React JS for international clients.",
       "highlights": [
         "Developed full-stack web applications for international clients using Python, Django, and React JS.",
-        "Built responsive front-end interfaces with HTML5, CSS3, and JavaScript ensuring cross-browser compatibility.",
-        "Designed RESTful backend APIs using Django for seamless client-server communication.",
-        "Managed MySQL databases; fixed bugs and optimised overall website performance.",
-        "Delivered live business web application: shiningservicesindia.com.",
-        "Developed Event Directory (eventdirectory.pythonanywhere.com) with OTP and Google OAuth login integrations."
+        "Built custom WordPress websites with Elementor, including theme customization, custom HTML/CSS widgets, and plugin integration.",
+        "Designed responsive front-end interfaces with HTML5, CSS3, and JavaScript ensuring cross-browser compatibility.",
+        "Architected and consumed RESTful APIs with Django for seamless client-server communication.",
+        "Managed and optimized MySQL databases; identified and resolved performance bottlenecks.",
+        "Delivered 6+ live client websites across real estate, industrial, and service sectors.",
+        "Integrated AI tools (ChatGPT & Claude AI) into development workflow, improving delivery speed and code quality."
       ]
     }
   ],
@@ -99,10 +110,10 @@
       "title": "Shining Services India",
       "subtitle": "Full-Stack Business Platform & Booking Web App",
       "description": "A high-performance full-stack business platform built to showcase services and streamline customer consultations. Integrates dynamic content management, secure contact pipelines, and database logs.",
-      "stack": ["Python", "Django", "MySQL", "HTML5", "CSS3", "JavaScript"],
+      "stack": ["Django", "Python", "MySQL", "HTML5", "CSS3", "JavaScript"],
       "role": "Full-Stack Developer",
       "year": "2025",
-      "link": "https://boxerdinesh88-png.github.io/Shi-ning-services/",
+      "link": "https://shiningservicesindia.com",
       "highlights": [
         "Engineered a dynamic Django-backed server side rendering system for high-SEO discoverability",
         "Created interactive secure contact forms connected directly to admin notifications and MySQL database",
@@ -213,7 +224,7 @@
       "title": "Karigarr Jewels",
       "subtitle": "Gemological Certification System",
       "description": "Full-stack gemological certification management system with secure certificate generation, gemstone records management, and admin dashboard. Built with Django REST Framework + React JS, deployed on PythonAnywhere.",
-      "stack": ["Django", "Python", "React JS", "REST API", "MySQL", "PythonAnywhere"],
+      "stack": ["Django", "React JS", "Python", "REST API", "MySQL", "PythonAnywhere"],
       "role": "Full-Stack Developer",
       "year": "2026",
       "link": "https://gtlrc.com",
@@ -295,14 +306,14 @@
     {
       "id": "ac-repair-service",
       "category": "WordPress",
-      "image": "/project%20image/img_1.png",
+      "image": "/project%20image/img_4.png",
       "title": "AC Repair Service",
       "subtitle": "Appliance Repair Website",
       "description": "Custom 4-card service-process section with hover effects, scoped CSS, and blue brand theme. Step-by-step service flow UI and how-it-works sections.",
       "stack": ["WordPress", "Elementor", "PHP", "CSS3", "JavaScript"],
       "role": "WordPress Developer",
       "year": "2026",
-      "link": "https://acservice.giriinternational.in",
+      "link": "https://itdservicecenter.online/",
       "highlights": [
         "Designed custom 4-card service-process section with hover effects",
         "Built step-by-step service flow UI and how-it-works sections",
@@ -329,22 +340,32 @@
   ],
   "education": [
     {
-      "institution": "DUCAT Institute, Noida-63",
+      "institution": "School of Open Learning, Delhi University",
+      "degree": "BA (2nd Year)",
+      "field": "Arts",
+      "period": "2025 — Present",
+      "image": "/project%20image/img_5.png?v=2"
+    },
+    {
+      "institution": "DUCAT Institute, Noida",
       "degree": "Full Stack Python Development",
       "field": "Software Engineering Certification",
-      "period": "2024"
+      "period": "2024",
+      "image": "/project%20image/img_6.png?v=2"
     },
     {
       "institution": "GMSBV Shahdara, Delhi",
       "degree": "Intermediate (XII)",
       "field": "CBSE Board",
-      "period": "2021"
+      "period": "2021",
+      "image": "/g.webp"
     },
     {
       "institution": "SFCS Loni Rampark",
       "degree": "High School (X)",
       "field": "UP Board",
-      "period": "2019"
+      "period": "2019",
+      "image": "/slide-1-1.jpg"
     }
   ],
   "certifications": [
@@ -397,20 +418,20 @@
   ],
   "whyHireMe": [
     {
-      "title": "Clean & Modular Code",
-      "description": "Strict adherence to PEP 8 standards, modular component design, and well-documented API structures for future developers."
+      "title": "Problem Solving",
+      "description": "Strong analytical mindset with ability to break down complex problems and deliver efficient, maintainable solutions across full-stack and WordPress projects."
     },
     {
-      "title": "Analytical Problem Solving",
-      "description": "Strong logical foundation from high-performance Django architectures, complex SQL database schema design, and algorithm optimization."
+      "title": "Clean & Scalable Code",
+      "description": "Writing modular, well-structured code following industry best practices for long-term maintainability and team collaboration."
     },
     {
-      "title": "Secure-First Backend",
-      "description": "Always protecting API gateways with JWT authentication, custom OTP validation pipelines, password hashing, and CORS policies."
+      "title": "Quick Learner",
+      "description": "Rapidly adapts to new technologies, frameworks, and tools. Leverages AI tools (ChatGPT & Claude AI) to accelerate development and problem-solving."
     },
     {
-      "title": "Scalable Infrastructure",
-      "description": "Designing caching layers, decoupled REST integrations, optimized database indices, and high-performance server deployments."
+      "title": "WordPress Customization",
+      "description": "Expert in custom WordPress development with Elementor, including custom widgets, theme customization, plugin integration, and scoped CSS solutions."
     }
   ]
 }

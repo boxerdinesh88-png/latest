@@ -63,6 +63,7 @@ export interface Education {
   period: string
   gpa?: string
   details?: string[]
+  image?: string
 }
 
 export interface Certification {

@@ -2,12 +2,6 @@ import { motion } from 'framer-motion'
 import { Calendar, GraduationCap, BookOpen } from 'lucide-react'
 import { usePortfolio } from '../hooks/usePortfolio'
 
-const instituteIcons: Record<string, string> = {
-  'DUCAT Institute, Noida-63': '/ducat.webp',
-  'GMSBV Shahdara, Delhi': '/g.webp',
-  'SFCS Loni Rampark': '/slide-1-1.jpg',
-}
-
 export default function EducationSection() {
   const portfolio = usePortfolio()
   const { education } = portfolio
@@ -41,7 +35,7 @@ export default function EducationSection() {
         <div className="space-y-8 md:space-y-10">
           {education.map((edu, index) => {
             const isDucat = edu.institution.startsWith('DUCAT')
-            const imgSrc = instituteIcons[edu.institution]
+            const imgSrc = edu.image
             const isLast = index === education.length - 1
 
             return (

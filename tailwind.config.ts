@@ -15,7 +15,7 @@ const config: Config = {
         'accent-light': '#A78BFA',
         'accent-dark': '#7C3AED',
         surface: 'var(--color-surface)',
-        border: 'var(--color-border)',
+        line: 'var(--color-border)',
         foreground: 'var(--color-foreground)',
         muted: 'var(--color-muted)',
       },

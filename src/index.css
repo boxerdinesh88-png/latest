@@ -24,7 +24,7 @@
   }
 
   * {
-    @apply border-border;
+    @apply border-line;
   }
 
   body {
@@ -76,7 +76,7 @@
   }
 
   .card {
-    @apply bg-surface border border-border rounded-2xl shadow-sm hover:shadow-md transition-all duration-300;
+    @apply bg-surface border border-line rounded-2xl shadow-sm hover:shadow-md transition-all duration-300;
   }
 }
 

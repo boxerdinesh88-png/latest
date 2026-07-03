@@ -18,6 +18,7 @@ export interface Profile {
   yearsOfExperience: string
   bio: string
   avatarUrl?: string
+  resumeUrl?: string
   social: Social
 }
 
@@ -92,7 +93,7 @@ export interface Service {
   id: string
   title: string
   description: string
-  icon: string
+  icon?: string
 }
 
 export interface WhyHireMeItem {

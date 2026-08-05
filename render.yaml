@@ -9,6 +9,8 @@ services:
     envVars:
       - key: NODE_VERSION
         value: 20
+      - key: VITE_BASE
+        value: "/"
       - key: PORT
         value: "10000"
       - key: DATABASE_URL

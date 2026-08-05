@@ -18,6 +18,7 @@ export interface Profile {
   yearsOfExperience: string
   bio: string
   avatarUrl?: string
+  resumeUrl?: string
   social: Social
 }
 
@@ -63,6 +64,7 @@ export interface Education {
   period: string
   gpa?: string
   details?: string[]
+  image?: string
 }
 
 export interface Certification {
@@ -91,7 +93,7 @@ export interface Service {
   id: string
   title: string
   description: string
-  icon: string
+  icon?: string
 }
 
 export interface WhyHireMeItem {

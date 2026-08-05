@@ -255,7 +255,7 @@ export default function HeroSection() {
                 <ExternalLink size={15} />
               </span>
             </a>
-            <a href="/Dinesh_Kumar.pdf" download="Dinesh_Kumar_Resume.pdf" className="group relative w-full sm:w-auto px-6 sm:px-9 py-3 sm:py-4 rounded-full border border-cyan-400/20 hover:border-cyan-400/50 text-cyan-300 hover:text-white font-semibold text-xs sm:text-sm tracking-wide transition-all duration-300 backdrop-blur-xl bg-white/[0.02] flex items-center justify-center gap-2 overflow-hidden">
+            <a href="/DINESH-RESUME.pdf" download="Dinesh_Kumar_Resume.pdf" className="group relative w-full sm:w-auto px-6 sm:px-9 py-3 sm:py-4 rounded-full border border-cyan-400/20 hover:border-cyan-400/50 text-cyan-300 hover:text-white font-semibold text-xs sm:text-sm tracking-wide transition-all duration-300 backdrop-blur-xl bg-white/[0.02] flex items-center justify-center gap-2 overflow-hidden">
               <span className="relative z-10 flex items-center gap-2">
                 <Download size={15} />
                 Resume

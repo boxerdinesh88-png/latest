@@ -2,12 +2,12 @@
   "profile": {
     "name": "Dinesh Kumar",
     "shortName": "Dinesh",
-    "tagline": "Full-Stack Engineer & Creative Developer building high-performance web applications",
-    "role": "Full Stack Python Developer",
-    "specialization": "Python · Django · React JS · REST APIs · MySQL · GSAP",
-    "location": "Delhi, India",
+    "tagline": "Full-Stack Developer, WordPress & Elementor Expert building high-performance web applications",
+    "role": "Full Stack Developer | WordPress & Elementor Expert",
+    "specialization": "Python · Django · React JS · WordPress · Elementor · REST APIs · MySQL",
+    "location": "Jhoripur, North East Delhi, India",
     "yearsOfExperience": "1+",
-    "bio": "Full Stack Developer with 1+ year of hands-on experience at ProAce International, building and maintaining web applications for international clients. Proficient in Python, Django, React JS, JavaScript, and MySQL. Skilled in developing RESTful APIs, responsive UI, and database management. A quick learner with strong problem-solving ability and a passion for writing clean, efficient code.",
+    "bio": "Results-driven Full Stack Developer with 1+ year of hands-on experience building scalable web applications for international clients. Proficient in Python, Django, React JS, JavaScript, MySQL, WordPress, and Elementor. Skilled in developing responsive UIs, designing RESTful APIs, managing databases, and delivering custom WordPress/Elementor solutions. Leverages AI tools (ChatGPT & Claude) to enhance development efficiency and problem-solving.",
     "avatarUrl": "/avatar.jpeg",
     "social": {
       "github": "https://github.com/boxerdinesh88-png/boxerdinesh88-png",
@@ -48,28 +48,51 @@
       ]
     },
     {
+      "category": "CMS & Page Builders",
+      "skills": [
+        { "name": "WordPress", "level": "Expert" },
+        { "name": "Elementor", "level": "Expert" },
+        { "name": "Custom Widgets", "level": "Advanced" },
+        { "name": "Theme & Plugin Customization", "level": "Advanced" }
+      ]
+    },
+    {
       "category": "Tools & DevOps",
       "skills": [
         { "name": "Git & GitHub", "level": "Expert" },
         { "name": "PythonAnywhere", "level": "Advanced" },
+        { "name": "AI Integration (ChatGPT & Claude)", "level": "Advanced" },
+        { "name": "Prompt Engineering", "level": "Advanced" },
         { "name": "Figma", "level": "Intermediate" }
       ]
     }
   ],
   "experience": [
     {
-      "company": "ProAce International Inc.",
+      "company": "Creative Squadz",
       "role": "Full Stack Developer",
-      "period": "2026 — Present",
-      "location": "Delhi NCR (Remote)",
-      "summary": "Developing full-stack web applications for international clients using Python, Django, and React JS. Focused on scalable APIs, performance optimization, and responsive design.",
+      "period": "May 2026 — Present",
+      "location": "Delhi NCR",
+      "summary": "Building and maintaining full-stack web applications and WordPress/Elementor websites for clients.",
       "highlights": [
-        "Developed full-stack web applications for international clients using Python, Django, and React JS.",
-        "Built responsive front-end interfaces with HTML5, CSS3, and JavaScript ensuring cross-browser compatibility.",
-        "Designed RESTful backend APIs using Django for seamless client-server communication.",
-        "Managed MySQL databases; fixed bugs and optimised overall website performance.",
-        "Delivered live business web application: shiningservicesindia.com.",
-        "Developed Event Directory (eventdirectory.pythonanywhere.com) with OTP and Google OAuth login integrations."
+        "Building and maintaining full-stack web applications and WordPress/Elementor websites for clients.",
+        "Delivered live project: happyhomeic.com."
+      ]
+    },
+    {
+      "company": "ProAce International",
+      "role": "Full Stack Developer (Freelance)",
+      "period": "Jan 2025 — Apr 2025",
+      "location": "New York (Remote)",
+      "summary": "Developed and maintained full-stack web applications using Python, Django, and React JS for international clients.",
+      "highlights": [
+        "Developed and maintained full-stack web applications using Python, Django, and React JS for international clients.",
+        "Built custom WordPress websites with Elementor, including theme customization, custom HTML/CSS widgets, and plugin integration.",
+        "Designed responsive front-end interfaces with HTML5, CSS3, and JavaScript ensuring cross-browser compatibility.",
+        "Architected and consumed RESTful APIs with Django for seamless client-server communication.",
+        "Managed and optimized MySQL databases; identified and resolved performance bottlenecks.",
+        "Delivered 6+ live client websites across real estate, industrial, and service sectors.",
+        "Integrated AI tools (ChatGPT & Claude AI) into development workflow, improving delivery speed and code quality."
       ]
     }
   ],
@@ -328,6 +351,12 @@
     }
   ],
   "education": [
+    {
+      "institution": "School of Open Learning, Delhi University",
+      "degree": "BA (2nd Year)",
+      "field": "Bachelor of Arts",
+      "period": "2025 — Present"
+    },
     {
       "institution": "DUCAT Institute, Noida-63",
       "degree": "Full Stack Python Development",

@@ -26,6 +26,10 @@ type Errors = Partial<Record<keyof FormState, string>>
 
 const initialForm: FormState = { name: '', email: '', message: '' }
 
+const API_BASE =
+  (import.meta.env.VITE_API_URL as string | undefined)?.replace(/\/$/, '') ||
+  'https://latest-vhqh.onrender.com'
+
 export default function ContactSection() {
   const { profile } = usePortfolio()
   const social = profile.social
@@ -59,7 +63,7 @@ export default function ContactSection() {
 
     setStatus('sending')
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch(`${API_BASE}/api/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),

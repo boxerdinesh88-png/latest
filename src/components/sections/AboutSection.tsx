@@ -1,151 +1,208 @@
-import { useState, useEffect, useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
-import { MapPin, Briefcase, Calendar, Download } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { MapPin, Briefcase, Download, BadgeCheck, Zap, Code2 } from 'lucide-react'
 import { usePortfolio } from '../../lib/usePortfolio'
-import ScrollReveal from '../animations/ScrollReveal'
-import SplitText from '../animations/SplitText'
+import SectionHeader from '../ui/SectionHeader'
+import CountUp from '../ui/CountUp'
+import MagneticButton from '../ui/MagneticButton'
 
-const counterData = [
-  { value: 2, suffix: '+', label: 'Years Experience' },
-  { value: 15, suffix: '+', label: 'Projects Delivered' },
-  { value: 20, suffix: '+', label: 'Technologies' },
-  { value: 12, suffix: '+', label: 'Happy Clients' },
+const ease = [0.16, 1, 0.3, 1] as const
+
+const stats = [
+  { value: 2, suffix: '+', label: 'Years Experience', icon: Zap },
+  { value: 15, suffix: '+', label: 'Projects Delivered', icon: Code2 },
+  { value: 20, suffix: '+', label: 'Technologies', icon: BadgeCheck },
+  { value: 100, suffix: '%', label: 'Client Satisfaction', icon: Zap },
 ]
 
-function AnimatedCounter({ value, suffix, label }: { value: number; suffix: string; label: string }) {
-  const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true })
-  const [display, setDisplay] = useState(0)
-
-  useEffect(() => {
-    if (!isInView || display > 0) return
-    let current = 0
-    const increment = value / 40
-    const interval = setInterval(() => {
-      current += increment
-      if (current >= value) {
-        setDisplay(value)
-        clearInterval(interval)
-      } else {
-        setDisplay(Math.floor(current))
-      }
-    }, 30)
-    return () => clearInterval(interval)
-  }, [isInView, value, display])
-
-  return (
-    <div ref={ref} className="text-center p-6">
-      <div className="text-3xl md:text-4xl font-bold gradient-text mb-1">
-        {display}{suffix}
-      </div>
-      <div className="text-foreground/40 text-sm">{label}</div>
-    </div>
-  )
-}
+const terminalLines = [
+  { prompt: true, text: 'dinesh@portfolio:~$ whoami' },
+  { indent: 1, text: 'Full Stack Developer · WordPress & Elementor Expert' },
+  { prompt: true, text: 'dinesh@portfolio:~$ cat stack.json' },
+  { indent: 1, text: '{ "languages": ["Python", "JS", "TS"],' },
+  { indent: 1, text: '  "frameworks": ["Django", "React"],' },
+  { indent: 1, text: '  "cms": ["WordPress", "Elementor"],' },
+  { indent: 1, text: '  "database": "MySQL" }' },
+  { prompt: true, text: 'dinesh@portfolio:~$ deploy --production' },
+  { indent: 1, text: '✓ Build succeeded — 15+ projects shipped ✓' },
+]
 
 export default function AboutSection() {
-  const { profile, experience, education } = usePortfolio()
-  const [imgLoaded, setImgLoaded] = useState(false)
-
-  const allHighlights = experience.flatMap((exp) => exp.highlights)
+  const { profile, education } = usePortfolio()
 
   return (
     <section id="about" className="relative section-padding">
-      <div className="max-w-7xl mx-auto">
-        <ScrollReveal>
-          <div className="flex items-center gap-3 mb-4">
-            <span className="h-px w-8 bg-accent/50" />
-            <span className="text-accent text-sm font-mono tracking-widest uppercase">About</span>
-          </div>
-          <SplitText text="Crafting Digital Excellence" className="section-title mb-6" />
-          <p className="section-subtitle mb-16">
-            Building high-performance web applications with clean code and modern architecture.
-          </p>
-        </ScrollReveal>
+      <div className="glow-orb left-[-10%] top-1/3 h-[380px] w-[380px] bg-accent/10" aria-hidden="true" />
+      <div className="container-px relative">
+        <SectionHeader
+          eyebrow="About Me"
+          title="Crafting Digital Excellence"
+          subtitle="Building high-performance web applications with clean code, modern architecture and a recruiter-ready track record."
+        />
 
-        <div className="grid lg:grid-cols-5 gap-12">
-          {/* Profile Card */}
-          <ScrollReveal direction="right" className="lg:col-span-2">
-            <div className="glass rounded-2xl p-8 group relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="relative z-10">
-                <div className="relative w-40 h-40 mx-auto mb-6 rounded-2xl overflow-hidden ring-2 ring-accent/20 group-hover:ring-accent/40 transition-all duration-500">
-                  {profile.avatarUrl && (
+        <div className="grid gap-10 lg:grid-cols-2">
+          {/* Profile card */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.7, ease }}
+            className="glass-card group relative overflow-hidden p-8 md:p-10"
+          >
+            <div
+              className="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-cyan/10 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+              aria-hidden="true"
+            />
+            <div className="relative">
+              <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center">
+                <div className="relative shrink-0">
+                  <div
+                    className="absolute -inset-1.5 animate-spin-slow rounded-[26px] opacity-70"
+                    style={{
+                      background: 'conic-gradient(from 180deg, #7C3AED, #06B6D4, #EC4899, #7C3AED)',
+                    }}
+                    aria-hidden="true"
+                  />
+                  <div className="relative h-28 w-28 overflow-hidden rounded-[20px] border-4 border-primary">
                     <img
                       src={profile.avatarUrl}
                       alt={profile.name}
-                      className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-110 ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
-                      onLoad={() => setImgLoaded(true)}
+                      width={112}
+                      height={112}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover"
                     />
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-purple-500/20 to-transparent" />
-                </div>
-                <h3 className="text-2xl font-bold text-center mb-1">{profile.name}</h3>
-                <p className="text-foreground/50 text-center text-sm mb-6">{profile.role}</p>
-
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-center gap-3 text-sm text-foreground/60">
-                    <MapPin size={16} className="text-accent shrink-0" />
-                    {profile.location}
-                  </div>
-                  <div className="flex items-center gap-3 text-sm text-foreground/60">
-                    <Briefcase size={16} className="text-accent shrink-0" />
-                    {profile.yearsOfExperience} year experience
-                  </div>
-                  <div className="flex items-center gap-3 text-sm text-foreground/60">
-                    <Calendar size={16} className="text-accent shrink-0" />
-                    {education[0]?.period}
                   </div>
                 </div>
-
-                <a
-                  href={profile.resumeUrl || '/Dinesh_Kumar.pdf'}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full py-3 rounded-full glass glass-hover text-sm flex items-center justify-center gap-2 text-foreground/70 hover:text-foreground transition-all"
-                >
-                  <Download size={14} /> Download CV
-                </a>
+                <div>
+                  <h3 className="font-display text-2xl font-bold text-white">{profile.name}</h3>
+                  <p className="mt-1 text-sm text-faint">{profile.role}</p>
+                  <span className="badge-gradient mt-3">
+                    <BadgeCheck size={14} className="text-emerald-300" /> Available for hire
+                  </span>
+                </div>
               </div>
-            </div>
-          </ScrollReveal>
 
-          {/* Bio & Highlights */}
-          <ScrollReveal direction="left" className="lg:col-span-3">
-            <div className="glass rounded-2xl p-8 md:p-10">
-              <h3 className="text-xl font-semibold mb-4">About Me</h3>
-              <p className="text-foreground/60 leading-relaxed mb-8 text-sm md:text-base">
+              <p className="mt-7 text-sm leading-relaxed text-faint md:text-base">
                 {profile.bio}
               </p>
 
-              <h4 className="text-sm font-mono tracking-widest text-accent mb-4 uppercase">Key Highlights</h4>
-              <div className="grid sm:grid-cols-2 gap-3">
-                {allHighlights.slice(0, 6).map((item, i) => (
+              <div className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div className="rounded-xl border border-line bg-white/[0.02] p-4">
+                  <p className="flex items-center gap-2 text-xs uppercase tracking-wider text-faint">
+                    <MapPin size={13} className="text-cyan" /> Location
+                  </p>
+                  <p className="mt-1.5 text-sm font-medium text-white">{profile.location}</p>
+                </div>
+                <div className="rounded-xl border border-line bg-white/[0.02] p-4">
+                  <p className="flex items-center gap-2 text-xs uppercase tracking-wider text-faint">
+                    <Briefcase size={13} className="text-cyan" /> Experience
+                  </p>
+                  <p className="mt-1.5 text-sm font-medium text-white">
+                    {profile.yearsOfExperience} years · {education.length} credentials
+                  </p>
+                </div>
+              </div>
+
+              <MagneticButton className="mt-8 w-full sm:w-auto">
+                <a
+                  href={profile.resumeUrl || '/DINESH-RESUME.pdf'}
+                  download="Dinesh_Kumar_Resume.pdf"
+                  className="btn-primary w-full"
+                >
+                  <Download size={15} /> Download CV
+                </a>
+              </MagneticButton>
+            </div>
+          </motion.div>
+
+          {/* Animated terminal */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.7, ease }}
+            className="flex flex-col"
+          >
+            <div className="glass-card flex-1 overflow-hidden">
+              <div className="flex items-center gap-2 border-b border-line bg-surface/60 px-5 py-4">
+                <span className="h-3 w-3 rounded-full bg-[#FF5F57]" />
+                <span className="h-3 w-3 rounded-full bg-[#FEBC2E]" />
+                <span className="h-3 w-3 rounded-full bg-[#28C840]" />
+                <span className="ml-3 font-mono text-xs text-faint">developer@portfolio: ~</span>
+              </div>
+              <pre className="overflow-x-auto p-6 font-mono text-[13px] leading-relaxed md:text-sm">
+                {terminalLines.map((line, i) => (
                   <motion.div
                     key={i}
-                    className="flex items-start gap-3 p-3 rounded-xl bg-foreground/[0.02]"
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.05, duration: 0.4 }}
+                    initial={{ opacity: 0, y: 8 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.08, duration: 0.35 }}
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />
-                    <span className="text-foreground/50 text-sm">{item}</span>
+                    {line.prompt ? (
+                      <span className="block text-white">
+                        <span className="text-cyan">➜</span> <span className="text-white">{line.text}</span>
+                      </span>
+                    ) : (
+                      <span
+                        className="block"
+                        style={{ paddingLeft: `${line.indent || 0}rem` }}
+                      >
+                        <span className="text-accent-light">{line.text}</span>
+                      </span>
+                    )}
                   </motion.div>
                 ))}
-              </div>
+                <motion.span
+                  className="mt-2 inline-block h-4 w-2 animate-pulse bg-cyan"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 1.4 }}
+                  aria-hidden="true"
+                />
+              </pre>
             </div>
-          </ScrollReveal>
+          </motion.div>
         </div>
 
-        {/* Counters */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
-          {counterData.map((counter, i) => (
-            <ScrollReveal key={i} delay={i * 0.1}>
-              <div className="glass rounded-2xl">
-                <AnimatedCounter {...counter} />
-              </div>
-            </ScrollReveal>
-          ))}
+        {/* Stats */}
+        <div className="mt-16 grid grid-cols-2 gap-5 lg:grid-cols-4">
+          {stats.map((stat, i) => {
+            const Icon = stat.icon
+            return (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.6, delay: i * 0.1, ease }}
+                className="glass-card group relative overflow-hidden p-7 text-center card-hover"
+              >
+                <div
+                  className="absolute inset-0 rounded-[20px] p-px opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                  style={{
+                    background: 'linear-gradient(135deg, #7C3AED, #EC4899, #06B6D4)',
+                    WebkitMask:
+                      'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                    WebkitMaskComposite: 'xor',
+                    maskComposite: 'exclude',
+                  }}
+                  aria-hidden="true"
+                />
+                <div className="relative">
+                  <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-primary text-white shadow-btn transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
+                    <Icon size={20} />
+                  </div>
+                  <p className="font-display text-3xl font-bold md:text-4xl">
+                    <CountUp value={stat.value} suffix={stat.suffix} className="gradient-text" />
+                  </p>
+                  <p className="mt-1.5 text-xs text-faint md:text-sm">{stat.label}</p>
+                </div>
+              </motion.div>
+            )
+          })}
         </div>
       </div>
     </section>

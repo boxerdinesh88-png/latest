@@ -16,9 +16,9 @@ export default function Loader({ isLoading }: Props) {
           clearInterval(interval)
           return 100
         }
-        return prev + Math.random() * 15
+        return prev + Math.random() * 16
       })
-    }, 200)
+    }, 180)
     return () => clearInterval(interval)
   }, [isLoading])
 
@@ -27,25 +27,28 @@ export default function Loader({ isLoading }: Props) {
       {isLoading && (
         <motion.div
           className="fixed inset-0 z-[9998] flex flex-col items-center justify-center bg-primary"
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          exit={{ opacity: 0, scale: 1.05 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          aria-hidden="true"
         >
           <motion.div
-            className="relative"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="relative flex flex-col items-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="text-5xl font-bold gradient-text mb-4">DK</div>
-            <div className="w-32 h-0.5 bg-foreground/10 rounded-full overflow-hidden">
+            <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-primary font-display text-2xl font-bold text-white shadow-glow-purple">
+              DK
+            </div>
+            <div className="h-1 w-44 overflow-hidden rounded-full bg-white/10">
               <motion.div
-                className="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"
+                className="h-full rounded-full bg-gradient-to-r from-accent via-pink to-cyan"
                 initial={{ width: '0%' }}
                 animate={{ width: `${Math.min(progress, 100)}%` }}
                 transition={{ duration: 0.3 }}
               />
             </div>
-            <p className="text-foreground/40 text-sm mt-3 font-mono text-center">
+            <p className="mt-4 font-mono text-xs tracking-widest text-faint">
               {Math.min(Math.round(progress), 100)}%
             </p>
           </motion.div>

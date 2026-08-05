@@ -1,292 +1,283 @@
-import { useState, useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
-import { ExternalLink, Github, ChevronLeft, ChevronRight, Star, Code2, Database, Server, Globe } from 'lucide-react'
+import { useMemo, useState, useCallback } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ExternalLink, Github, Star, X, BookOpen } from 'lucide-react'
 import { usePortfolio } from '../../lib/usePortfolio'
-import ScrollReveal from '../animations/ScrollReveal'
-import SplitText from '../animations/SplitText'
-import MagneticButton from '../ui/MagneticButton'
+import SectionHeader from '../ui/SectionHeader'
 
-function ProjectCard({
-  project,
-  index,
-  isActive,
-  onSelect,
-}: {
-  project: any
-  index: number
-  isActive: boolean
-  onSelect: () => void
-}) {
-  const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
-  const tiltRef = useRef({ x: 0, y: 0 })
-  const [tilt, setTilt] = useState({ x: 0, y: 0 })
-  const [isHovered, setIsHovered] = useState(false)
-
-  const onMouseMove = (e: React.MouseEvent) => {
-    const el = ref.current
-    if (!el) return
-    const rect = el.getBoundingClientRect()
-    const x = (e.clientX - rect.left) / rect.width - 0.5
-    const y = (e.clientY - rect.top) / rect.height - 0.5
-    tiltRef.current = { x: x * 8, y: y * -8 }
-    setTilt(tiltRef.current)
-  }
-
-  const onMouseLeave = () => {
-    tiltRef.current = { x: 0, y: 0 }
-    setTilt({ x: 0, y: 0 })
-    setIsHovered(false)
-  }
-
-  const getCategoryIcon = (cat?: string) => {
-    switch (cat?.toLowerCase()) {
-      case 'django': return Server
-      case 'full stack': return Globe
-      case 'wordpress': return Code2
-      default: return Database
-    }
-  }
-  const CategoryIcon = getCategoryIcon(project.category)
-
-  return (
-    <motion.div
-      ref={ref}
-      className={`relative rounded-2xl overflow-hidden transition-all duration-700 cursor-pointer ${
-        isActive ? 'ring-2 ring-accent/30 shadow-xl shadow-purple-500/10' : ''
-      }`}
-      initial={{ opacity: 0, y: 60 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-      onClick={onSelect}
-      onMouseMove={onMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={onMouseLeave}
-      style={{
-        transform: `perspective(1000px) rotateX(${tilt.y}deg) rotateY(${tilt.x}deg)`,
-        transition: 'transform 0.1s ease-out',
-      }}
-    >
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-      {/* Project Image */}
-      <div className="relative h-48 md:h-56 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/50 to-transparent z-10" />
-        {project.image ? (
-          <img
-            src={project.image}
-            alt={project.title}
-            className={`w-full h-full object-cover transition-all duration-700 ${
-              isHovered ? 'scale-110' : 'scale-100'
-            }`}
-          />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-purple-500/10 to-pink-500/10">
-            <CategoryIcon size={48} className="text-foreground/20" />
-          </div>
-        )}
-
-        {/* Project Number */}
-        <div className="absolute top-4 left-4 z-20">
-          <span className="text-4xl md:text-5xl font-bold text-foreground/5">
-            {String(index + 1).padStart(2, '0')}
-          </span>
-        </div>
-
-        {/* Category Badge */}
-        {project.category && (
-          <div className="absolute top-4 right-4 z-20">
-            <span className="px-3 py-1 rounded-full glass text-xs text-foreground/60">
-              {project.category}
-            </span>
-          </div>
-        )}
-      </div>
-
-      {/* Content */}
-      <div className="relative p-6 md:p-8">
-        <h3 className="text-xl md:text-2xl font-bold mb-1 text-foreground">{project.title}</h3>
-        <p className="text-foreground/40 text-sm mb-4">{project.subtitle}</p>
-        <p className="text-foreground/50 text-sm leading-relaxed mb-6 line-clamp-2">{project.description}</p>
-
-        {/* Tech Stack */}
-        <div className="flex flex-wrap gap-2 mb-6">
-          {project.stack.map((tech: string, i: number) => (
-            <motion.span
-              key={tech}
-              className="px-3 py-1 rounded-full bg-foreground/[0.04] text-foreground/40 text-xs border border-foreground/[0.06]"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ delay: 0.3 + i * 0.03, duration: 0.3 }}
-            >
-              {tech}
-            </motion.span>
-          ))}
-        </div>
-
-        {/* Actions */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            {project.link && (
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-sm text-foreground/50 hover:text-accent transition-colors"
-              >
-                <ExternalLink size={14} /> Live
-              </a>
-            )}
-            {project.github && (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-sm text-foreground/50 hover:text-accent transition-colors"
-              >
-                <Github size={14} /> Code
-              </a>
-            )}
-          </div>
-          <div className="flex items-center gap-1 text-foreground/30 text-xs">
-            <Star size={12} className="fill-accent/30 text-accent/30" />
-            {project.role}
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  )
-}
+const ease = [0.16, 1, 0.3, 1] as const
 
 export default function ProjectsSection() {
   const { projects } = usePortfolio()
-  const [activeIndex, setActiveIndex] = useState(-1)
-  const scrollRef = useRef<HTMLDivElement>(null)
+  const [filter, setFilter] = useState('All')
+  const [selected, setSelected] = useState<(typeof projects)[number] | null>(null)
 
-  const scroll = (dir: 'left' | 'right') => {
-    if (!scrollRef.current) return
-    const amount = 400
-    scrollRef.current.scrollBy({
-      left: dir === 'left' ? -amount : amount,
-      behavior: 'smooth',
-    })
+  const categories = useMemo(() => {
+    const set = new Set<string>(['All'])
+    projects.forEach((p) => set.add(p.category || 'Frontend'))
+    return Array.from(set)
+  }, [projects])
+
+  const filtered = useMemo(
+    () =>
+      filter === 'All'
+        ? projects
+        : projects.filter((p) => (p.category || 'Frontend') === filter),
+    [projects, filter],
+  )
+
+  const lockScroll = useCallback((locked: boolean) => {
+    document.body.style.overflow = locked ? 'hidden' : ''
+  }, [])
+
+  const openModal = (project: (typeof projects)[number]) => {
+    setSelected(project)
+    lockScroll(true)
+  }
+  const closeModal = () => {
+    setSelected(null)
+    lockScroll(false)
   }
 
   return (
     <section id="projects" className="relative section-padding">
-      <div className="max-w-7xl mx-auto">
-        <ScrollReveal>
-          <div className="flex items-center gap-3 mb-4">
-            <span className="h-px w-8 bg-accent/50" />
-            <span className="text-accent text-sm font-mono tracking-widest uppercase">Projects</span>
-          </div>
-          <SplitText text="Featured Case Studies" className="section-title mb-6" />
-          <p className="section-subtitle mb-16">
-            A collection of premium web applications I've designed and developed.
-          </p>
-        </ScrollReveal>
+      <div className="glow-orb left-[-8%] top-1/3 h-[400px] w-[400px] bg-accent/10" aria-hidden="true" />
+      <div className="container-px relative">
+        <SectionHeader
+          eyebrow="Projects"
+          title="Featured Case Studies"
+          subtitle="A collection of production web applications I've designed and developed — from Django backends to WordPress platforms."
+        />
 
-        {/* Active Project Detail */}
-        {activeIndex >= 0 && projects[activeIndex] && (
+        {/* Filters */}
+        <div className="mb-12 flex flex-wrap items-center justify-center gap-2.5">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setFilter(cat)}
+              className={`rounded-full px-5 py-2 text-sm font-medium transition-all duration-300 ${
+                filter === cat
+                  ? 'bg-gradient-primary text-white shadow-btn'
+                  : 'border border-line bg-white/[0.03] text-faint hover:border-white/20 hover:text-white'
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        {/* Grid */}
+        <motion.div layout className="grid gap-7 md:grid-cols-2">
+          <AnimatePresence mode="popLayout">
+            {filtered.map((project, i) => (
+              <motion.article
+                layout
+                key={project.id}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.6, delay: (i % 2) * 0.08, ease }}
+                className="glass-card group relative flex flex-col overflow-hidden card-hover"
+              >
+                {/* Image */}
+                <div className="relative h-52 overflow-hidden sm:h-60">
+                  {project.image && (
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      width={720}
+                      height={400}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                  )}
+                  <div
+                    className="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent"
+                    aria-hidden="true"
+                  />
+                  {/* Hover overlay */}
+                  <div
+                    className="absolute inset-0 bg-gradient-to-tr from-accent/30 via-transparent to-cyan/20 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                    aria-hidden="true"
+                  />
+                  {/* Badges */}
+                  <div className="absolute left-4 top-4 flex items-center gap-2">
+                    <span className="rounded-full border border-line bg-primary/70 px-3 py-1 text-[11px] font-semibold text-cyan backdrop-blur-xl">
+                      {project.category || 'Frontend'}
+                    </span>
+                    {project.highlight && (
+                      <span className="flex items-center gap-1 rounded-full bg-gradient-primary px-3 py-1 text-[11px] font-semibold text-white shadow-btn">
+                        <Star size={11} className="fill-white" /> Featured
+                      </span>
+                    )}
+                  </div>
+                  <span className="absolute right-4 top-4 font-mono text-xs text-white/50">
+                    {project.year}
+                  </span>
+                </div>
+
+                {/* Content */}
+                <div className="flex flex-1 flex-col p-7">
+                  <h3 className="font-display text-xl font-bold text-white transition-colors group-hover:text-cyan">
+                    {project.title}
+                  </h3>
+                  <p className="mt-1 text-xs text-faint">{project.subtitle}</p>
+                  <p className="mt-4 text-sm leading-relaxed text-muted line-clamp-2">
+                    {project.description}
+                  </p>
+
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {project.stack.slice(0, 5).map((tech) => (
+                      <span key={tech} className="chip">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="mt-7 flex flex-wrap items-center gap-3 border-t border-line pt-5">
+                    {project.link && (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 rounded-full bg-gradient-primary px-4 py-2 text-xs font-semibold text-white shadow-btn transition-all hover:brightness-110"
+                      >
+                        <ExternalLink size={13} /> Live Demo
+                      </a>
+                    )}
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white/[0.03] px-4 py-2 text-xs font-medium text-muted transition-all hover:border-cyan/40 hover:text-white"
+                      >
+                        <Github size={13} /> GitHub
+                      </a>
+                    )}
+                    <button
+                      onClick={() => openModal(project)}
+                      className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white/[0.03] px-4 py-2 text-xs font-medium text-muted transition-all hover:border-pink/40 hover:text-white"
+                    >
+                      <BookOpen size={13} /> Case Study
+                    </button>
+                  </div>
+                </div>
+              </motion.article>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+      </div>
+
+      {/* Case study modal */}
+      <AnimatePresence>
+        {selected && (
           <motion.div
-            className="glass rounded-2xl p-6 md:p-10 mb-12"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={closeModal}
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${selected.title} case study`}
           >
-            <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
-              <div>
-                <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
-                  {projects[activeIndex].title}
+            <div className="absolute inset-0 bg-primary/90 backdrop-blur-md" />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.92, y: 30 }}
+              transition={{ duration: 0.4, ease }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-[24px] border border-line bg-surface shadow-card-lg"
+            >
+              <button
+                onClick={closeModal}
+                className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-line bg-primary/70 text-white backdrop-blur-xl transition-all hover:border-pink/40"
+                aria-label="Close case study"
+              >
+                <X size={18} />
+              </button>
+
+              {selected.image && (
+                <div className="relative h-56 overflow-hidden sm:h-72">
+                  <img
+                    src={selected.image}
+                    alt={selected.title}
+                    className="h-full w-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-surface to-transparent" />
+                </div>
+              )}
+
+              <div className="p-7 md:p-10">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="badge-gradient">
+                    {selected.category || 'Frontend'}
+                  </span>
+                  {selected.highlight && (
+                    <span className="flex items-center gap-1 rounded-full bg-gradient-primary px-3 py-1.5 text-xs font-semibold text-white">
+                      <Star size={11} className="fill-white" /> Featured
+                    </span>
+                  )}
+                </div>
+                <h3 className="mt-4 font-display text-2xl font-bold text-white md:text-3xl">
+                  {selected.title}
                 </h3>
-                <p className="text-foreground/40">{projects[activeIndex].subtitle}</p>
-              </div>
-              <div className="flex gap-3">
-                <MagneticButton>
-                  {projects[activeIndex].link && (
+                <p className="mt-1 text-sm text-faint">{selected.subtitle}</p>
+
+                <p className="mt-5 text-sm leading-relaxed text-muted">
+                  {selected.description}
+                </p>
+
+                <h4 className="mt-7 font-mono text-xs uppercase tracking-[0.3em] text-cyan">
+                  Key Highlights
+                </h4>
+                <ul className="mt-4 space-y-3">
+                  {selected.highlights.map((h, i) => (
+                    <li key={i} className="flex items-start gap-3 text-sm text-muted">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-r from-accent to-cyan" />
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-7 flex flex-wrap gap-2">
+                  {selected.stack.map((tech) => (
+                    <span key={tech} className="chip">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="mt-8 flex flex-wrap gap-3">
+                  {selected.link && (
                     <a
-                      href={projects[activeIndex].link}
+                      href={selected.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-5 py-2.5 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 text-white text-sm font-medium flex items-center gap-2 hover:shadow-lg hover:shadow-purple-500/25 transition-all"
+                      className="btn-primary"
                     >
-                      <ExternalLink size={14} /> Live Demo
+                      <ExternalLink size={15} /> Live Demo
                     </a>
                   )}
-                </MagneticButton>
-                {projects[activeIndex].github && (
-                  <MagneticButton>
+                  {selected.github && (
                     <a
-                      href={projects[activeIndex].github}
+                      href={selected.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-5 py-2.5 rounded-full glass glass-hover text-foreground/80 text-sm flex items-center gap-2 transition-all"
+                      className="btn-ghost"
                     >
-                      <Github size={14} /> GitHub
+                      <Github size={15} /> View Source
                     </a>
-                  </MagneticButton>
-                )}
+                  )}
+                </div>
               </div>
-            </div>
-            <p className="text-foreground/50 leading-relaxed mb-6">{projects[activeIndex].description}</p>
-
-            {/* Highlights */}
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-              {projects[activeIndex].highlights?.map((h: string, i: number) => (
-                <motion.div
-                  key={i}
-                  className="flex items-start gap-2 p-3 rounded-xl bg-foreground/[0.02]"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.05, duration: 0.3 }}
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />
-                  <span className="text-foreground/40 text-sm">{h}</span>
-                </motion.div>
-              ))}
-            </div>
+            </motion.div>
           </motion.div>
         )}
-
-        {/* Horizontal Scrollable Grid */}
-        <div className="relative">
-          <div
-            ref={scrollRef}
-            className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-none"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-          >
-            {projects.map((project, i) => (
-              <div key={project.id} className="min-w-[340px] md:min-w-[420px] lg:min-w-[480px] snap-start">
-                <ProjectCard
-                  project={project}
-                  index={i}
-                  isActive={activeIndex === i}
-                  onSelect={() => setActiveIndex(activeIndex === i ? -1 : i)}
-                />
-              </div>
-            ))}
-          </div>
-
-          {/* Scroll Controls */}
-          <div className="flex justify-center gap-3 mt-8">
-            <button
-              onClick={() => scroll('left')}
-              className="w-12 h-12 rounded-full glass glass-hover flex items-center justify-center text-foreground/60 hover:text-foreground transition-all"
-              aria-label="Scroll left"
-            >
-              <ChevronLeft size={20} />
-            </button>
-            <button
-              onClick={() => scroll('right')}
-              className="w-12 h-12 rounded-full glass glass-hover flex items-center justify-center text-foreground/60 hover:text-foreground transition-all"
-              aria-label="Scroll right"
-            >
-              <ChevronRight size={20} />
-            </button>
-          </div>
-        </div>
-      </div>
+      </AnimatePresence>
     </section>
   )
 }

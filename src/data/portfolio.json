@@ -108,10 +108,22 @@
     {
       "category": "CMS & Page Builders",
       "skills": [
-        { "name": "WordPress", "level": "Expert" },
-        { "name": "Elementor", "level": "Expert" },
-        { "name": "Custom Widgets", "level": "Advanced" },
-        { "name": "Theme & Plugin Customization", "level": "Advanced" }
+        {
+          "name": "WordPress",
+          "level": "Expert"
+        },
+        {
+          "name": "Elementor",
+          "level": "Expert"
+        },
+        {
+          "name": "Custom Widgets",
+          "level": "Advanced"
+        },
+        {
+          "name": "Theme & Plugin Customization",
+          "level": "Advanced"
+        }
       ]
     },
     {
@@ -355,7 +367,8 @@
         "Created interactive secure contact forms connected directly to admin notifications and MySQL database",
         "Optimized media delivery and page caching strategies, cutting page loads by 40%"
       ],
-      "highlight": true
+      "highlight": true,
+      "github": "https://github.com/boxerdinesh88-png/Shi-ning-services"
     },
     {
       "id": "home-groom-pets",
@@ -400,7 +413,8 @@
         "Designed a refined brand identity with custom luxurious layouts and fluid responsive components",
         "Integrated Google Maps API for smooth navigation and address tracking",
         "Achieved cross-browser responsive perfection and near-perfect SEO audit scoring"
-      ]
+      ],
+      "github": "https://github.com/boxerdinesh88-png/makeupforever"
     },
     {
       "id": "gym-website",
@@ -422,7 +436,8 @@
         "Created scroll-triggered reveals showcasing studio spaces, classes, and amenities",
         "Designed clear call-to-action pathways resulting in optimized membership lead generation",
         "Integrated functional schedules using responsive interactive tab navigation"
-      ]
+      ],
+      "github": "https://github.com/boxerdinesh88-png/gym"
     },
     {
       "id": "developer-portfolio",
@@ -445,7 +460,8 @@
         "Integrated GSAP scroll trigger sequences for smooth scroll-driven screen reveals",
         "Created an custom responsive dual-circle cursor tracking system",
         "Coded customized marquee animation modules running smoothly at 60 FPS"
-      ]
+      ],
+      "github": "https://github.com/boxerdinesh88-png/portfolio-"
     },
     {
       "id": "smart-parking",
@@ -467,7 +483,8 @@
         "Built a visual map interface displaying slot states using pure client-side state manipulation",
         "Designed a frictionless touch-responsive slot selection workflow",
         "Coded robust input validation for reservation timers and custom parking filters"
-      ]
+      ],
+      "github": "https://github.com/boxerdinesh88-png/parking-web"
     },
     {
       "id": "car-showcase",
@@ -489,7 +506,8 @@
         "Crafted high-fidelity custom css animations and transitions showcasing vehicle specs",
         "Integrated modern web typography and contrast schemes for a dramatic visual impact",
         "Optimized layout responsiveness specifically for touch devices and retina screens"
-      ]
+      ],
+      "github": "https://github.com/boxerdinesh88-png/car-website"
     },
     {
       "id": "maxent-food",
@@ -511,7 +529,8 @@
         "Designed and developed a highly interactive menu catalog with zero-lag search filtering",
         "Engineered lightweight client-side shopping cart storage and checkout checkout state flows",
         "Created visually rich card layouts utilizing CSS grid and modern responsive guidelines"
-      ]
+      ],
+      "github": "https://github.com/boxerdinesh88-png/mexentfood"
     }
   ],
   "education": [

@@ -3,18 +3,19 @@ import { useRef, ReactNode, ButtonHTMLAttributes } from 'react'
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode
   className?: string
+  strength?: number
 }
 
-export default function MagneticButton({ children, className = '', ...props }: Props) {
+export default function MagneticButton({ children, className = '', strength = 0.25, ...props }: Props) {
   const ref = useRef<HTMLButtonElement>(null)
 
   const onMove = (e: React.MouseEvent) => {
     const el = ref.current
-    if (!el) return
+    if (!el || window.matchMedia('(pointer: coarse)').matches) return
     const rect = el.getBoundingClientRect()
     const x = e.clientX - rect.left - rect.width / 2
     const y = e.clientY - rect.top - rect.height / 2
-    el.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`
+    el.style.transform = `translate(${x * strength}px, ${y * strength}px)`
   }
 
   const onLeave = () => {

@@ -18,10 +18,10 @@ export default function AuroraBackground() {
     }
 
     const colors = [
-      { r: 139, g: 92, b: 246 },
-      { r: 59, g: 130, b: 246 },
+      { r: 124, g: 58, b: 237 },
       { r: 236, g: 72, b: 153 },
-      { r: 16, g: 185, b: 129 },
+      { r: 6, g: 182, b: 212 },
+      { r: 167, g: 139, b: 250 },
     ]
 
     const blobs = Array.from({ length: 4 }, (_, i) => ({

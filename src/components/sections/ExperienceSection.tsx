@@ -1,79 +1,115 @@
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
-import { Briefcase, MapPin, Calendar } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { Briefcase, MapPin, Calendar, Sparkles } from 'lucide-react'
 import { usePortfolio } from '../../lib/usePortfolio'
-import ScrollReveal from '../animations/ScrollReveal'
-import SplitText from '../animations/SplitText'
+import SectionHeader from '../ui/SectionHeader'
+
+const ease = [0.16, 1, 0.3, 1] as const
+
+const companyStack: Record<string, string[]> = {
+  'Creative Squadz': ['WordPress', 'Elementor', 'Django', 'React JS', 'MySQL'],
+  'ProAce International Inc.': ['Python', 'Django', 'React JS', 'MySQL', 'WordPress', 'Elementor'],
+}
+
+function initials(name: string) {
+  return name
+    .split(' ')
+    .slice(0, 2)
+    .map((w) => w[0])
+    .join('')
+    .toUpperCase()
+}
 
 function TimelineItem({
   item,
+  index,
 }: {
   item: { company: string; role: string; period: string; location: string; summary: string; highlights: string[] }
+  index: number
 }) {
-  const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const isLeft = index % 2 === 0
+  const stack = companyStack[item.company] ?? []
 
   return (
-    <div ref={ref} className="relative pl-8 md:pl-12 pb-12 last:pb-0">
-      {/* Line */}
-      <motion.div
-        className="absolute left-[7px] md:left-[11px] top-0 bottom-0 w-px bg-gradient-to-b from-accent via-accent/50 to-transparent"
-        initial={{ scaleY: 0 }}
-        animate={isInView ? { scaleY: 1 } : {}}
-        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-        style={{ transformOrigin: 'top' }}
-      />
-
+    <div className="relative pl-14 md:pl-0">
       {/* Dot */}
-      <motion.div
-        className="absolute left-0 md:left-1 top-1 w-[15px] h-[15px] md:w-[23px] md:h-[23px] rounded-full bg-primary border-2 border-accent flex items-center justify-center"
-        initial={{ scale: 0 }}
-        animate={isInView ? { scale: 1 } : {}}
-        transition={{ duration: 0.4, delay: 0.2 }}
-      >
-        <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-accent" />
-      </motion.div>
+      <div className="absolute left-[22px] top-1.5 z-10 md:left-1/2 md:-translate-x-1/2">
+        <motion.span
+          initial={{ scale: 0 }}
+          whileInView={{ scale: 1 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.5, ease }}
+          className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-primary font-display text-sm font-bold text-white shadow-btn md:h-12 md:w-12"
+        >
+          {initials(item.company)}
+        </motion.span>
+        <span className="absolute inset-0 -z-10 animate-ping rounded-2xl bg-accent/40" aria-hidden="true" />
+      </div>
 
-      {/* Content */}
       <motion.div
-        className="glass rounded-2xl p-6 md:p-8"
-        initial={{ opacity: 0, x: -30 }}
-        animate={isInView ? { opacity: 1, x: 0 } : {}}
-        transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-100px' }}
+        transition={{ duration: 0.7, ease }}
+        className={`glass-card group relative mb-10 p-7 card-hover md:mb-16 md:w-[calc(50%-3.5rem)] ${
+          isLeft ? 'md:mr-auto' : 'md:ml-auto'
+        }`}
       >
-        <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
-          <div>
-            <h3 className="text-lg md:text-xl font-semibold text-foreground">{item.role}</h3>
-            <div className="flex items-center gap-2 text-accent text-sm mt-1">
-              <Briefcase size={14} />
-              {item.company}
+        <div
+          className="absolute inset-0 rounded-[20px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+          style={{
+            background: 'radial-gradient(circle at 100% 0%, rgba(236,72,153,0.1), transparent 55%)',
+          }}
+          aria-hidden="true"
+        />
+        <div className="relative">
+          <div className="flex flex-wrap items-start justify-between gap-3">
+            <div>
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-3 py-1 text-[11px] font-semibold text-accent-light ring-1 ring-inset ring-accent/20">
+                <Briefcase size={11} /> {item.role}
+              </span>
+              <h3 className="mt-3 font-display text-xl font-bold text-white">{item.company}</h3>
+              <div className="mt-1.5 flex flex-wrap gap-x-4 gap-y-1 text-xs text-faint">
+                <span className="flex items-center gap-1.5">
+                  <Calendar size={12} className="text-cyan" /> {item.period}
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <MapPin size={12} className="text-cyan" /> {item.location}
+                </span>
+              </div>
             </div>
           </div>
-          <div className="flex flex-wrap gap-3 text-foreground/40 text-xs">
-            <span className="flex items-center gap-1">
-              <Calendar size={12} /> {item.period}
-            </span>
-            <span className="flex items-center gap-1">
-              <MapPin size={12} /> {item.location}
-            </span>
+
+          <p className="mt-4 text-sm leading-relaxed text-faint">{item.summary}</p>
+
+          <ul className="mt-5 space-y-2.5">
+            {item.highlights.map((h, i) => (
+              <motion.li
+                key={i}
+                initial={{ opacity: 0, x: -16 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 + i * 0.08, duration: 0.4 }}
+                className="flex items-start gap-2.5 text-sm text-muted"
+              >
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-r from-accent to-cyan" />
+                {h}
+              </motion.li>
+            ))}
+          </ul>
+
+          {stack.length > 0 && (
+            <div className="mt-6 flex flex-wrap gap-2 border-t border-line pt-5">
+              {stack.map((tech) => (
+                <span key={tech} className="chip">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          )}
+
+          <div className="mt-5 flex items-center gap-1.5 text-xs text-cyan">
+            <Sparkles size={13} /> Achievement-driven development
           </div>
-        </div>
-
-        <p className="text-foreground/50 text-sm leading-relaxed mb-4">{item.summary}</p>
-
-        <div className="grid sm:grid-cols-2 gap-2">
-          {item.highlights.map((h, i) => (
-            <motion.div
-              key={i}
-              className="flex items-start gap-2 text-foreground/40 text-sm"
-              initial={{ opacity: 0, y: 10 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.4 + i * 0.05, duration: 0.3 }}
-            >
-              <span className="w-1 h-1 rounded-full bg-accent mt-2 shrink-0" />
-              {h}
-            </motion.div>
-          ))}
         </div>
       </motion.div>
     </div>
@@ -85,29 +121,25 @@ export default function ExperienceSection() {
 
   return (
     <section id="experience" className="relative section-padding">
-      <div className="max-w-7xl mx-auto">
-        <ScrollReveal>
-          <div className="flex items-center gap-3 mb-4">
-            <span className="h-px w-8 bg-accent/50" />
-            <span className="text-accent text-sm font-mono tracking-widest uppercase">Experience</span>
-          </div>
-          <SplitText text="Where I've Worked" className="section-title mb-6" />
-          <p className="section-subtitle mb-16">
-            Professional experience building production applications.
-          </p>
-        </ScrollReveal>
+      <div className="glow-orb left-1/4 top-1/4 h-[360px] w-[360px] bg-cyan/10" aria-hidden="true" />
+      <div className="container-px relative">
+        <SectionHeader
+          eyebrow="Experience"
+          title="Where I've Worked"
+          subtitle="Professional experience building and shipping production applications for clients worldwide."
+        />
 
-        <div className="max-w-3xl mx-auto">
-          {experience.length === 0 ? (
-            <div className="glass rounded-2xl p-12 text-center">
-              <Briefcase size={40} className="text-foreground/20 mx-auto mb-4" />
-              <p className="text-foreground/40">Experience details coming soon.</p>
-            </div>
-          ) : (
-            experience.map((item, i) => (
-                <TimelineItem key={i} item={item} />
-            ))
-          )}
+        <div className="relative">
+          {/* Vertical line */}
+          <div
+            className="absolute bottom-0 left-[22px] top-0 w-px bg-gradient-to-b from-accent via-pink/60 to-cyan/40 md:left-1/2"
+            aria-hidden="true"
+          />
+          <div className="space-y-0">
+            {experience.map((item, i) => (
+              <TimelineItem key={i} item={item} index={i} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

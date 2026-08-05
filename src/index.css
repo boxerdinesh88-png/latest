@@ -1,114 +1,162 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --color-primary: #FAFAFA;
-    --color-secondary: #F3F4F6;
-    --color-surface: #FFFFFF;
-    --color-border: #E5E7EB;
-    --color-foreground: #111827;
-    --color-muted: #6B7280;
-  }
-
-  .dark {
-    --color-primary: #0A0A0F;
-    --color-secondary: #12121A;
-    --color-surface: #1A1A2E;
-    --color-border: #2A2A3E;
-    --color-foreground: #FFFFFF;
-    --color-muted: #9CA3AF;
+    color-scheme: dark;
+    --color-primary: #050816;
+    --color-surface: #111827;
+    --color-foreground: #ffffff;
+    --color-muted: #cbd5e1;
+    --color-faint: #94a3b8;
+    --color-border: rgba(255, 255, 255, 0.08);
+    --color-accent: #7c3aed;
+    --color-pink: #ec4899;
+    --color-cyan: #06b6d4;
   }
 
   * {
     @apply border-line;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-primary text-foreground antialiased;
+    @apply bg-primary text-foreground font-sans antialiased;
     overflow-x: hidden;
+    background-color: var(--color-primary);
   }
 
   ::selection {
-    @apply bg-accent/30 text-foreground;
+    @apply bg-accent/40 text-white;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-cyan);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #050816;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #7c3aed, #ec4899);
+    border-radius: 8px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #a78bfa, #f472b6);
   }
 }
 
 @layer components {
-  .glass {
-    @apply backdrop-blur-xl bg-white/60 dark:bg-white/[0.02] border border-gray-200/50 dark:border-white/[0.05] shadow-xl;
-  }
-
-  .glass-hover {
-    @apply hover:bg-white/80 dark:hover:bg-white/[0.05] hover:border-accent/30 transition-all duration-500;
-  }
-
-  .gradient-text {
-    @apply bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent;
-  }
-
-  .gradient-border {
-    @apply relative;
-  }
-
-  .gradient-border::before {
-    content: '';
-    @apply absolute inset-0 rounded-[inherit] p-[1px] bg-gradient-to-r from-purple-500/50 via-pink-500/50 to-orange-500/50;
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
+  .container-px {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;
   }
 
   .section-padding {
-    @apply px-4 sm:px-6 lg:px-8 py-20 md:py-32;
+    @apply py-24 md:py-32;
+  }
+
+  .glass {
+    @apply border border-line bg-white/[0.03] backdrop-blur-xl;
+  }
+
+  .glass-card {
+    @apply glass rounded-[20px] shadow-card;
+  }
+
+  .glass-strong {
+    @apply border border-white/10 bg-surface/80 backdrop-blur-2xl shadow-card;
+  }
+
+  .card-hover {
+    @apply transition-all duration-500 hover:-translate-y-1.5 hover:border-white/[0.16] hover:shadow-card-lg;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-accent via-pink to-cyan bg-clip-text text-transparent;
+  }
+
+  .gradient-text-animated {
+    @apply bg-gradient-to-r from-accent via-pink to-cyan bg-[length:200%_auto] bg-clip-text text-transparent animate-gradient-x;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.35em] text-cyan;
   }
 
   .section-title {
-    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight;
+    @apply font-display text-3xl font-bold tracking-tight sm:text-4xl md:text-[40px] md:leading-[1.15];
   }
 
   .section-subtitle {
-    @apply text-lg md:text-xl text-muted max-w-2xl;
+    @apply mt-4 max-w-2xl text-base leading-relaxed text-faint md:text-lg;
   }
 
-  .card {
-    @apply bg-surface border border-line rounded-2xl shadow-sm hover:shadow-md transition-all duration-300;
+  .btn-primary {
+    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-gradient-primary px-7 py-3.5 text-sm font-semibold text-white shadow-btn transition-all duration-300 hover:shadow-glow-purple hover:brightness-110 active:scale-95;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-line bg-white/[0.03] px-7 py-3.5 text-sm font-medium text-muted backdrop-blur-xl transition-all duration-300 hover:border-cyan/40 hover:text-white hover:shadow-glow-cyan;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-white/[0.04] px-3 py-1 text-xs font-medium text-muted;
+  }
+
+  .badge-gradient {
+    @apply inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-accent/20 to-cyan/20 px-3.5 py-1.5 text-xs font-semibold text-white ring-1 ring-inset ring-white/10;
+  }
+
+  .input-glass {
+    @apply w-full rounded-xl border border-line bg-white/[0.03] px-4 pt-6 pb-2.5 text-sm text-white placeholder-transparent outline-none transition-colors focus:border-cyan/60 focus:bg-white/[0.05] focus:ring-2 focus:ring-cyan/20;
+  }
+
+  .divider-gradient {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-white/15 to-transparent;
+  }
+
+  .glow-orb {
+    @apply pointer-events-none absolute rounded-full blur-[120px];
   }
 }
 
-::-webkit-scrollbar {
-  width: 6px;
+/* Scroll progress handled in Navbar */
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
 }
 
-::-webkit-scrollbar-track {
-  background: #F3F4F6;
-}
-
-.dark ::-webkit-scrollbar-track {
-  background: #0A0A0F;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #8B5CF6;
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #A78BFA;
-}
-
-html.lenis {
+html.lenis,
+html.lenis body {
   height: auto;
 }
-
-.lenis-lenis-smooth {
-  scroll-behavior: auto;
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
 }
 
-.lenis-lenis-stopped {
-  overflow: hidden;
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

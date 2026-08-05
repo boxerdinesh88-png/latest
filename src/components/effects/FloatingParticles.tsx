@@ -57,7 +57,7 @@ export default function FloatingParticles() {
 
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(139, 92, 246, ${alpha})`
+        ctx.fillStyle = i % 3 === 0 ? `rgba(6, 182, 212, ${alpha})` : `rgba(167, 139, 250, ${alpha})`
         ctx.fill()
 
         if (p.life >= p.maxLife || p.y < -10 || p.x < -10 || p.x > canvas.width + 10) {

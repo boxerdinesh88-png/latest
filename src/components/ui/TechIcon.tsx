@@ -50,6 +50,8 @@ const nameMap: Record<string, string> = {
   'PythonAnywhere': 'PythonAnywhere',
   'Figma': 'Figma',
   'AI Integration': 'Sparkles',
+  'Prompt Engineering': 'Sparkles',
+  'Theme & Plugin Customization': 'Paint',
   'Git': 'Git',
   'GitHub': 'GitHub',
   'Bootstrap': 'Bootstrap',
@@ -97,25 +99,40 @@ export function TechIconGrid({ name, color }: { name: string; color: string }) {
   const pathData = getTechIconPath(name)
   return (
     <motion.div
-      className="glass rounded-2xl p-6 flex flex-col items-center gap-3 glass-hover cursor-default group"
-      whileHover={{ scale: 1.05, y: -4 }}
-      transition={{ type: 'spring', stiffness: 300 }}
+      className="glass group relative flex flex-col items-center gap-3 rounded-[20px] p-6 transition-all duration-500 hover:-translate-y-1.5 hover:border-white/[0.16] hover:shadow-card-lg"
+      whileHover={{ scale: 1.04 }}
+      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
     >
+      {/* Hover glow */}
+      <div
+        className="absolute inset-0 rounded-[20px] opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100"
+        style={{ background: `radial-gradient(circle at 50% 30%, ${color}1f, transparent 70%)` }}
+        aria-hidden="true"
+      />
       {pathData ? (
-        <div className="w-8 h-8 flex items-center justify-center shrink-0" style={{ color }}>
-          <svg viewBox="0 0 24 24" width={28} height={28} fill="currentColor">
+        <div className="flex h-10 w-10 items-center justify-center shrink-0" style={{ color }}>
+          <svg viewBox="0 0 24 24" width={30} height={30} fill="currentColor">
             <path d={pathData} />
           </svg>
         </div>
       ) : (
         <span
-          className="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold shrink-0"
-          style={{ backgroundColor: `${color}15`, color }}
+          className="flex h-10 w-10 items-center justify-center rounded-xl text-xs font-bold shrink-0"
+          style={{ backgroundColor: `${color}1a`, color }}
         >
           {name.slice(0, 2).toUpperCase()}
         </span>
       )}
-      <span className="text-foreground/60 text-xs text-center">{name}</span>
+      <span className="text-center text-xs font-medium text-muted group-hover:text-white">
+        {name}
+      </span>
+      {/* Tooltip */}
+      <span
+        className="pointer-events-none absolute -top-9 left-1/2 z-20 -translate-x-1/2 whitespace-nowrap rounded-lg border border-line bg-surface px-3 py-1.5 text-[11px] font-medium text-white opacity-0 shadow-card transition-opacity duration-300 group-hover:opacity-100"
+        role="tooltip"
+      >
+        {name}
+      </span>
     </motion.div>
   )
 }

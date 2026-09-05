@@ -1,61 +1,100 @@
-import { useState, useEffect, lazy, Suspense } from 'react'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import { ReactLenis } from 'lenis/react'
-import Loader from './components/layout/Loader'
+import { ThemeProvider, useTheme } from './lib/theme'
+import Cursor from './components/effects/Cursor'
+import Particles from './components/effects/Particles'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
-import ScrollToTop from './components/layout/ScrollToTop'
-import HeroSection from './components/sections/HeroSection'
-import AuroraBackground from './components/effects/AuroraBackground'
-import FloatingParticles from './components/effects/FloatingParticles'
+import Loader from './components/layout/Loader'
+import { techMarquee } from './lib/data'
 
-const AboutSection = lazy(() => import('./components/sections/AboutSection'))
-const SkillsSection = lazy(() => import('./components/sections/SkillsSection'))
-const ExperienceSection = lazy(() => import('./components/sections/ExperienceSection'))
-const ProjectsSection = lazy(() => import('./components/sections/ProjectsSection'))
-const EducationSection = lazy(() => import('./components/sections/EducationSection'))
-const CertificationsSection = lazy(() => import('./components/sections/CertificationsSection'))
-const ContactSection = lazy(() => import('./components/sections/ContactSection'))
+const AuroraBackground = lazy(() => import('./components/effects/AuroraBackground'))
+
+const Hero = lazy(() => import('./components/sections/Hero'))
+const About = lazy(() => import('./components/sections/About'))
+const Skills = lazy(() => import('./components/sections/Skills'))
+const Featured = lazy(() => import('./components/sections/Featured'))
+const Projects = lazy(() => import('./components/sections/Projects'))
+const Split = lazy(() => import('./components/sections/Split'))
+const Journey = lazy(() => import('./components/sections/Journey'))
+const Services = lazy(() => import('./components/sections/Services'))
+const Process = lazy(() => import('./components/sections/Process'))
+const Contact = lazy(() => import('./components/sections/Contact'))
+
+function LoaderProxy() {
+  const { theme } = useTheme()
+  return <Loader isLoading themeKey={theme} />
+}
+
+function Content() {
+  return (
+    <main className="relative">
+      <Suspense fallback={<SectionFallback />}>
+        <Hero />
+        <About />
+        <Skills />
+        <Featured />
+        <Projects />
+        <Split />
+        <Journey />
+        <Services />
+        <Process />
+        <Contact />
+      </Suspense>
+    </main>
+  )
+}
 
 function SectionFallback() {
-  return <div className="min-h-[60vh] animate-pulse bg-primary" aria-hidden="true" />
+  return <div className="h-[50vh] animate-pulse bg-base/50" aria-hidden="true" />
 }
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 1800)
-    return () => clearTimeout(timer)
+    const t = setTimeout(() => setLoading(false), 1600)
+    return () => clearTimeout(t)
+  }, [])
+
+  useEffect(() => {
+    document.body.classList.add('custom-cursor-ready')
   }, [])
 
   return (
-    <>
-      <Loader isLoading={isLoading} />
+    <ThemeProvider>
+      {loading && <LoaderProxy />}
 
-      <ReactLenis root>
-        <div className="relative min-h-screen overflow-hidden bg-primary text-white selection:bg-accent/40 selection:text-white">
-          <AuroraBackground />
-          <FloatingParticles />
+      <Cursor />
+      <Suspense fallback={null}>
+        <AuroraBackground />
+      </Suspense>
+      <Particles />
+
+      <ReactLenis root options={{ duration: 1.1, smoothWheel: true }}>
+        <div className="relative min-h-screen overflow-x-clip">
           <Navbar />
-
-          <main className="relative z-10">
-            <HeroSection />
-            <Suspense fallback={<SectionFallback />}>
-              <AboutSection />
-              <SkillsSection />
-              <ExperienceSection />
-              <ProjectsSection />
-              <EducationSection />
-              <CertificationsSection />
-              <ContactSection />
-            </Suspense>
-          </main>
-
+          <Content />
           <Footer />
-          <ScrollToTop />
+
+          {/* Tech marquee strip above footer */}
+          <div className="relative overflow-hidden border-y border-ink/10 py-5" aria-hidden="true">
+            <div className="flex w-max animate-marquee gap-10 whitespace-nowrap">
+              {[...Array(2)].flatMap((_, copy) => (
+                <div key={copy} className="flex shrink-0 items-center gap-10">
+                  {techMarquee.map((t) => (
+                    <span key={`${copy}-${t}`} className="flex items-center gap-10 font-mono text-xs uppercase tracking-[0.3em] text-faint">
+                      {t}
+                      <span className="h-1.5 w-1.5 rounded-full bg-pink/50" />
+                    </span>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </ReactLenis>
-    </>
+    </ThemeProvider>
   )
 }
 

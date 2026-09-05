@@ -14,9 +14,7 @@
     "noFallthroughCasesInSwitch": true,
     "jsx": "react-jsx",
     "resolveJsonModule": true,
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true
+    "noEmit": true
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]

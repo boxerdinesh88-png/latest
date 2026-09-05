@@ -1,105 +1,79 @@
-import { usePortfolio } from '../../lib/usePortfolio'
-import { Github, Linkedin, Mail, Heart, ArrowUp, MapPin } from 'lucide-react'
-
-const quickLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Education', href: '#education' },
-  { label: 'Contact', href: '#contact' },
-]
+import { motion } from 'motion/react'
+import { ArrowUpRight } from 'lucide-react'
+import { profile, socials } from '../../lib/data'
 
 export default function Footer() {
-  const { profile } = usePortfolio()
-  const social = profile.social
-
-  const socials = [
-    { icon: Github, href: social.github, label: 'GitHub' },
-    { icon: Linkedin, href: social.linkedin, label: 'LinkedIn' },
-    { icon: Mail, href: `mailto:${social.email}`, label: 'Email' },
-  ]
+  const year = new Date().getFullYear()
 
   return (
-    <footer className="relative border-t border-line bg-surface/40">
-      <div className="divider-gradient absolute inset-x-0 top-0" aria-hidden="true" />
-      <div className="container-px py-14">
-        <div className="grid gap-10 md:grid-cols-3">
-          {/* Brand */}
+    <footer className="relative overflow-hidden border-t border-ink/10 pt-20">
+      <div className="container-px">
+        <div className="flex flex-col items-start justify-between gap-10 pb-14 md:flex-row md:items-end">
           <div>
-            <div className="flex items-center gap-2">
-              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-primary font-display text-sm font-bold text-white shadow-btn">
-                DK
-              </span>
-              <span className="font-display text-lg font-semibold text-white">
-                Dinesh<span className="text-cyan">.</span>
-              </span>
-            </div>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-faint">
-              Full Stack Developer crafting high-performance web applications with Python,
-              Django, React JS, WordPress & Elementor.
-            </p>
-            <p className="mt-4 flex items-center gap-1.5 text-xs text-faint">
-              <MapPin size={13} className="text-cyan" /> {profile.location}
-            </p>
-          </div>
-
-          {/* Quick links */}
-          <nav aria-label="Footer">
-            <h3 className="font-mono text-xs uppercase tracking-[0.3em] text-faint">Navigate</h3>
-            <ul className="mt-5 grid grid-cols-2 gap-2.5">
-              {quickLinks.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="text-sm text-muted transition-colors hover:text-cyan"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          {/* Social */}
-          <div>
-            <h3 className="font-mono text-xs uppercase tracking-[0.3em] text-faint">Connect</h3>
-            <div className="mt-5 flex gap-3">
-              {socials.map(
-                ({ icon: Icon, href, label }) =>
-                  href && (
-                    <a
-                      key={label}
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-white/[0.03] text-faint transition-all duration-300 hover:-translate-y-1 hover:border-cyan/40 hover:text-cyan hover:shadow-glow-cyan"
-                      aria-label={label}
-                    >
-                      <Icon size={18} />
-                    </a>
-                  ),
-              )}
-            </div>
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="mt-6 inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.03] px-5 py-2.5 text-sm text-muted transition-all hover:border-pink/40 hover:text-white"
+            <motion.h2
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="font-display text-5xl font-extrabold tracking-tight text-ink sm:text-6xl"
             >
-              Back to top <ArrowUp size={15} className="text-pink" />
-            </button>
+              {profile.name}
+              <span className="text-accent">.</span>
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-3 font-mono text-xs uppercase tracking-[0.3em] text-faint"
+            >
+              Full-Stack Developer × Graphic Designer
+            </motion.p>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3">
+            {socials.map(({ icon: Icon, label, href }) => (
+              <a
+                key={label}
+                href={href}
+                target={href.startsWith('http') ? '_blank' : undefined}
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="group flex h-11 items-center gap-2 rounded-full border border-ink/10 bg-panel/40 px-4 text-sm font-medium text-faint backdrop-blur-md transition-all duration-300 hover:border-ink/25 hover:text-ink"
+              >
+                <Icon size={15} className="transition-transform duration-300 group-hover:scale-110" />
+                {label}
+              </a>
+            ))}
           </div>
         </div>
 
-        <div className="divider-gradient mt-12" aria-hidden="true" />
-        <div className="mt-6 flex flex-col items-center justify-between gap-3 text-center md:flex-row">
-          <p className="text-xs text-faint">
-            © {new Date().getFullYear()} Dinesh Kumar. All rights reserved.
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-ink/10 py-7 sm:flex-row">
+          <p className="font-mono text-xs text-faint">
+            © {year} {profile.fullName}. Designed, coded &amp; animated with obsession.
           </p>
-          <p className="flex items-center gap-1.5 text-xs text-faint">
-            Crafted with <Heart size={12} className="fill-pink text-pink" /> and a lot of
-            <span className="text-cyan">Coffee</span>
-          </p>
+
+          <div className="flex items-center gap-2.5">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-60" />
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500" />
+            </span>
+            <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted">
+              Available for selected projects
+            </span>
+          </div>
+
+          <a href="#home" className="group inline-flex items-center gap-1.5 font-mono text-xs text-faint transition-colors hover:text-ink">
+            Back to top
+            <ArrowUpRight size={13} className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </a>
         </div>
+      </div>
+
+      <div className="pointer-events-none select-none overflow-hidden bg-gradient-to-b from-transparent to-ink/[0.03] pb-4 text-center" aria-hidden="true">
+        <span className="block whitespace-nowrap font-display text-[16vw] font-extrabold leading-[0.8] tracking-tighter text-ink/[0.04] dark:text-ink/[0.05]">
+          DINESH
+        </span>
       </div>
     </footer>
   )

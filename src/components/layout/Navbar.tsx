@@ -1,32 +1,27 @@
-import { useState, useEffect } from 'react'
-import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import { motion, AnimatePresence, useScroll, useSpring } from 'motion/react'
 import { Menu, X, ArrowUpRight } from 'lucide-react'
+import { navLinks, profile } from '../../lib/data'
+import ThemeToggle from '../ui/ThemeToggle'
+import { cn } from '../../lib/utils'
 
-const navItems = [
-  { label: 'Home', href: '#hero' },
-  { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Education', href: '#education' },
-  { label: 'Contact', href: '#contact' },
-]
+const FLARES = ['#7c3aed', '#ec4899', '#22d3ee']
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [active, setActive] = useState('hero')
+  const [active, setActive] = useState('home')
   const { scrollYProgress } = useScroll()
-  const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 30 })
+  const progress = useSpring(scrollYProgress, { stiffness: 140, damping: 28 })
 
   useEffect(() => {
+    const ids = navLinks.map((l) => l.href.slice(1))
     const onScroll = () => {
-      setScrolled(window.scrollY > 40)
-      const ids = navItems.map((item) => item.href.slice(1))
-      let current = 'hero'
+      setScrolled(window.scrollY > 30)
+      let current = 'home'
       for (const id of ids) {
         const el = document.getElementById(id)
-        if (el && el.getBoundingClientRect().top <= 120) current = id
+        if (el && el.getBoundingClientRect().top <= window.innerHeight * 0.5) current = id
       }
       setActive(current)
     }
@@ -36,127 +31,179 @@ export default function Navbar() {
   }, [])
 
   const scrollTo = (href: string) => {
-    setIsOpen(false)
+    setOpen(false)
+    if (href === '#home' && window.scrollY < 10) return
     document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
     <motion.header
-      initial={{ y: -80, opacity: 0 }}
+      initial={{ y: -90, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className={`fixed inset-x-0 top-0 z-[100] transition-all duration-500 ${
-        scrolled
-          ? 'border-b border-line bg-primary/70 shadow-[0_8px_40px_rgba(0,0,0,0.4)] backdrop-blur-2xl'
-          : 'border-b border-transparent bg-transparent'
-      }`}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className="fixed inset-x-0 top-0 z-[100]"
     >
-      {/* Scroll progress */}
+      {/* scroll progress */}
       <motion.div
-        className="absolute inset-x-0 top-0 h-[2px] origin-left bg-gradient-to-r from-accent via-pink to-cyan"
-        style={{ scaleX: progress }}
+        className="absolute inset-x-0 top-0 h-[2px] origin-left"
+        style={{
+          scaleX: progress,
+          background: 'linear-gradient(90deg, #7c3aed, #ec4899, #22d3ee)',
+        }}
         aria-hidden="true"
       />
 
-      <nav className="container-px" aria-label="Primary">
-        <div className="flex h-[72px] items-center justify-between">
-          <button
-            onClick={() => scrollTo('#hero')}
-            className="group flex items-center gap-2"
+      <div className="mx-auto mt-4 w-[calc(100%-2rem)] max-w-6xl sm:mt-5">
+        <nav
+          className={cn(
+            'relative flex h-14 items-center justify-between rounded-full border px-4 pl-5 transition-all duration-500 sm:px-5',
+            scrolled
+              ? 'border-ink/10 bg-panel/70 shadow-lg shadow-ink/5 backdrop-blur-2xl dark:bg-panel/60'
+              : 'border-transparent bg-transparent',
+          )}
+          aria-label="Primary"
+        >
+          {/* Logo */}
+          <a
+            href="#home"
+            onClick={(e) => {
+              e.preventDefault()
+              scrollTo('#home')
+            }}
+            className="group flex items-center gap-2.5"
             aria-label="Back to top"
           >
-            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-primary font-display text-sm font-bold text-white shadow-btn transition-transform duration-300 group-hover:scale-110">
-              DK
+            <motion.span
+              whileHover={{ rotate: 8, scale: 1.06 }}
+              className="flex h-8 w-8 items-center justify-center rounded-full font-display text-[13px] font-bold text-white"
+              style={{ background: 'linear-gradient(120deg,#7c3aed,#ec4899)' }}
+            >
+              D
+            </motion.span>
+            <span className="hidden font-display text-[15px] font-semibold tracking-tight text-ink sm:block">
+              Dinesh<span className="text-accent">.</span>
             </span>
-            <span className="hidden font-display text-lg font-semibold tracking-tight text-white sm:block">
-              Dinesh<span className="text-cyan">.</span>
-            </span>
-          </button>
+          </a>
 
           {/* Desktop links */}
-          <div className="hidden items-center gap-1 lg:flex">
-            {navItems.map((item) => {
-              const isActive = active === item.href.slice(1)
+          <div className="hidden items-center gap-1 md:flex">
+            {navLinks.map((link, i) => {
+              const isActive = active === link.href.slice(1)
               return (
-                <button
-                  key={item.href}
-                  onClick={() => scrollTo(item.href)}
-                  className={`relative rounded-full px-4 py-2 text-sm font-medium transition-colors duration-300 ${
-                    isActive ? 'text-white' : 'text-faint hover:text-white'
-                  }`}
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    scrollTo(link.href)
+                  }}
+                  className={cn(
+                    'relative rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200',
+                    isActive ? 'text-ink' : 'text-faint hover:text-ink',
+                  )}
                 >
-                  {item.label}
                   {isActive && (
                     <motion.span
-                      layoutId="nav-pill"
-                      className="absolute inset-0 -z-10 rounded-full bg-white/[0.07] ring-1 ring-inset ring-white/10"
+                      layoutId="nav-active"
+                      className="absolute inset-0 -z-10 rounded-full bg-ink/[0.06] ring-1 ring-inset ring-ink/5"
                       transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-                    />
+                    >
+                      <span
+                        className="absolute left-1/2 top-1/2 h-8 w-px -translate-x-1/2 -translate-y-1/2 blur-[2px]"
+                        style={{ background: FLARES[i % FLARES.length] }}
+                      />
+                    </motion.span>
                   )}
-                </button>
+                  {link.label}
+                </a>
               )
             })}
-            <button
-              onClick={() => scrollTo('#contact')}
-              className="ml-3 inline-flex items-center gap-1.5 rounded-full bg-gradient-primary px-5 py-2.5 text-sm font-semibold text-white shadow-btn transition-all duration-300 hover:shadow-glow-purple hover:brightness-110"
-            >
-              Hire Me <ArrowUpRight size={15} />
-            </button>
           </div>
 
-          {/* Mobile toggle */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="flex h-10 w-10 items-center justify-center rounded-xl border border-line bg-white/[0.03] text-white lg:hidden"
-            aria-label={isOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={isOpen}
-          >
-            {isOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
-        </div>
-      </nav>
+          {/* Right controls */}
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <a
+              href="#contact"
+              onClick={(e) => {
+                e.preventDefault()
+                scrollTo('#contact')
+              }}
+              className="group hidden items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold text-white md:inline-flex"
+              style={{ background: 'linear-gradient(120deg,#7c3aed,#ec4899)' }}
+            >
+              Let's Talk
+              <ArrowUpRight size={14} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
 
-      {/* Mobile menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="overflow-hidden border-t border-line bg-primary/95 backdrop-blur-2xl lg:hidden"
-          >
-            <div className="container-px flex flex-col gap-1 py-5">
-              {navItems.map((item, i) => {
-                const isActive = active === item.href.slice(1)
-                return (
-                  <motion.button
-                    key={item.href}
-                    initial={{ opacity: 0, x: -16 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.05 }}
-                    onClick={() => scrollTo(item.href)}
-                    className={`flex items-center justify-between rounded-xl px-4 py-3 text-left text-sm font-medium transition-colors ${
-                      isActive
-                        ? 'bg-white/[0.07] text-white'
-                        : 'text-faint hover:bg-white/[0.04] hover:text-white'
-                    }`}
-                  >
-                    {item.label}
-                    {isActive && <span className="h-1.5 w-1.5 rounded-full bg-cyan" />}
-                  </motion.button>
-                )
-              })}
-              <button
-                onClick={() => scrollTo('#contact')}
-                className="mt-3 inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-primary px-5 py-3 text-sm font-semibold text-white shadow-btn"
-              >
-                Hire Me <ArrowUpRight size={15} />
-              </button>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            {/* Mobile toggle */}
+            <button
+              type="button"
+              onClick={() => setOpen((v) => !v)}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/10 text-ink md:hidden"
+              aria-label={open ? 'Close menu' : 'Open menu'}
+              aria-expanded={open}
+            >
+              {open ? <X size={19} /> : <Menu size={19} />}
+            </button>
+          </div>
+        </nav>
+
+        {/* Mobile menu */}
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              initial={{ opacity: 0, y: -12, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -12, scale: 0.98 }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute inset-x-0 top-[calc(64px+0.75rem)] overflow-hidden rounded-3xl border border-ink/10 bg-panel/90 p-3 shadow-2xl shadow-ink/10 backdrop-blur-2xl md:hidden"
+            >
+              <div className="flex flex-col">
+                {navLinks.map((link, i) => {
+                  const isActive = active === link.href.slice(1)
+                  return (
+                    <motion.a
+                      key={link.href}
+                      href={link.href}
+                      initial={{ opacity: 0, x: -14 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.05 }}
+                      onClick={(e) => {
+                        e.preventDefault()
+                        scrollTo(link.href)
+                      }}
+                      className={cn(
+                        'flex items-center justify-between rounded-2xl px-4 py-3.5 text-[15px] font-medium transition-colors',
+                        isActive ? 'bg-ink/[0.06] text-ink' : 'text-faint hover:text-ink',
+                      )}
+                    >
+                      <span className="flex items-center gap-3">
+                        <span className="font-mono text-[11px] text-accent">0{i + 1}</span>
+                        {link.label}
+                      </span>
+                      <span
+                        className={cn('h-1.5 w-1.5 rounded-full', isActive ? 'bg-accent' : 'bg-ink/15')}
+                      />
+                    </motion.a>
+                  )
+                })}
+                <a
+                  href="#contact"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    scrollTo('#contact')
+                  }}
+                  className="mt-2 inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-3.5 text-sm font-semibold text-white"
+                  style={{ background: 'linear-gradient(120deg,#7c3aed,#ec4899)' }}
+                >
+                  {profile.name} — Let's Work Together <ArrowUpRight size={15} />
+                </a>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </motion.header>
   )
 }

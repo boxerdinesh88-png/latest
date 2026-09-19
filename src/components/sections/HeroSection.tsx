@@ -254,7 +254,7 @@ export default function HeroSection() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.9, duration: 0.6 }}
               >
-                <p className="font-display text-2xl font-bold gradient-text">2+</p>
+                <p className="font-display text-2xl font-bold gradient-text">{profile.yearsOfExperience}</p>
                 <p className="text-[11px] text-faint">Years Experience</p>
               </motion.div>
               <motion.div
@@ -263,7 +263,7 @@ export default function HeroSection() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1.1, duration: 0.6 }}
               >
-                <p className="font-display text-2xl font-bold gradient-text">15+</p>
+                <p className="font-display text-2xl font-bold gradient-text">20+</p>
                 <p className="text-[11px] text-faint">Projects Delivered</p>
               </motion.div>
               <motion.div

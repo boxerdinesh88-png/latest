@@ -6,9 +6,9 @@
     "role": "Full Stack Developer | WordPress & Elementor Expert | Python & Django",
     "specialization": "Python · Django · React JS · WordPress · Elementor · REST APIs · MySQL",
     "location": "Jhoripur, North East Delhi, India",
-    "yearsOfExperience": "2+",
+    "yearsOfExperience": "1+",
     "resumeUrl": "/DINESH-RESUME.pdf",
-    "bio": "Results-driven Full Stack Developer with 2+ years of hands-on experience building scalable web applications for international clients. Proficient in Python, Django, React JS, JavaScript, MySQL, WordPress, and Elementor. Skilled in developing responsive UIs, designing RESTful APIs, managing databases, and delivering custom WordPress/Elementor solutions. Leverages AI tools (ChatGPT & Claude) to enhance development efficiency and problem-solving.",
+    "bio": "Results-driven Full Stack Developer and Associate Software Engineer with 1+ year of hands-on experience building scalable web applications and internal business tools for international and enterprise clients. Proficient in Python, Django, React JS, JavaScript, MySQL, WordPress, and Elementor. Skilled in developing responsive UIs, designing RESTful APIs, managing databases, and delivering custom WordPress/Elementor solutions and asset-management platforms. Leverages AI tools (ChatGPT & Claude) to enhance development efficiency and problem-solving.",
     "avatarUrl": "/avatar.jpeg",
     "social": {
       "github": "https://github.com/boxerdinesh88-png/boxerdinesh88-png",
@@ -27,6 +27,10 @@
         {
           "name": "React.js",
           "level": "Advanced"
+        },
+        {
+          "name": "Next.js",
+          "level": "Intermediate"
         },
         {
           "name": "JavaScript",
@@ -150,13 +154,24 @@
   ],
   "experience": [
     {
+      "company": "Energyforge Equipments & Engineers LLP",
+      "role": "Associate Software Engineer",
+      "period": "Aug 2026 — Present",
+      "location": "Ghaziabad",
+      "summary": "Contributing to full-stack software development for the company's engineering and operations tools. Developing and maintaining internal web applications using Python, Django, and React JS in a professional, production environment.",
+      "highlights": [
+        "Working as an Associate Software Engineer, contributing to full-stack software development for the company's engineering and operations tools.",
+        "Developing and maintaining internal web applications using Python, Django, and React JS in a professional, production environment."
+      ]
+    },
+    {
       "company": "Creative Squadz",
       "role": "Full Stack Developer",
-      "period": "May 2026 — Present",
+      "period": "May 2026 — Aug 2026",
       "location": "Delhi NCR",
-      "summary": "Building and maintaining full-stack web applications and WordPress/Elementor websites for clients. Delivering high-performance, responsive digital solutions.",
+      "summary": "Built and maintained full-stack web applications and WordPress/Elementor websites for clients. Delivering high-performance, responsive digital solutions.",
       "highlights": [
-        "Building and maintaining full-stack web applications and WordPress/Elementor websites for clients.",
+        "Built and maintained full-stack web applications and WordPress/Elementor websites for clients.",
         "Delivered live project: happyhomeic.com",
         "Developing responsive cross-platform solutions with modern frontend and backend technologies."
       ]
@@ -201,6 +216,52 @@
         "Built secure certificate generation and gemstone records management system",
         "Developed admin dashboard with Django REST Framework + React JS",
         "Deployed on PythonAnywhere with production-grade configuration"
+      ],
+      "highlight": true
+    },
+    {
+      "id": "inventory-tool",
+      "category": "Full Stack",
+      "title": "Inventory Tool",
+      "subtitle": "Vendor Expense & Asset Search System",
+      "description": "Full-stack inventory tracking tool that analyzes vendor-wise expenses and lets users search assets by name to quickly identify which vendor or item category is driving the highest costs.",
+      "stack": [
+        "Django",
+        "Python",
+        "React JS",
+        "REST API",
+        "PythonAnywhere"
+      ],
+      "role": "Full-Stack Developer",
+      "year": "2026",
+      "link": "https://inventorytool.pythonanywhere.com",
+      "highlights": [
+        "Built vendor-wise expense analysis and asset search by name",
+        "Identifies which vendor or item category drives the highest costs",
+        "Deployed on PythonAnywhere with full-stack Django + React architecture"
+      ],
+      "highlight": true
+    },
+    {
+      "id": "asset-inventory-system",
+      "category": "Full Stack",
+      "title": "Asset Inventory System",
+      "subtitle": "Real-Time Asset & Certificate Tracking",
+      "description": "Real-time asset management system tracking current asset location, certificate expiry alerts, and returns/damage records for complete asset lifecycle visibility. Built with Django REST Framework + React JS, deployed on PythonAnywhere.",
+      "stack": [
+        "Django",
+        "Python",
+        "React JS",
+        "REST API",
+        "PythonAnywhere"
+      ],
+      "role": "Full-Stack Developer",
+      "year": "2026",
+      "link": "https://assetinventorys.pythonanywhere.com",
+      "highlights": [
+        "Real-time tracking of asset location and certificate expiry alerts",
+        "Manages returns/damage records for complete asset lifecycle visibility",
+        "Built with Django REST Framework + React JS, deployed on PythonAnywhere"
       ],
       "highlight": true
     },
@@ -289,11 +350,77 @@
       ],
       "role": "WordPress Developer",
       "year": "2026",
-      "link": "https://navsandhyatapes.giriinternational.in",
+      "link": "https://navsandhyatapes.co.in",
       "highlights": [
         "Built custom product category filtering and ISO certification showcase",
         "Created animated brand logos marquee with gold/cream palette",
         "Applied scoped CSS for Elementor HTML widget compatibility"
+      ]
+    },
+    {
+      "id": "phagendrababu-library",
+      "category": "Full Stack",
+      "title": "Phagendrababu Library",
+      "subtitle": "Library Management Platform",
+      "description": "Full-stack library platform built with a Next.js front end and a Django REST Framework backend, with the REST API deployed as a separate service.",
+      "stack": [
+        "Next.js",
+        "Django",
+        "Python",
+        "REST API",
+        "React"
+      ],
+      "role": "Full-Stack Developer",
+      "year": "2026",
+      "link": "https://phagendrababulibrary.in",
+      "highlights": [
+        "Built full-stack library platform with Next.js frontend",
+        "Architected Django REST Framework backend deployed as a separate service",
+        "Delivered responsive, modern library management experience"
+      ]
+    },
+    {
+      "id": "greenmont",
+      "category": "WordPress",
+      "title": "Greenmont",
+      "subtitle": "Business Website",
+      "description": "Custom WordPress website with responsive design and modern UI, built and deployed independently.",
+      "stack": [
+        "WordPress",
+        "Elementor",
+        "PHP",
+        "CSS3",
+        "Responsive Design"
+      ],
+      "role": "WordPress Developer",
+      "year": "2026",
+      "link": "https://greenmont.in",
+      "highlights": [
+        "Built custom WordPress website with responsive modern UI",
+        "Designed and developed independently end-to-end",
+        "Deployed to production successfully"
+      ]
+    },
+    {
+      "id": "jessica-yaffa-performance",
+      "category": "WordPress",
+      "title": "Website Performance Optimization",
+      "subtitle": "Jessica Yaffa & Practical Recovery",
+      "description": "Performed code-level optimization and performance tuning to improve page speed and site responsiveness for rehabilitation and wellness sites.",
+      "stack": [
+        "WordPress",
+        "PHP",
+        "Web Performance",
+        "Page Speed",
+        "Maintenance"
+      ],
+      "role": "Performance Engineer",
+      "year": "2026",
+      "link": "https://jessicayaffa.org",
+      "highlights": [
+        "Performed code-level optimization and performance tuning",
+        "Improved page speed and overall site responsiveness",
+        "Ongoing maintenance for jessicayaffa.org and practicalrecovery.com"
       ]
     },
     {
@@ -361,7 +488,7 @@
       ],
       "role": "Full-Stack Developer",
       "year": "2025",
-      "link": "https://boxerdinesh88-png.github.io/Shi-ning-services/",
+      "link": "https://shiningservicesindia.com",
       "highlights": [
         "Engineered a dynamic Django-backed server side rendering system for high-SEO discoverability",
         "Created interactive secure contact forms connected directly to admin notifications and MySQL database",

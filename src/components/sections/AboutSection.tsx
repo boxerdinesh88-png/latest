@@ -8,8 +8,8 @@ import MagneticButton from '../ui/MagneticButton'
 const ease = [0.16, 1, 0.3, 1] as const
 
 const stats = [
-  { value: 2, suffix: '+', label: 'Years Experience', icon: Zap },
-  { value: 15, suffix: '+', label: 'Projects Delivered', icon: Code2 },
+  { value: 1, suffix: '+', label: 'Years Experience', icon: Zap },
+  { value: 20, suffix: '+', label: 'Projects Delivered', icon: Code2 },
   { value: 20, suffix: '+', label: 'Technologies', icon: BadgeCheck },
   { value: 100, suffix: '%', label: 'Client Satisfaction', icon: Zap },
 ]
@@ -23,7 +23,7 @@ const terminalLines = [
   { indent: 1, text: '  "cms": ["WordPress", "Elementor"],' },
   { indent: 1, text: '  "database": "MySQL" }' },
   { prompt: true, text: 'dinesh@portfolio:~$ deploy --production' },
-  { indent: 1, text: '✓ Build succeeded — 15+ projects shipped ✓' },
+  { indent: 1, text: '✓ Build succeeded — 20+ projects shipped ✓' },
 ]
 
 export default function AboutSection() {

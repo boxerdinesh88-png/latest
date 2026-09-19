@@ -6,6 +6,7 @@ import SectionHeader from '../ui/SectionHeader'
 const ease = [0.16, 1, 0.3, 1] as const
 
 const companyStack: Record<string, string[]> = {
+  'Energyforge Equipments & Engineers LLP': ['Python', 'Django', 'React JS', 'REST API', 'MySQL'],
   'Creative Squadz': ['WordPress', 'Elementor', 'Django', 'React JS', 'MySQL'],
   'ProAce International Inc.': ['Python', 'Django', 'React JS', 'MySQL', 'WordPress', 'Elementor'],
 }

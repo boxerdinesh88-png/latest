@@ -1,13 +1,15 @@
-import { useRef, ReactNode, ButtonHTMLAttributes } from 'react'
+import { useRef, ReactNode, HTMLAttributes } from 'react'
 
-interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
+// Wraps an existing button/link and pulls it toward the cursor. Renders a
+// <div> so the interactive child is never nested inside another button.
+interface Props extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode
   className?: string
   strength?: number
 }
 
 export default function MagneticButton({ children, className = '', strength = 0.25, ...props }: Props) {
-  const ref = useRef<HTMLButtonElement>(null)
+  const ref = useRef<HTMLDivElement>(null)
 
   const onMove = (e: React.MouseEvent) => {
     const el = ref.current
@@ -25,14 +27,14 @@ export default function MagneticButton({ children, className = '', strength = 0.
   }
 
   return (
-    <button
+    <div
       ref={ref}
-      className={`transition-transform duration-200 ease-out ${className}`}
+      className={`inline-block transition-transform duration-200 ease-out ${className}`}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
       {...props}
     >
       {children}
-    </button>
+    </div>
   )
 }

@@ -10,7 +10,7 @@ interface Props {
 
 export default function SplitText({ text, className = '', delay = 0 }: Props) {
   const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, margin: '-50px' })
+  const isInView = useInView(ref, { once: true, margin: '-50px 0px' })
 
   const words = text.split(' ')
 

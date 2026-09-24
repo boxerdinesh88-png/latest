@@ -6,5 +6,15 @@ export default defineConfig({
   plugins: [react()],
   build: {
     chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        // Vendor code changes rarely: separate chunks stay cached across deploys
+        manualChunks: {
+          react: ['react', 'react-dom'],
+          motion: ['framer-motion'],
+          lenis: ['lenis'],
+        },
+      },
+    },
   },
 })

@@ -3,17 +3,42 @@
 @tailwind utilities;
 
 @layer base {
+  /* Light theme (default) */
   :root {
+    color-scheme: light;
+    --c-ink: 15 23 42;
+    --c-primary: 246 247 251;
+    --c-surface: 255 255 255;
+    --c-surface-2: 238 241 248;
+    --c-muted: 51 65 85;
+    --c-faint: 100 116 139;
+    --c-cyan: 8 145 178;
+    --c-line: rgba(15, 23, 42, 0.09);
+    --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.04), 0 12px 32px -12px rgba(15, 23, 42, 0.12);
+    --shadow-card-lg: 0 2px 4px rgba(15, 23, 42, 0.04), 0 24px 56px -16px rgba(15, 23, 42, 0.2);
+    --scrollbar-track: #eef1f8;
+    --color-cyan: rgb(var(--c-cyan));
+  }
+
+  /* Dark theme */
+  .dark {
     color-scheme: dark;
-    --color-primary: #050816;
-    --color-surface: #111827;
-    --color-foreground: #ffffff;
-    --color-muted: #cbd5e1;
-    --color-faint: #94a3b8;
-    --color-border: rgba(255, 255, 255, 0.08);
-    --color-accent: #7c3aed;
-    --color-pink: #ec4899;
-    --color-cyan: #06b6d4;
+    --c-ink: 255 255 255;
+    --c-primary: 5 8 22;
+    --c-surface: 17 24 39;
+    --c-surface-2: 27 33 56;
+    --c-muted: 203 213 225;
+    --c-faint: 148 163 184;
+    --c-cyan: 6 182 212;
+    --c-line: rgba(255, 255, 255, 0.08);
+    --shadow-card: 0 20px 60px rgba(0, 0, 0, 0.35);
+    --shadow-card-lg: 0 30px 80px rgba(0, 0, 0, 0.45);
+    --scrollbar-track: #050816;
+  }
+
+  /* Text on brand gradients stays white in both themes */
+  [class*='bg-gradient-primary'] {
+    --c-ink: 255 255 255;
   }
 
   * {
@@ -27,7 +52,8 @@
   body {
     @apply bg-primary text-foreground font-sans antialiased;
     overflow-x: hidden;
-    background-color: var(--color-primary);
+    background-color: rgb(var(--c-primary));
+    transition: background-color 0.4s ease, color 0.4s ease;
   }
 
   ::selection {
@@ -45,7 +71,7 @@
     height: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: #050816;
+    background: var(--scrollbar-track);
   }
   ::-webkit-scrollbar-thumb {
     background: linear-gradient(180deg, #7c3aed, #ec4899);
@@ -71,6 +97,11 @@
 
   .glass-card {
     @apply glass rounded-[20px] shadow-card;
+  }
+
+  /* Light theme: glass becomes crisp white cards instead of faint tints */
+  :root:not(.dark) .glass {
+    background-color: rgb(var(--c-surface) / 0.8);
   }
 
   .glass-strong {

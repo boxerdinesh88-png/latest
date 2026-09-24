@@ -53,7 +53,21 @@ initDB()
 
 // Serve frontend build
 const distPath = path.join(__dirname, '..', 'dist')
-app.use(express.static(distPath))
+app.use(
+  express.static(distPath, {
+    setHeaders(res, filePath) {
+      // Hashed build assets never change: cache for a year.
+      // index.html must always be revalidated so new deploys show up.
+      if (filePath.includes(`${path.sep}assets${path.sep}`)) {
+        res.setHeader('Cache-Control', 'public, max-age=31536000, immutable')
+      } else if (filePath.endsWith('.html')) {
+        res.setHeader('Cache-Control', 'no-cache')
+      } else {
+        res.setHeader('Cache-Control', 'public, max-age=604800')
+      }
+    },
+  }),
+)
 
 // Health check
 app.get('/api/health', async (_req, res) => {

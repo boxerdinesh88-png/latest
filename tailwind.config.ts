@@ -6,18 +6,20 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: '#050816',
-        surface: '#111827',
-        'surface-2': '#1B2138',
+        // Theme-aware tokens (values live in src/index.css under :root / .dark)
+        white: 'rgb(var(--c-ink) / <alpha-value>)',
+        primary: 'rgb(var(--c-primary) / <alpha-value>)',
+        surface: 'rgb(var(--c-surface) / <alpha-value>)',
+        'surface-2': 'rgb(var(--c-surface-2) / <alpha-value>)',
         accent: '#7C3AED',
         'accent-light': '#A78BFA',
         'accent-dark': '#6D28D9',
         pink: { DEFAULT: '#EC4899', light: '#F472B6' },
-        cyan: { DEFAULT: '#06B6D4', light: '#22D3EE' },
-        foreground: '#FFFFFF',
-        muted: '#CBD5E1',
-        faint: '#94A3B8',
-        line: 'rgba(255,255,255,0.08)',
+        cyan: { DEFAULT: 'rgb(var(--c-cyan) / <alpha-value>)', light: '#22D3EE' },
+        foreground: 'rgb(var(--c-ink) / <alpha-value>)',
+        muted: 'rgb(var(--c-muted) / <alpha-value>)',
+        faint: 'rgb(var(--c-faint) / <alpha-value>)',
+        line: 'var(--c-line)',
       },
       fontFamily: {
         display: ['Poppins', 'Inter', 'sans-serif'],
@@ -26,8 +28,8 @@ const config: Config = {
         mono: ['"JetBrains Mono"', 'monospace'],
       },
       boxShadow: {
-        'card': '0 20px 60px rgba(0,0,0,0.35)',
-        'card-lg': '0 30px 80px rgba(0,0,0,0.45)',
+        'card': 'var(--shadow-card)',
+        'card-lg': 'var(--shadow-card-lg)',
         'glow-purple': '0 0 40px rgba(124,58,237,0.35)',
         'glow-cyan': '0 0 40px rgba(6,182,212,0.3)',
         'glow-pink': '0 0 40px rgba(236,72,153,0.3)',

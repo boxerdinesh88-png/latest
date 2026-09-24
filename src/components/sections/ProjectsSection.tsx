@@ -1,4 +1,4 @@
-import { useMemo, useState, useCallback } from 'react'
+import { useMemo, useState, useCallback, forwardRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ExternalLink, Github, Star, X, BookOpen } from 'lucide-react'
 import { usePortfolio } from '../../lib/usePortfolio'
@@ -69,102 +69,12 @@ export default function ProjectsSection() {
         <motion.div layout className="grid gap-7 md:grid-cols-2">
           <AnimatePresence mode="popLayout">
             {filtered.map((project, i) => (
-              <motion.article
-                layout
+              <ProjectCard
                 key={project.id}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-60px' }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.6, delay: (i % 2) * 0.08, ease }}
-                className="glass-card group relative flex flex-col overflow-hidden card-hover"
-              >
-                {/* Image */}
-                <div className="relative h-52 overflow-hidden sm:h-60">
-                  {project.image && (
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      width={720}
-                      height={400}
-                      loading="lazy"
-                      decoding="async"
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                  )}
-                  <div
-                    className="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent"
-                    aria-hidden="true"
-                  />
-                  {/* Hover overlay */}
-                  <div
-                    className="absolute inset-0 bg-gradient-to-tr from-accent/30 via-transparent to-cyan/20 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                    aria-hidden="true"
-                  />
-                  {/* Badges */}
-                  <div className="absolute left-4 top-4 flex items-center gap-2">
-                    <span className="rounded-full border border-line bg-primary/70 px-3 py-1 text-[11px] font-semibold text-cyan backdrop-blur-xl">
-                      {project.category || 'Frontend'}
-                    </span>
-                    {project.highlight && (
-                      <span className="flex items-center gap-1 rounded-full bg-gradient-primary px-3 py-1 text-[11px] font-semibold text-white shadow-btn">
-                        <Star size={11} className="fill-white" /> Featured
-                      </span>
-                    )}
-                  </div>
-                  <span className="absolute right-4 top-4 font-mono text-xs text-white/50">
-                    {project.year}
-                  </span>
-                </div>
-
-                {/* Content */}
-                <div className="flex flex-1 flex-col p-7">
-                  <h3 className="font-display text-xl font-bold text-white transition-colors group-hover:text-cyan">
-                    {project.title}
-                  </h3>
-                  <p className="mt-1 text-xs text-faint">{project.subtitle}</p>
-                  <p className="mt-4 text-sm leading-relaxed text-muted line-clamp-2">
-                    {project.description}
-                  </p>
-
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {project.stack.slice(0, 5).map((tech) => (
-                      <span key={tech} className="chip">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="mt-7 flex flex-wrap items-center gap-3 border-t border-line pt-5">
-                    {project.link && (
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 rounded-full bg-gradient-primary px-4 py-2 text-xs font-semibold text-white shadow-btn transition-all hover:brightness-110"
-                      >
-                        <ExternalLink size={13} /> Live Demo
-                      </a>
-                    )}
-                    {project.github && (
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white/[0.03] px-4 py-2 text-xs font-medium text-muted transition-all hover:border-cyan/40 hover:text-white"
-                      >
-                        <Github size={13} /> GitHub
-                      </a>
-                    )}
-                    <button
-                      onClick={() => openModal(project)}
-                      className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white/[0.03] px-4 py-2 text-xs font-medium text-muted transition-all hover:border-pink/40 hover:text-white"
-                    >
-                      <BookOpen size={13} /> Case Study
-                    </button>
-                  </div>
-                </div>
-              </motion.article>
+                project={project}
+                index={i}
+                onOpen={() => openModal(project)}
+              />
             ))}
           </AnimatePresence>
         </motion.div>
@@ -281,3 +191,115 @@ export default function ProjectsSection() {
     </section>
   )
 }
+
+type Project = ReturnType<typeof usePortfolio>['projects'][number]
+
+type ProjectCardProps = {
+  project: Project
+  index: number
+  onOpen: () => void
+}
+
+// Same hover as creativesquadz.com/portfolio: fixed-height frame (360px on desktop),
+// screenshot slides from top:0 to top:-100% in 1s ease.
+const ProjectCard = forwardRef<HTMLElement, ProjectCardProps>(function ProjectCard(
+  { project, index, onOpen },
+  ref,
+) {
+  // How far the screenshot may slide on hover. Same as the reference (one frame
+  // height) but never past the image's bottom, so short screenshots don't leave
+  // an empty black frame. Screenshots shorter than the frame don't scroll at all.
+  const [scroll, setScroll] = useState<number | null>(null)
+  const measure = (img: HTMLImageElement) => {
+    const frame = img.parentElement?.clientHeight ?? 0
+    setScroll(Math.max(0, Math.min(frame, img.offsetHeight - frame)))
+  }
+  const isShort = scroll === 0
+
+  const preview = (
+    <img
+      src={project.image}
+      alt={project.title}
+      loading="lazy"
+      decoding="async"
+      onLoad={(e) => measure(e.currentTarget)}
+      style={{ '--scroll': `-${scroll ?? 0}px` } as React.CSSProperties}
+      className={
+        isShort
+          ? 'absolute inset-0 block h-full w-full object-cover object-top'
+          : 'absolute left-0 top-0 block h-auto w-full transition-[top] duration-1000 ease-[ease] group-hover/frame:top-[var(--scroll)]'
+      }
+    />
+  )
+
+  return (
+    <motion.article
+      ref={ref}
+      layout
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-60px 0px' }}
+      exit={{ opacity: 0, scale: 0.95 }}
+      transition={{ duration: 0.6, delay: (index % 2) * 0.08, ease }}
+      className="glass-card group flex flex-col overflow-hidden"
+    >
+      {/* Screenshot frame */}
+      {project.image &&
+        (project.link ? (
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Open ${project.title}`}
+            className="group/frame relative block h-[240px] overflow-hidden sm:h-[300px] lg:h-[360px]"
+          >
+            {preview}
+          </a>
+        ) : (
+          <button
+            onClick={onOpen}
+            aria-label={`${project.title} case study`}
+            className="group/frame relative block h-[240px] w-full overflow-hidden sm:h-[300px] lg:h-[360px]"
+          >
+            {preview}
+          </button>
+        ))}
+
+      {/* Title + actions */}
+      <div className="flex flex-wrap items-center justify-between gap-3 border-t border-line px-6 py-5">
+        <h3 className="font-display text-lg font-bold text-white transition-colors group-hover:text-cyan">
+          {project.title}
+        </h3>
+        <div className="flex items-center gap-2">
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${project.title} on GitHub`}
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-line bg-white/[0.03] text-muted transition-all hover:border-cyan/40 hover:text-white"
+            >
+              <Github size={15} />
+            </a>
+          )}
+          {project.link && (
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-full bg-gradient-primary px-4 py-2 text-xs font-semibold text-white shadow-btn transition-all hover:brightness-110"
+            >
+              <ExternalLink size={13} /> Live Demo
+            </a>
+          )}
+          <button
+            onClick={onOpen}
+            className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white/[0.03] px-4 py-2 text-xs font-medium text-muted transition-all hover:border-pink/40 hover:text-white"
+          >
+            <BookOpen size={13} /> Case Study
+          </button>
+        </div>
+      </div>
+    </motion.article>
+  )
+})

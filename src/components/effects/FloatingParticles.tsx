@@ -20,9 +20,12 @@ export default function FloatingParticles() {
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
-    let animationId: number
+    // Decorative only: skip entirely for reduced motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    let animationId = 0
     const particles: Particle[] = []
-    const PARTICLE_COUNT = 60
+    const PARTICLE_COUNT = window.innerWidth < 768 ? 24 : 60
 
     const resize = () => {
       canvas.width = window.innerWidth
@@ -45,6 +48,8 @@ export default function FloatingParticles() {
     }
 
     const draw = () => {
+      animationId = requestAnimationFrame(draw)
+      if (document.hidden) return
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
       particles.forEach((p, i) => {
@@ -64,8 +69,6 @@ export default function FloatingParticles() {
           particles[i] = createParticle()
         }
       })
-
-      animationId = requestAnimationFrame(draw)
     }
 
     resize()
@@ -81,7 +84,8 @@ export default function FloatingParticles() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-[1]"
+      className="pointer-events-none fixed inset-0 z-[1]"
+      aria-hidden="true"
     />
   )
 }

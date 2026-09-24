@@ -9,12 +9,15 @@ export default function AuroraBackground() {
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
-    let animationId: number
+    let animationId = 0
     let time = 0
 
+    // The blobs are soft gradients, so render at a quarter of the resolution
+    // and let CSS scale the canvas up: looks the same, ~16x fewer pixels to paint.
+    const SCALE = 0.25
     const resize = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
+      canvas.width = Math.ceil(window.innerWidth * SCALE)
+      canvas.height = Math.ceil(window.innerHeight * SCALE)
     }
 
     const colors = [
@@ -25,22 +28,29 @@ export default function AuroraBackground() {
     ]
 
     const blobs = Array.from({ length: 4 }, (_, i) => ({
-      x: Math.random() * (canvas?.width ?? 1920),
-      y: Math.random() * (canvas?.height ?? 1080),
-      vx: (Math.random() - 0.5) * 0.3,
-      vy: (Math.random() - 0.5) * 0.3,
-      radius: 200 + Math.random() * 300,
+      x: Math.random() * window.innerWidth * SCALE,
+      y: Math.random() * window.innerHeight * SCALE,
+      vx: (Math.random() - 0.5) * 0.3 * SCALE,
+      vy: (Math.random() - 0.5) * 0.3 * SCALE,
+      radius: (200 + Math.random() * 300) * SCALE,
       color: colors[i],
       phase: Math.random() * Math.PI * 2,
     }))
 
-    const draw = () => {
-      time += 0.002
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    let last = 0
+
+    const draw = (now = 0) => {
+      animationId = requestAnimationFrame(draw)
+      // ~30fps is plenty for slow drifting colour; skip frames when the tab is hidden
+      if (document.hidden || now - last < 33) return
+      last = now
+      time += 0.004
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
       blobs.forEach((blob) => {
-        blob.x += blob.vx + Math.sin(time + blob.phase) * 0.2
-        blob.y += blob.vy + Math.cos(time + blob.phase) * 0.2
+        blob.x += blob.vx + Math.sin(time + blob.phase) * 0.2 * SCALE
+        blob.y += blob.vy + Math.cos(time + blob.phase) * 0.2 * SCALE
 
         if (blob.x < -blob.radius) blob.x = canvas.width + blob.radius
         if (blob.x > canvas.width + blob.radius) blob.x = -blob.radius
@@ -64,12 +74,17 @@ export default function AuroraBackground() {
           blob.radius * 2
         )
       })
-
-      animationId = requestAnimationFrame(draw)
     }
 
     resize()
-    draw()
+    if (reducedMotion) {
+      // Paint a single still frame
+      last = -Infinity
+      draw()
+      cancelAnimationFrame(animationId)
+    } else {
+      draw()
+    }
     window.addEventListener('resize', resize)
 
     return () => {
@@ -81,8 +96,8 @@ export default function AuroraBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0"
-      style={{ mixBlendMode: 'screen' }}
+      className="pointer-events-none fixed inset-0 z-0 h-full w-full dark:mix-blend-screen"
+      aria-hidden="true"
     />
   )
 }

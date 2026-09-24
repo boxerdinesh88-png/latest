@@ -7,9 +7,9 @@ import MagneticButton from '../ui/MagneticButton'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
-const stats = [
-  { value: 1, suffix: '+', label: 'Years Experience', icon: Zap },
-  { value: 20, suffix: '+', label: 'Projects Delivered', icon: Code2 },
+const statsFor = (years: number, projects: number) => [
+  { value: years, suffix: '+', label: 'Years Experience', icon: Zap },
+  { value: projects, suffix: '+', label: 'Projects Delivered', icon: Code2 },
   { value: 20, suffix: '+', label: 'Technologies', icon: BadgeCheck },
   { value: 100, suffix: '%', label: 'Client Satisfaction', icon: Zap },
 ]
@@ -27,7 +27,8 @@ const terminalLines = [
 ]
 
 export default function AboutSection() {
-  const { profile, education } = usePortfolio()
+  const { profile, education, projects } = usePortfolio()
+  const stats = statsFor(parseInt(profile.yearsOfExperience, 10) || 1, projects.length)
 
   return (
     <section id="about" className="relative section-padding">
@@ -39,12 +40,12 @@ export default function AboutSection() {
           subtitle="Building high-performance web applications with clean code, modern architecture and a recruiter-ready track record."
         />
 
-        <div className="grid gap-10 lg:grid-cols-2">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
           {/* Profile card */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
+            viewport={{ once: true, margin: '-80px 0px' }}
             transition={{ duration: 0.7, ease }}
             className="glass-card group relative overflow-hidden p-8 md:p-10"
           >
@@ -78,7 +79,7 @@ export default function AboutSection() {
                   <h3 className="font-display text-2xl font-bold text-white">{profile.name}</h3>
                   <p className="mt-1 text-sm text-faint">{profile.role}</p>
                   <span className="badge-gradient mt-3">
-                    <BadgeCheck size={14} className="text-emerald-300" /> Available for hire
+                    <BadgeCheck size={14} className="text-emerald-600 dark:text-emerald-300" /> Available for hire
                   </span>
                 </div>
               </div>
@@ -120,7 +121,7 @@ export default function AboutSection() {
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
+            viewport={{ once: true, margin: '-80px 0px' }}
             transition={{ duration: 0.7, ease }}
             className="flex flex-col"
           >
@@ -131,7 +132,7 @@ export default function AboutSection() {
                 <span className="h-3 w-3 rounded-full bg-[#28C840]" />
                 <span className="ml-3 font-mono text-xs text-faint">developer@portfolio: ~</span>
               </div>
-              <pre className="overflow-x-auto p-6 font-mono text-[13px] leading-relaxed md:text-sm">
+              <pre className="overflow-x-auto whitespace-pre-wrap break-words p-5 font-mono text-[12px] leading-relaxed sm:p-6 sm:text-[13px] md:whitespace-pre md:text-sm">
                 {terminalLines.map((line, i) => (
                   <motion.div
                     key={i}
@@ -176,7 +177,7 @@ export default function AboutSection() {
                 key={stat.label}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-60px' }}
+                viewport={{ once: true, margin: '-60px 0px' }}
                 transition={{ duration: 0.6, delay: i * 0.1, ease }}
                 className="glass-card group relative overflow-hidden p-7 text-center card-hover"
               >

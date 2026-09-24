@@ -1,6 +1,6 @@
 import { useState, useEffect, lazy, Suspense } from 'react'
 import { ReactLenis } from 'lenis/react'
-import Loader from './components/layout/Loader'
+import Loader, { INTRO_MS } from './components/layout/Loader'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 import ScrollToTop from './components/layout/ScrollToTop'
@@ -23,9 +23,22 @@ function SectionFallback() {
 function App() {
   const [isLoading, setIsLoading] = useState(true)
 
+  // Short branded intro: hide once fonts are ready and the intro has played
+  // (INTRO_MS), but never hold the page back for more than 1.5s
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 1800)
-    return () => clearTimeout(timer)
+    let done = false
+    const hide = () => {
+      if (!done) {
+        done = true
+        setIsLoading(false)
+      }
+    }
+    const started = performance.now()
+    const cap = setTimeout(hide, 1500)
+    document.fonts?.ready.then(() => {
+      setTimeout(hide, Math.max(0, INTRO_MS + 100 - (performance.now() - started)))
+    })
+    return () => clearTimeout(cap)
   }, [])
 
   return (

@@ -33,23 +33,28 @@ function TimelineItem({
   return (
     <div className="relative pl-14 md:pl-0">
       {/* Dot */}
-      <div className="absolute left-[22px] top-1.5 z-10 md:left-1/2 md:-translate-x-1/2">
+      {/* In-view trigger lives on the wrapper: a scale(0) element has no area
+          and may never be reported as visible */}
+      <motion.div
+        initial="hidden"
+        whileInView="shown"
+        viewport={{ once: true, margin: '-100px 0px' }}
+        className="absolute left-[22px] top-1.5 z-10 md:left-1/2 md:-translate-x-1/2"
+      >
         <motion.span
-          initial={{ scale: 0 }}
-          whileInView={{ scale: 1 }}
-          viewport={{ once: true, margin: '-100px' }}
+          variants={{ hidden: { scale: 0 }, shown: { scale: 1 } }}
           transition={{ duration: 0.5, ease }}
           className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-primary font-display text-sm font-bold text-white shadow-btn md:h-12 md:w-12"
         >
           {initials(item.company)}
         </motion.span>
         <span className="absolute inset-0 -z-10 animate-ping rounded-2xl bg-accent/40" aria-hidden="true" />
-      </div>
+      </motion.div>
 
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-100px' }}
+        viewport={{ once: true, margin: '-100px 0px' }}
         transition={{ duration: 0.7, ease }}
         className={`glass-card group relative mb-10 p-7 card-hover md:mb-16 md:w-[calc(50%-3.5rem)] ${
           isLeft ? 'md:mr-auto' : 'md:ml-auto'

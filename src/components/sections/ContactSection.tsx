@@ -107,7 +107,7 @@ export default function ContactSection() {
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
+            viewport={{ once: true, margin: '-60px 0px' }}
             transition={{ duration: 0.7, ease }}
             className="glass-card relative overflow-hidden p-8 lg:col-span-2"
           >
@@ -179,7 +179,7 @@ export default function ContactSection() {
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
+            viewport={{ once: true, margin: '-60px 0px' }}
             transition={{ duration: 0.7, ease }}
             className="glass-card p-8 md:p-10 lg:col-span-3"
           >
@@ -196,7 +196,7 @@ export default function ContactSection() {
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ type: 'spring', stiffness: 200, damping: 12, delay: 0.1 }}
-                    className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-emerald-400/10 text-emerald-300 ring-1 ring-inset ring-emerald-400/30"
+                    className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-emerald-400/10 text-emerald-600 dark:text-emerald-300 ring-1 ring-inset ring-emerald-400/30"
                   >
                     <CheckCircle2 size={40} />
                   </motion.div>

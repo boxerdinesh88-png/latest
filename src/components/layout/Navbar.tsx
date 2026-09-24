@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion'
+import { useSmoothScroll, HEADER_OFFSET } from '../../lib/useSmoothScroll'
 import { Menu, X, ArrowUpRight } from 'lucide-react'
+import ThemeToggle from '../ui/ThemeToggle'
 
 const navItems = [
   { label: 'Home', href: '#hero' },
@@ -26,7 +28,7 @@ export default function Navbar() {
       let current = 'hero'
       for (const id of ids) {
         const el = document.getElementById(id)
-        if (el && el.getBoundingClientRect().top <= 120) current = id
+        if (el && el.getBoundingClientRect().top <= HEADER_OFFSET + 48) current = id
       }
       setActive(current)
     }
@@ -35,9 +37,10 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  const smoothScroll = useSmoothScroll()
   const scrollTo = (href: string) => {
     setIsOpen(false)
-    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
+    smoothScroll(href)
   }
 
   return (
@@ -47,7 +50,7 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       className={`fixed inset-x-0 top-0 z-[100] transition-all duration-500 ${
         scrolled
-          ? 'border-b border-line bg-primary/70 shadow-[0_8px_40px_rgba(0,0,0,0.4)] backdrop-blur-2xl'
+          ? 'border-b border-line bg-primary/75 shadow-card backdrop-blur-2xl'
           : 'border-b border-transparent bg-transparent'
       }`}
     >
@@ -96,23 +99,27 @@ export default function Navbar() {
                 </button>
               )
             })}
+            <ThemeToggle className="ml-3" />
             <button
               onClick={() => scrollTo('#contact')}
-              className="ml-3 inline-flex items-center gap-1.5 rounded-full bg-gradient-primary px-5 py-2.5 text-sm font-semibold text-white shadow-btn transition-all duration-300 hover:shadow-glow-purple hover:brightness-110"
+              className="ml-2 inline-flex items-center gap-1.5 rounded-full bg-gradient-primary px-5 py-2.5 text-sm font-semibold text-white shadow-btn transition-all duration-300 hover:shadow-glow-purple hover:brightness-110"
             >
               Hire Me <ArrowUpRight size={15} />
             </button>
           </div>
 
           {/* Mobile toggle */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="flex h-10 w-10 items-center justify-center rounded-xl border border-line bg-white/[0.03] text-white lg:hidden"
-            aria-label={isOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={isOpen}
-          >
-            {isOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
+          <div className="flex items-center gap-2 lg:hidden">
+            <ThemeToggle />
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="flex h-10 w-10 items-center justify-center rounded-xl border border-line bg-white/[0.03] text-white"
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isOpen}
+            >
+              {isOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
         </div>
       </nav>
 

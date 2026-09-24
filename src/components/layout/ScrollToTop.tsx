@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowUp } from 'lucide-react'
+import { useSmoothScroll } from '../../lib/useSmoothScroll'
 
 export default function ScrollToTop() {
   const [visible, setVisible] = useState(false)
+  const scrollTo = useSmoothScroll()
 
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > 500)
@@ -19,7 +21,7 @@ export default function ScrollToTop() {
           initial={{ opacity: 0, scale: 0.5, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.5, y: 20 }}
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          onClick={() => scrollTo('#top')}
           aria-label="Scroll to top"
         >
           <ArrowUp size={20} />

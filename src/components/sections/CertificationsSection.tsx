@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Award, Calendar, ExternalLink } from 'lucide-react'
 import { usePortfolio } from '../../lib/usePortfolio'
+import { asset } from '../../lib/asset'
 import SectionHeader from '../ui/SectionHeader'
 
 const ease = [0.16, 1, 0.3, 1] as const
@@ -31,7 +32,7 @@ export default function CertificationsSection() {
               {/* Certificate visual */}
               <div className="relative m-4 mb-0 overflow-hidden rounded-2xl border border-line">
                 <img
-                  src="/certificate.jpg"
+                  src={asset('/certificate.jpg')}
                   alt={`${cert.name} certificate`}
                   width={640}
                   height={400}
@@ -58,7 +59,7 @@ export default function CertificationsSection() {
                     <Calendar size={12} className="text-cyan" /> {cert.date}
                   </span>
                   <a
-                    href="/certificate.pdf"
+                    href={asset('/certificate.pdf')}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan transition-all hover:text-white"

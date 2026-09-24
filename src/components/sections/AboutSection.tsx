@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { MapPin, Briefcase, Download, BadgeCheck, Zap, Code2 } from 'lucide-react'
 import { usePortfolio } from '../../lib/usePortfolio'
+import { asset } from '../../lib/asset'
 import SectionHeader from '../ui/SectionHeader'
 import CountUp from '../ui/CountUp'
 import MagneticButton from '../ui/MagneticButton'
@@ -107,7 +108,7 @@ export default function AboutSection() {
 
               <MagneticButton className="mt-8 w-full sm:w-auto">
                 <a
-                  href={profile.resumeUrl || '/DINESH-RESUME.pdf'}
+                  href={profile.resumeUrl || asset('/DINESH-RESUME.pdf')}
                   download="Dinesh_Kumar_Resume.pdf"
                   className="btn-primary w-full"
                 >

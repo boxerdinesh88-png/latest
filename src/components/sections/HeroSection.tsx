@@ -10,6 +10,7 @@ import {
 } from 'framer-motion'
 import { ArrowRight, Mail, Download, Github, Linkedin, MapPin, Sparkles } from 'lucide-react'
 import { usePortfolio } from '../../lib/usePortfolio'
+import { asset } from '../../lib/asset'
 import RippleButton from '../ui/RippleButton'
 import MagneticButton from '../ui/MagneticButton'
 import CountUp from '../ui/CountUp'
@@ -274,7 +275,7 @@ export default function HeroSection() {
               </MagneticButton>
               <MagneticButton>
                 <a
-                  href={profile.resumeUrl || '/DINESH-RESUME.pdf'}
+                  href={profile.resumeUrl || asset('/DINESH-RESUME.pdf')}
                   download="Dinesh_Kumar_Resume.pdf"
                   className="btn-ghost"
                 >

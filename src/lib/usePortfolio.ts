@@ -1,7 +1,8 @@
 import type { Portfolio, Project, Certification } from '../types/portfolio'
 import rawData from '../data/portfolio.json'
+import { withAssetPaths } from './asset'
 
-const portfolioData = rawData as unknown as Portfolio
+const portfolioData = withAssetPaths(rawData as unknown as Portfolio)
 
 export function usePortfolio(): Portfolio {
   return portfolioData
